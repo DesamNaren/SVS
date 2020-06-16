@@ -1,0 +1,599 @@
+<resources>
+
+    <string name="app_name">పట్టణ ప్రగతి</string>
+    <string name="app_sub_name">పట్టణ వీధి వ్యాపారుల సర్వే</string>
+
+    <string name="ulb_name">మునిసిపాలిటీ పేరు *</string>
+
+    <string name="sel_ulb_name">మున్సిపాలిటీ పేరు ఎంచుకోండి</string>
+
+    <string name="ward_number">వార్డ్ నంబర్ *</string>
+
+    <string name="sel_ward">వార్డ్ నెంబర్</string>
+
+    <string name="sel_ward_number">వార్డ్ నెంబర్ ఎంచుకోండి</string>
+
+    <string name="name_of_vendor">వీధి విక్రయదారుని పేరు *</string>
+
+    <string name="enter_name_of_vendor">వీధి విక్రయదారుని పేరును నమోదు చేయండి</string>
+
+    <string name="father_husband_name">తండ్రి / భర్త పేరు *</string>
+
+    <string name="enter_father_husband_name">తండ్రి / భర్త పేరు నమోదు చేయండి</string>
+
+    <string name="dob">పుట్టిన తేది *</string>
+    <string name="form_dob">పుట్టిన తేది</string>
+
+    <string name="sel_dob_age">పుట్టిన తేదీని లేదా వయస్సును ఎంచుకోండి</string>
+    <string name="year">సంవత్సరాలు</string>
+    <string name="sel_dob">పుట్టిన తేది ఎంచుకోండి</string>
+    <string name="age">వయస్సు</string>
+    <string name="form_age">వయస్సు *</string>
+
+
+    <string name="enter_age">వయస్సు నమోదు చేయండి</string>
+
+    <string name="sel_gender">లింగం *</string>
+    <string name="sel_gender_val">లింగం ఎంచుకోండి</string>
+
+    <string name="sel_caste">కులం *</string>
+
+    <string name="sel_physically_challenged">విభిన్నా ప్రతిభావంతులు *</string>
+
+    <string name="sel_high_qualification">విద్య అర్హత *</string>
+
+    <string name="mob_num">మొబైల్ నెంబర్ *</string>
+
+    <string name="ent_mob_num">మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+
+    <string name="val_mob_num">చెల్లుబాటు అయ్యే మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+
+    <!--<string name="ice_num">ఎమర్జెన్సీ సమయంలో కాంటాక్ట్ చేయవల్సిన మొబైల్ నెంబర్ *</string>-->
+    <string name="ice_num">ఐసిఇ- ఎమర్జెన్సీ కాంటాక్ట్ నెంబర్ *</string>
+
+    <string name="ent_ice_num">ఐసిఇ- ఎమర్జెన్సీ మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+
+    <string name="val_ice_num">చెల్లుబాటు అయ్యే ఐసిఇ- ఎమర్జెన్సీ  మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+
+    <string name="aad_num">ఆధార్ నెంబర్ *</string>
+
+    <string name="dist_name">జిల్లా పేరు *</string>
+
+    <string name="man_name">మండలం పేరు *</string>
+
+    <string name="vil_name">గ్రామం పేరు *</string>
+
+    <string name="house_no">ఇంటి నెం *</string>
+
+    <string name="street">వీధీ పేరు *</string>
+
+    <string name="enter_h_no">ఇంటి  నంబర్ నమోదు చేయండి</string>
+
+    <string name="enter_street">వీధి పేరును నమోదు చేయండి</string>
+
+    <string name="ent_dist_name">జిల్లా పేరును నమోదు చేయండి</string>
+
+    <string name="ent_man_name">మండలం పేరు నమోదు చేయండి</string>
+
+    <string name="ent_vil_nmae">గ్రామం పేరును నమోదు చేయండి</string>
+
+    <string name="ent_aad_num">ఆధార్ నంబర్ నమోదు చేయండి</string>
+
+    <string name="valid_aad_num">చెల్లుబాటు అయ్యే ఆధార్ నంబర్ను నమోదు చేయండి</string>
+
+    <string name="sel_bank">బ్యాంకు *</string>
+
+    <string name="sel_bank_val">బ్యాంకు ఎంచుకోండి</string>
+
+    <string name="sel_branch">బ్రాంచ్ *</string>
+
+    <string name="no_ifsc">IFSC కోడ్ మనుగడలో లేదు</string>
+
+    <string name="ifsc">IFSC కోడ్ *</string>
+
+    <string name="bank_acc_num">బ్యాంక్ ఖాతా నంబర్ *</string>
+
+    <string name="confirm_bank_acc_num">బ్యాంక్ ఖాతా నంబర్ను నిర్ధారించండి *</string>
+
+    <string name="enter_bank_acc_num">బ్యాంక్ ఖాతా నంబర్ను నమోదు చేయండి</string>
+
+    <string name="accnt_no_conf_accnt_no_should_be_same">బ్యాంక్ ఖాతా నంబర్ మరియు ధృవీకరించు ఖాతా నంబర్ ఒకేలా ఉండాలి</string>
+
+    <string name="enter_eme_ctc_num">అత్యవసర సమయం లో కాంటాక్ట్ చెయవాలసిన మొబైల్ నం నమోదు చేయండి</string>
+
+    <string name="sel_type_of_vending">వీధి వ్యాపారము చేయు పద్దతి ఎంచుకోండి</string>
+
+    <string name="sel_vending_area">వీధి వ్యాపారము చేయు చిరునామా </string>
+
+    <string name="type_of_vending">వీధి వ్యాపారము చేయు పద్దతి *</string>
+
+    <string name="sel_type_of_business">వీధి వ్యాపారం పేరు ఎంచుకోండి</string>
+
+    <string name="type_of_business">వీధి వ్యాపారం పేరు *</string>
+
+    <string name="vending_address">వీధి వ్యాపారము చేయు చిరునామా *</string>
+
+    <string name="enter_vending_address">వీధి వ్యాపారము చేయు చిరునామా నమోదు చేయండి</string>
+
+    <string name="residential_address">వీధి వ్యాపారి నివాస చిరునామా *</string>
+
+    <string name="enter_residential_address">వీధి వ్యాపారి నివాస చిరునామా నమోదు చేయండి</string>
+
+    <string name="permanent_address">వీధి వ్యాపారి స్థిర నివాసం చిరునామా</string>
+
+    <string name="enter_permanent_address">వీధి వ్యాపారి స్థిర నివాసం చిరునామా నమోదు చేయండి</string>
+
+    <string name="permanent_address_same_as">శాశ్వత చిరునామా (నివాస చిరునామా వలె ఉంటుంది)</string>
+
+    <string name="vendor_details">విక్రయదారుని వివరాలు</string>
+
+    <string name="basic_details">మునిసిపాలిటీ వివరాలు</string>
+    <string name="contact_details">కాంటాక్ట్ వివరాలు</string>
+
+    <string name="account_details">ఖాతా వివరాలు</string>
+
+    <string name="vending_details">వ్యాపారము చేయు వివరాలు</string>
+
+    <string name="member_name">పేరు *</string>
+
+    <string name="member_age">వయస్సు *</string>
+
+    <string name="member_gender">లింగం *</string>
+
+    <string name="member_relation">వీధి విక్రయదారునితో సంబంధం *</string>
+
+    <string name="member_qualification">విద్య అర్హత *</string>
+
+
+    <string name="member_item_name">పేరు</string>
+    <string name="member_item_age">వయస్సు</string>
+    <string name="member_item_gender">లింగం</string>
+    <string name="member_item_relation">వీధి విక్రయదారునితో సంబంధం</string>
+    <string name="member_item_qualification">విద్య అర్హత</string>
+
+
+    <string name="ent_member_name">పేరు నమోదు చేయండి</string>
+
+    <string name="ent_member_age">వయస్సు నమోదు చేయండి</string>
+
+    <string name="ent_valid_member_age">చెల్లుబాటు అయ్యే వయస్సును నమోదు చేయండి</string>
+
+    <string name="sel_member_gender">లింగం ఎంచుకోండి</string>
+
+    <string name="sel_member_relation">వీధి విక్రయదారునితో సంబంధం ఎంచుకోండి</string>
+
+    <string name="sel_member_qualification">విద్యార్హతను ఎంచుకోండి</string>
+
+    <string name="sel_dist">జిల్లా * </string>
+
+    <string name="sel_man">మండలం *</string>
+
+    <string name="sel_vil">గ్రామం *</string>
+
+    <string name="sel_state">రాష్ట్రం *</string>
+
+
+    -
+    <string-array name="ulb">
+
+        <item>--Select--</item>
+
+        <item>ULB-1</item>
+
+        <item>ULB-2</item>
+
+        <item>ULB-3</item>
+
+        <item>ULB-4</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="wards">
+
+        <item>--Select--</item>
+
+        <item>WARD-1</item>
+
+        <item>WARD-2</item>
+
+        <item>WARD-3</item>
+
+        <item>WARD-4</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="gender">
+
+        <item>--Select--</item>
+
+        <item>Male</item>
+
+        <item>Female</item>
+
+        <item>Transgender</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="caste">
+
+        <item>--Select--</item>
+
+        <item>OC</item>
+
+        <item>BC</item>
+
+        <item>SC</item>
+
+        <item>ST</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="pwd">
+
+        <item>--Select--</item>
+
+        <item>None</item>
+
+        <item>MR</item>
+
+        <item>Ortho</item>
+
+        <item>Visual</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="qualification">
+
+        <item>--Select--</item>
+
+        <item>Illiterate</item>
+
+        <item>Primary Education (1–5)</item>
+
+        <item>Secondary Education (6–7)</item>
+
+        <item>Higher Education (8–10)</item>
+
+        <item>Inter(10+2)</item>
+
+        <item>Degree</item>
+
+        <item>PG</item>
+
+        <item>Others</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="bank">
+
+        <item>--Select--</item>
+
+        <item>SBI</item>
+
+        <item>PNB</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="branch">
+
+        <item>--Select--</item>
+
+        <item>SBI</item>
+
+        <item>ANB</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="business">
+
+        <item>--Select--</item>
+
+        <item>Fruits</item>
+
+        <item>Flowers</item>
+
+        <item>Meat and Fish etc</item>
+
+        <item>Milk and Milk Products</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="vending_types">
+
+        <item>--Select--</item>
+
+        <item>Static</item>
+
+        <item>Mobile</item>
+
+        <item>Peripatetic</item>
+
+    </string-array>
+
+
+    -
+    <string-array name="relation">
+
+        <item>--Select--</item>
+
+        <item>Father</item>
+
+        <item>Mother</item>
+
+        <item>Brother</item>
+
+    </string-array>
+
+    <string name="title_activity_member">మెంబెర్ ఆక్టివిటీ</string>
+
+    <string name="click_icon_to_add_family_members">కుటుంబ సభ్యులను జోడించడానికి + చిహ్నం క్లిక్ చేయండి</string>
+
+    <string name="submit">సమర్పించండి</string>
+
+    <string name="add">జోడించడం</string>
+
+    <string name="remove">తొలగించు</string>
+
+    <string name="edit">మార్చు</string>
+
+
+    <string name="vendor_registration">విక్రయదారుని నమోదు</string>
+
+    <string name="male">పురుషుడు</string>
+
+    <string name="female">స్త్రీ</string>
+
+    <string name="transgender">లింగమార్పిడి</string>
+
+    <string name="applicant_photo">దరఖాస్తుదారు ఫోటో *</string>
+
+    <string name="vending_photo">వీధి వ్యాపారము చేయు ఫోటో *</string>
+
+    <string name="title_activity_dashboard">డాష్బోర్డ్</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_header_title">Android Studio</string>
+
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_settings">సెట్టింగులు</string>
+
+    <string name="menu_home">హోమ్</string>
+
+    <string name="menu_gallery">గ్యాలరీ</string>
+
+    <string name="menu_slideshow">స్లయిడ్ షో</string>
+
+    <string name="menu_tools">టూల్స్</string>
+
+    <string name="menu_share">షేర్</string>
+
+    <string name="menu_send">పంపించు</string>
+
+    <string name="download">డౌన్లోడ్</string>
+
+    <string name="download_master">మాస్టర్స్ డౌన్లోడ్</string>
+
+    <string name="download_masters">మాస్టర్స్ డౌన్లోడ్</string>
+
+    <string name="ulb_master">మునిసిపాలిటీని మాస్టర్స్</string>
+
+    <string name="bank_branch">బ్యాంక్ మాస్టర్స్</string>
+
+    <string name="dmv_master">ప్లేసెస్ మాస్టర్</string>
+
+    <string name="other_master">ఇతర మాస్టర్స్</string>
+
+    <string name="kyc_master">KYC మాస్టర్స్</string>
+
+    <string name="business_master">బిజినెస్ మాస్టర్స్</string>
+
+    <string name="language_selection">భాషా ఎంపిక</string>
+
+    <string name="dashboard">డాష్బోర్డ్</string>
+
+    <string name="con_time_out">కనెక్షన్ సమయం ముగిసింది, దయచేసి మళ్ళీ ప్రయత్నించండి</string>
+
+    <string name="io_exe">:ఇఓ ఎక్సెప్షన్</string>
+
+    <string name="something">ఏదో తప్పు జరిగింది, దయచేసి మళ్ళీ ప్రయత్నించండి</string>
+
+    <string name="server_not">సర్వర్ స్పందించడం లేదు, దయచేసి తరువాత ప్రయత్నించండి</string>
+
+    <string name="plz_check_int">నెట్‌వర్క్ కనెక్టివిటీ కనుగొనబడలేదు, దయచేసి మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి</string>
+
+    <string name="re_download">తిరిగి డౌన్‌లోడ్ చేయండి</string>
+
+    <string name="no">కాదు</string>
+
+    <string name="yes">అవును</string>
+
+    <string name="places_message">స్థలాల సమాచారం కనుగొనబడలేదు…  సమకాలీకరణ స్థలాల మాస్టర్ డేటా మరింత ముందుకు వెళ్లాలని మీరు కోరుకుంటున్నారా</string>
+
+    <string name="bb_message">బ్యాంక్ &amp; బ్రాంచ్ సమాచారం కనుగొనబడలేదు…  సమకాలీకరణ బ్యాంక్ బ్రాంచ్ మాస్టర్ డేటా మరింత ముందుకు సాగాలని మీరు కోరుకుంటున్నారా</string>
+
+    <string name="ulb_message">మున్సిపాలిటీ &amp; వార్డుల సమాచారం ఏదీ కనుగొనబడలేదు…  మరింత ముందుకు సాగడానికి మున్సిపాలిటీ మాస్టర్ డేటాను సమకాలీకరించాలనుకుంటున్నారా</string>
+
+    <string name="kyc_message">KYC సమాచారం కనుగొనబడలేదు…  KYC మాస్టర్ డేటాను మరింత సమకాలీకరించడానికి మీరు సమకాలీకరించాలనుకుంటున్నారా</string>
+
+    <string name="vending_message">వ్యాపార సమాచారం ఏదీ కనుగొనబడలేదు…  సమకాలీకరణ వ్యాపార మాస్టర్ డేటా మరింత ముందుకు సాగాలని మీరు కోరుకుంటున్నారా</string>
+
+    <string name="ok">సరే</string>
+
+    <string name="places_message_succcess">స్థలాల మాస్టర్ డేటా విజయవంతంగా డౌన్‌లోడ్ చేయబడింది</string>
+
+    <string name="bb_message_success">బ్యాంక్ బ్రాంచ్ మాస్టర్ డేటా విజయవంతంగా డౌన్‌లోడ్ చేయబడింది</string>
+
+    <string name="ulb_message_success">మున్సిపాలిటీ మాస్టర్ డేటా విజయవంతంగా డౌన్‌లోడ్ చేయబడింది</string>
+
+    <string name="kyc_message_success">KYC మాస్టర్ డేటా విజయవంతంగా డౌన్‌లోడ్ చేయబడింది</string>
+
+    <string name="vending_message_success">బిజినెస్ మాస్టర్ డేటా విజయవంతంగా డౌన్‌లోడ్ చేయబడింది</string>
+
+    <string name="title_activity_login">లాగిన్ ఆక్టివిటీ</string>
+
+    <string name="please_enter_username">దయచేసి వినియోగదారు పేరును నమోదు చేయండి</string>
+
+    <string name="please_enter_password">దయచేసి పాస్వర్డ్ను నమోదు చేయండి</string>
+
+    <string name="all_cam_per_setting">సెట్టింగ్‌ల నుండి కెమెరా అనుమతిని అనుమతించండి</string>
+
+    <string name="username">  వినియోగదారు పేరు</string>
+
+    <string name="password">  పాస్వర్డ్</string>
+
+    <string name="login">ప్రవేశించండి</string>
+
+    <string name="family_member">కుటుంబ సభ్యులను జోడించండి / వీక్షించండి</string>
+
+    <string name="cancel">రద్దు చేయండి</string>
+
+    <string name="plz_grant">దయచేసి అవసరమైన అనుమతులను ఇవ్వండి</string>
+
+    <string name="cam_den">కెమెరా అనుమతి నిరాకరించబడింది</string>
+
+    <string name="user_can">వినియోగదారు క్యాప్చరింగ్ రద్దు చేయబడింది</string>
+
+    <string name="failed_cam">ఫోటో తీయడంలో విఫలమైంది</string>
+
+    <string name="bitmap_something">బిట్‌మ్యాప్‌లో ఏదో తప్పు జరిగింది</string>
+
+    <string name="something_photo">ఫోటో క్యాప్చర్‌లో ఏదో తప్పు జరిగింది, దయచేసి మళ్ళీ ప్రయత్నించండి</string>
+
+    <string name="sel_ulb">దయచేసి మున్సిపాలిటీ పేరు ఎంచుకోండి</string>
+
+    <string name="cap_applicant">కాప్చర్ అప్లికేన్ట్ ఫోటో</string>
+
+    <string name="cap_vend_act">కాప్చర్ వెండింగ్ ఆక్టివిటీ ఫోటో</string>
+
+    <string name="select">ఎంచుకోండి</string>
+
+    <string name="language">English</string>
+    <string name="languagealertTitle">భాషా ఎంపిక</string>
+    <string name="languagealertinfo">మీరు భాషను మార్చాలనుకుంటున్నారా?</string>
+
+    <string name="select_bank">--బ్యాంకును ఎంచుకోండి--</string>
+    <string name="select_branch">--బ్రాంచ్ ఎంచుకోండి--</string>
+    <string name="select_ward">--వార్డ్ ఎంచుకోండి--</string>
+    <string name="select_village">--గ్రామాన్ని ఎంచుకోండి--</string>
+    <string name="select_mandal">--మండలం ఎంచుకోండి--</string>
+    <string name="no_branches">బ్రాంచ్ లు కనుగొనబడలేదు</string>
+    <string name="no_mandals">మండలాలు కనుగొనబడలేదు</string>
+    <string name="no_villages">గ్రామాలు కనుగొనబడలేదు</string>
+    <string name="select_vending_area">--వెండింగ్ చిరునామా ఎంచుకోండి--</string>
+    <string name="no_wards">వార్డులు కనుగొనబడలేదు</string>
+    <string name="add_atleast_member">కనీసం ఒక కుటుంబ సభ్యుడిని చేర్చండి</string>
+    <string name="bank_acc_sho_all_aero">బ్యాంక్ ఖాతా నంబర్ అన్ని సున్నాలు కాకూడదు</string>
+
+    <string name="no_banks">బ్యాంకులు కనుగొనబడలేదు</string>
+    <string name="no_districts">జిల్లాలు కనుగొనబడలేదు</string>
+    <string name="no_states">ఏ రాష్ట్రాలు కనుగొనబడలేదు</string>
+    <string name="verify">నిర్ధారించండి</string>
+    <string name="no_religion">మతం డేటా కనుగొనబడలేదు</string>
+    <string name="no_catse">కుల డేటా కనుగొనబడలేదు</string>
+    <string name="no_pwd_data">విభిన్నా ప్రతిభావంతులు డేటా కనుగొనబడలేదు</string>
+    <string name="no_qual"> విద్యార్హత డేటా కనుగొనబడలేదు</string>
+    <string name="no_relation">వీధి విక్రయదారునితో సంబంధం డేటా కనుగొనబడలేదు </string>
+    <string name="no_business">వ్యాపార డేటా కనుగొనబడలేదు</string>
+    <string name="no_ven_types">వవ్యాపారము చేయు రకాలు డేటా కనుగొనబడలేదు</string>
+    <string name="no_ven_area"> వ్యాపారము చేయు చిరునామా డేటా కనుగొనబడలేదు</string>
+    <string name="no_ward">వార్డ్ డేటా కనుగొనబడలేదు</string>
+    <string name="no_ulb">No ULB data found</string>
+    <string name="no_gender">లలింగం డేటా కనుగొనబడలేదు</string>
+    <string name="sel_religion">మతం ఎంచుకోండి</string>
+    <string name="religion">మతం *</string>
+    <string name="police_station">పోలీసు స్టేషన్ *</string>
+    <string name="ent_police_station">పోలీసు స్టేషన్ నమోదు చేయండి</string>
+    <string name="vending_date">విక్రయ కార్యాచరణ ప్రారంభించిన తేదీ *</string>
+    <string name="sel_vending_date">విధి వ్యాపారం ఎప్పటినుంచి చేయుచున్నారో  ఎంచుకోండి</string>
+    <string name="done">పూర్తి</string>
+    <string name="update_msg">మీకు నవీకరణ ఉంది. దయచేసి తాజా సంస్కరణను నవీకరించండి!</string>
+    <string name="app_ver">అప్ వెర్షన్ క్లయింట్ నుండి శూన్యమైనది</string>
+    <string name="google_play">అప్ని నవీకరించడానికి గూగుల్ ప్లే సేవలు అందుబాటులో లేవు</string>
+    <string name="phone">ఫోన్</string>
+    <string name="phonetxt">పరికరాలను ప్రత్యేకంగా గుర్తించడానికి మరియు మోసాలను నిరోధించడానికి అనధికార పరికరాలను నిర్ధారించడానికి మీ ప్రత్యేకమైన పరికర ఐడెంటిఫైయర్‌తో సహా మీ పరికరం గురించి నిర్దిష్ట సమాచారాన్ని సేకరించి పర్యవేక్షించండి.</string>
+    <string name="contacts">కాంటాక్ట్స్</string>
+    <string name="contactstxt">సూచన సమాచారాన్ని స్వయంచాలకంగా గుర్తించడానికి పరిచయాల సమాచారాన్ని సేకరించండి.</string>
+    <string name="camera">కెమెరా</string>
+    <string name="cameratxt">అప్లో చిత్రాలను తీయడానికి కెమెరా మిమ్మల్ని అనుమతిస్తుంది</string>
+    <string name="storage">నిల్వ</string>
+    <string name="permissionText">ఈ అనుమతులతో మీ పట్టణ ప్రగతి- వీధి వ్యాపారుల సర్వే అప్ అనుభవాన్ని మెరుగుపరచండి</string>
+    <string name="storagetxt">పరికరం ద్వారా సంగ్రహించిన ఫోటోలతో పనిచేయడానికి నిల్వ సమాచారాన్ని సేకరించండి</string>
+    <string name="iaccept">నేను ఒప్పుకుంటున్నా</string>
+    <string name="ideclined"><![CDATA[తిరస్కరించబడింది & లాగిన్‌కు వెళ్లండి]]></string>
+
+
+    <string name="bank_branch2">(బ్యాంకులు, బ్రాంచ్లు)</string>
+    <string name="ulb_master2">(మునిసిపాలిటీలు, వార్డ్లు)</string>
+    <string name="dmv_master2">(రాష్ట్రాలు, జిల్లాలు, మండలాలు, గ్రామాలు)</string>
+    <string name="business_master2">(వీధి వ్యాపారం పేరు, వ్యాపారము చేయు, వ్యాపారము చేయు చిరునామా)</string>
+    <string name="kyc_master2">(లింగం, మతం, కులం, విభిన్నా ప్రతిభావంతులు, విద్యార్హత, వీధి విక్రయదారునితో సంబంధం)</string>
+
+    <string name="terms">టర్మ్స్ అండ్ కండీషన్స్</string>
+    <string name="privacy_policy">ప్రైవసీ పాలసీ</string>
+    <string name="copy_right">కాపీరైట్ పాలసీ</string>
+    <string name="logout_menu">లాగౌట్</string>
+    <string name="logout">మీరు ఆప్ నుండి లాగ్ అవుట్ చేయాలనుకుంటున్నారా?</string>
+    <string name="enroll_cancel">మీరు నమోదు ప్రక్రియను రద్దు చేయాలనుకుంటున్నారా?</string>
+    <string name="age_val">వయస్సు 19 నుండి 99 సంవత్సరాల మధ్య ఉండాలి. వయస్సు మార్చడానికి DOB ని ఎంచుకోండి</string>
+
+    <string name="submit_text">మీరు ఖచ్చితంగా డేటాను సమర్పించాలనుకుంటున్నారా?</string>
+    <string name="ent_other_caste">ఇతర కులం పేరును నమోదు చేయండి</string>
+    <string name="ent_other_religion">ఇతర మతం పేరును నమోదు చేయండి</string>
+    <string name="ent_other_business">ఇతర వ్యాపారం పేరును నమోదు చేయండి</string>
+
+    <string name="other_caste">ఇతర కులం *</string>
+    <string name="other_religion">ఇతర మతం *</string>
+    <string name="other_business">ఇతర వ్యాపారం *</string>
+
+    <string name="sel_vending_area_val">వీధి వ్యాపారము చేయు చిరునామాను ఎంచుకోండి</string>
+    <string name="sel_branch_val">బ్రాంచ్ ఎంచుకోండి</string>
+    <string name="sel_high_qualification_val">విద్య అర్హతను ఎంచుకోండి</string>
+    <string name="sel_caste_val">కులం ఎంచుకోండి</string>
+
+    <string name="validationmobandemergency">మొబైల్ నెంబర్ మరియు అత్యవసర సంపర్క నెంబర్ ఒకేలా ఉండకూడదు</string>
+
+    <string name="note_text">(గమనిక: 2020 మార్చి 24 న లేదా అంతకు ముందు అమ్మకం ప్రారంభించిన విక్రయదారులకి లోన్ ఇవ్వబడును)</string>
+    <string name="submit_data">డేటాను సమర్పించండి</string>
+
+
+    <string name="others">ఇతరములు</string>
+    <string name="state_val">రాష్ట్రం ఎంచుకోండి</string>
+    <string name="telangana">తెలంగాణ</string>
+    <string name="sel_dis_val">జిల్లా ఎంచుకోండి</string>
+    <string name="sel_man_val">మండలం ఎంచుకోండి</string>
+    <string name="sel_vil_val">గ్రామాన్ని ఎంచుకోండి</string>
+
+    <string name="bank_acc_sho_min_ten">బ్యాంక్ ఖాతా సంఖ్య కనీసం 10 అంకెలు ఉండాలి</string>
+
+    <string name="sel_physically_challenged_val">విభిన్నా ప్రతిభావంతులు ఎంచుకోండి</string>
+    <string name="enter_con_bank_acc_num">బ్యాంక్ ఖాతా సంఖ్యను నిర్ధారించండి</string>
+
+    <string name="verify_aad">ఆధార్ సంఖ్యను నిర్ధారించండి</string>
+
+    <string name="member_registration">సభ్యుల నమోదు</string>
+
+</resources>

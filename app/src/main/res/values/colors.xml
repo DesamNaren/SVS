@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#293859</color>
+    <color name="colorPrimaryDark">#001230</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="ven_col">#556286</color>
+    <color name="bg">#A4A4A4</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="appbar">#324755</color>
+
+    <color name="green">#4F684F</color>
+    <color name="red">#B40404</color>
+    <color name="row_yellow">#FFE87C</color>
+    <color name="light_gray">#A9A9A9</color>
+    <color name="dark_gray">#808080</color>
+</resources>

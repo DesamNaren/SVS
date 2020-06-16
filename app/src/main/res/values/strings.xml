@@ -1,0 +1,362 @@
+<resources>
+    <string name="app_name">Pattana Pragathi</string>
+    <string name="app_sub_name">Urban Street vendor survey</string>
+    <string name="ulb_name">ULB Name *</string>
+    <string name="sel_ulb_name">Select ULB Name</string>
+    <string name="ward_number">Ward Number *</string>
+    <string name="sel_ward">Ward</string>
+    <string name="sel_ward_number">Select Ward Number</string>
+    <string name="name_of_vendor">Name of Street Vendor *</string>
+    <string name="enter_name_of_vendor">Enter Name of Street Vendor</string>
+    <string name="father_husband_name">Father/Husband Name *</string>
+    <string name="enter_father_husband_name">Enter Father/Husband Name</string>
+    <string name="sel_dob_age">Select DOB or Age</string>
+    <string name="dob">DOB *</string>
+    <string name="form_dob">DOB</string>
+    <string name="form_age">Age *</string>
+    <string name="sel_dob">Select DOB</string>
+    <string name="age">Age</string>
+    <string name="year">Years</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="sel_gender">Sex / Gender *</string>
+    <string name="sel_gender_val">Select Sex / Gender</string>
+    <string name="sel_caste">Caste *</string>
+    <string name="sel_physically_challenged">Physically Challenged *</string>
+    <string name="sel_physically_challenged_val">Select Physically Challenged</string>
+    <string name="sel_high_qualification">Education Qualification *</string>
+    <string name="mob_num">Mobile Number *</string>
+    <string name="ent_mob_num">Enter Mobile Number</string>
+    <string name="val_mob_num">Enter Valid Mobile Number</string>
+
+   <!-- <string name="ice_num">ICE (In case of Emergency) - Contact Number *</string>-->
+    <string name="ice_num">ICE- Emergency Contact Number *</string>
+    <string name="ent_ice_num">Enter ICE- Emergency Contact Number</string>
+    <string name="val_ice_num">Enter Valid ICE- Emergency Contact Number</string>
+
+
+    <string name="aad_num">Aadhaar Number *</string>
+    <string name="dist_name">District Name *</string>
+    <string name="man_name">Mandal Name *</string>
+    <string name="vil_name">Village Name *</string>
+    <string name="house_no">House No *</string>
+    <string name="street">Street *</string>
+    <string name="enter_h_no">Enter House No</string>
+    <string name="enter_street">Enter Street</string>
+    <string name="ent_dist_name">Enter District Name</string>
+    <string name="ent_man_name">Enter Mandal Name</string>
+    <string name="ent_vil_nmae">Enter Village Name</string>
+    <string name="ent_aad_num">Enter Aadhaar Number</string>
+    <string name="valid_aad_num">Enter Valid Aadhaar Number</string>
+    <string name="sel_bank">Bank *</string>
+    <string name="sel_bank_val">Select Bank</string>
+    <string name="sel_branch">Branch *</string>
+    <string name="no_ifsc">IFSC Code doesn\'t exist</string>
+    <string name="ifsc">IFSC Code *</string>
+    <string name="bank_acc_num">Bank Account Number *</string>
+    <string name="confirm_bank_acc_num">Confirm Bank Account Number *</string>
+    <string name="enter_bank_acc_num">Enter Bank Account Number</string>
+    <string name="enter_con_bank_acc_num">Enter Confirm Bank Account Number</string>
+    <string name="bank_acc_sho_all_aero">Bank Account Number should not be all zeros</string>
+    <string name="bank_acc_sho_min_ten">Bank Account Number should be minimum of 10 digits</string>
+    <string name="accnt_no_conf_accnt_no_should_be_same">Bank account number and confirm  account number should be same</string>
+
+    <string name="enter_eme_ctc_num">Enter Emergency Contact Number</string>
+    <string name="sel_type_of_vending">Select Type of Vending</string>
+    <string name="sel_vending_area">Vending Area</string>
+    <string name="type_of_vending">Type of Vending *</string>
+    <string name="sel_type_of_business">Select Type of Business</string>
+    <string name="type_of_business">Type of Business *</string>
+    <string name="vending_address">Vending Address *</string>
+    <string name="enter_vending_address">Enter Vending Address</string>
+    <string name="residential_address">Residential Address *</string>
+    <string name="enter_residential_address">Enter Residential Address</string>
+    <string name="permanent_address">Permanent Address</string>
+    <string name="enter_permanent_address">Enter Permanent Address</string>
+    <string name="permanent_address_same_as">Permanent Address (Same as residential address)</string>
+    <string name="vendor_details">Vendor Details</string>
+    <string name="basic_details">Basic Details</string>
+    <string name="account_details">Account Details</string>
+    <string name="vending_details">Vending Details</string>
+    <string name="contact_details">Contact Details</string>
+
+    <string name="member_name">Name *</string>
+    <string name="member_age">Age *</string>
+    <string name="member_gender">Gender *</string>
+    <string name="member_relation">Relationship *</string>
+    <string name="member_qualification">Education Qualification *</string>
+
+    <string name="member_item_name">Name</string>
+    <string name="member_item_age">Age</string>
+    <string name="member_item_gender">Gender</string>
+    <string name="member_item_relation">Relationship</string>
+    <string name="member_item_qualification">Education Qualification</string>
+
+    <string name="ent_member_name">Enter Name</string>
+    <string name="ent_member_age">Enter Age</string>
+    <string name="ent_valid_member_age">Enter Valid Age</string>
+    <string name="sel_member_gender">Select Gender</string>
+    <string name="sel_member_relation">Select Relationship</string>
+    <string name="sel_member_qualification">Select Qualification</string>
+
+    <string name="sel_dist">District *</string>
+    <string name="sel_man">Mandal *</string>
+    <string name="sel_vil">Village *</string>
+    <string name="sel_state">State *</string>
+
+
+    <string-array name="ulb">
+        <item>--Select--</item>
+        <item>ULB-1</item>
+        <item>ULB-2</item>
+        <item>ULB-3</item>
+        <item>ULB-4</item>
+    </string-array>
+    <string-array name="wards">
+        <item>--Select--</item>
+        <item>WARD-1</item>
+        <item>WARD-2</item>
+        <item>WARD-3</item>
+        <item>WARD-4</item>
+    </string-array>
+    <string-array name="gender">
+        <item>--Select--</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Transgender</item>
+    </string-array>
+    <string-array name="caste">
+        <item>--Select--</item>
+        <item>OC</item>
+        <item>BC</item>
+        <item>SC</item>
+        <item>ST</item>
+    </string-array>
+
+    <string-array name="pwd">
+        <item>--Select--</item>
+        <item>None</item>
+        <item>MR</item>
+        <item>Ortho</item>
+        <item>Visual</item>
+    </string-array>
+    <string-array name="qualification">
+        <item>--Select--</item>
+        <item>Illiterate</item>
+        <item>Primary Education (1–5)</item>
+        <item>Secondary Education (6–7)</item>
+        <item>Education (8–10)</item>
+        <item>Inter(10+2)</item>
+        <item>Degree</item>
+        <item>PG</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="bank">
+        <item>--Select--</item>
+        <item>SBI</item>
+        <item>PNB</item>
+    </string-array>
+
+    <string-array name="branch">
+        <item>--Select--</item>
+        <item>SBI</item>
+        <item>ANB</item>
+    </string-array>
+
+    <string-array name="business">
+        <item>--Select--</item>
+        <item>Fruits</item>
+        <item>Flowers</item>
+        <item>Meat and Fish etc</item>
+        <item>Milk and Milk Products</item>
+    </string-array>
+    <string-array name="vending_types">
+        <item>--Select--</item>
+        <item>Static</item>
+        <item>Mobile</item>
+        <item>Peripatetic</item>
+    </string-array>
+
+
+    <string-array name="relation">
+        <item>--Select--</item>
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Brother</item>
+    </string-array>
+
+
+    <string name="title_activity_member">MemberActivity</string>
+    <string name="click_icon_to_add_family_members">Click + icon to add family members</string>
+    <string name="submit">Submit</string>
+    <string name="add">ADD</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Edit</string>
+    <string name="member_registration">Member Registration</string>
+    <string name="vendor_registration">Vendor Enrollment</string>
+    <string name="male">Male</string>
+    <string name="female">FeMale</string>
+    <string name="transgender">Transgender</string>
+    <string name="applicant_photo">Applicant Photo *</string>
+    <string name="vending_photo">Vending Activity Photo *</string>
+    <string name="title_activity_dashboard">DASHBOARD</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="download">Download</string>
+    <string name="download_master">Download Masters</string>
+    <string name="download_masters">Download Masters</string>
+    <string name="ulb_master">ULB Master</string>
+    <string name="bank_branch">Bank Master</string>
+    <string name="dmv_master">Places Master</string>
+    <string name="other_master">Other Master</string>
+    <string name="kyc_master">KYC Master</string>
+    <string name="business_master">Business Master</string>
+    <string name="language_selection">Language Selection</string>
+    <string name="dashboard">DASHBOARD</string>
+
+
+    <string name="con_time_out">The connection has timed out, please try again</string>
+    <string name="io_exe">:IO Exception</string>
+    <string name="something">Something went wrong, please try again</string>
+    <string name="server_not">Server not responding, Please try later</string>
+    <string name="plz_check_int">No network connectivity found, please check your internet connection</string>
+    <string name="re_download">Re-Download</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="places_message">No places information found… \n Do you want sync places master data to proceed further</string>
+    <string name="bb_message">No bank &amp; branch information found… \n Do you want sync bank branch master data to proceed further</string>
+    <string name="ulb_message">No ULB &amp; wards information found… \n Do you want sync ULB master data to proceed further</string>
+    <string name="kyc_message">No KYC information found… \n Do you want sync KYC master data to proceed further</string>
+    <string name="vending_message">No vending business information found… \n Do you want sync business master data to proceed further</string>
+    <string name="ok">OK</string>
+    <string name="places_message_succcess">Places master data downloaded successfully</string>
+    <string name="bb_message_success">Bank Branch master data downloaded successfully</string>
+    <string name="ulb_message_success">ULB master data downloaded successfully</string>
+    <string name="kyc_message_success">KYC master data downloaded successfully</string>
+    <string name="vending_message_success">Business master data downloaded successfully</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="please_enter_username">Please enter username</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="all_cam_per_setting">Allow camera permission from settings</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="family_member">Add/View Family Members</string>
+    <string name="cancel">Cancel</string>
+    <string name="plz_grant">Please grant required permissions</string>
+    <string name="cam_den">Camera permission denied</string>
+    <string name="user_can">User cancelled image capturing</string>
+    <string name="failed_cam">Failed to capture image</string>
+    <string name="bitmap_something">Something went wrong with bitmap</string>
+    <string name="something_photo">Something went wrong with photo capture, Please try again</string>
+
+    <string name="sel_ulb">Please select ULB</string>
+    <string name="cap_applicant">Capture applicant photo</string>
+    <string name="cap_vend_act">Capture vending activity photo</string>
+    <string name="select">Select</string>
+    <string name="select_branch">--Select Branch--</string>
+    <string name="select_ward">--Select Ward--</string>
+    <string name="select_village">--Select Village--</string>
+    <string name="select_mandal">--Select Mandal--</string>
+    <string name="no_branches">No Branches found</string>
+    <string name="no_mandals">No Mandals found</string>
+    <string name="no_villages">No Villages found</string>
+    <string name="select_vending_area">--Select Vending Address--</string>
+    <string name="no_wards">No wards found</string>
+    <string name="add_atleast_member">Add atleast one family meber</string>
+    <string name="language">తెలుగు</string>
+    <string name="select_bank">--Select Bank--</string>
+    <string name="languagealertTitle">Language Selection</string>
+    <string name="languagealertinfo">Do you want to change the language?</string>
+
+    <string name="no_banks">No Banks found</string>
+    <string name="no_districts">No Districts found</string>
+    <string name="no_states">No States found</string>
+    <string name="verify">Verify</string>
+    <string name="verify_aad">Verify Aadhaar Number</string>
+    <string name="no_religion">No religion data found</string>
+    <string name="no_catse">No caste found</string>
+    <string name="no_pwd_data">No PWD data found</string>
+    <string name="no_qual">No qualification data found</string>
+    <string name="no_relation">No relationship data found</string>
+    <string name="no_business">No business data found</string>
+    <string name="no_ven_types">No vending types found</string>
+    <string name="no_ven_area">No vending area data found</string>
+    <string name="no_ward">No ward data found</string>
+    <string name="no_ulb">No ULB data found</string>
+    <string name="no_gender">No gender data found</string>
+    <string name="sel_religion">Select Religion</string>
+    <string name="religion">Religion *</string>
+    <string name="police_station">Police Station *</string>
+    <string name="ent_police_station">Enter police station</string>
+    <string name="vending_date">Date of start of vending activity *</string>
+    <string name="sel_vending_date">Select date of start of vending activity</string>
+    <string name="done">Done</string>
+    <string name="update_msg">You have an update. Please update the latest version!</string>
+    <string name="app_ver">App version from client end is null</string>
+    <string name="google_play">Google play services not available to update the app</string>
+    <string name="phone">Phone</string>
+    <string name="phonetxt">Collect and monitor specific information about your device including your unique device identifier to uniquely identify the devices and ensure that unauthorized devices to prevent frauds</string>
+    <string name="contacts">Contacts</string>
+    <string name="contactstxt">Collect contacts information to automatically detect reference information.</string>
+    <string name="camera">Camera</string>
+    <string name="cameratxt">Camera allowing you to capture pictures in the application</string>
+    <string name="storage">Storage</string>
+    <string name="permissionText">Make your Pattana Pragathi- Urban Vendor survey app experience better with these permissions</string>
+    <string name="storagetxt">Collect storage information to work with captured photos through device</string>
+    <string name="iaccept">I accept</string>
+    <string name="ideclined"><![CDATA[Declined & Proceed to Login]]></string>
+    <string name="bank_branch2">(Banks, Branches)</string>
+    <string name="ulb_master2">(ULBs, Wards)</string>
+    <string name="dmv_master2">(States, Districts, Mandals, Villages)</string>
+    <string name="business_master2">(Type of Business, Vending, Vending Area)</string>
+    <string name="kyc_master2">(Gender, Religion, Caste, PWD type, Qualification, Relationships)</string>
+
+    <string name="terms">Terms and Conditions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="copy_right">Copyright Policy</string>
+    <string name="logout_menu">Logout</string>
+    <string name="logout">Do you want to logout from app?</string>
+    <string name="enroll_cancel">Do you want to cancel the enrollment process?</string>
+    <string name="age_val">Age should be in between 19 to 99 years. Select DOB to change age</string>
+
+    <string name="submit_text">Are you sure you want to submit the data?</string>
+    <string name="ent_other_caste">Enter Other Caste Name</string>
+    <string name="ent_other_religion">Enter Other Religion Name</string>
+    <string name="ent_other_business">Enter Other Business Name</string>
+
+    <string name="other_caste">Other Caste *</string>
+    <string name="other_religion">Other Religion *</string>
+    <string name="other_business">Other Business *</string>
+
+    <string name="sel_vending_area_val">Select Vending Area</string>
+    <string name="sel_branch_val">Select Branch</string>
+    <string name="sel_high_qualification_val">Select Education Qualification</string>
+    <string name="sel_caste_val">Select Caste</string>
+
+    <string name="validationmobandemergency">Mobile No and emergency contact no should not be same</string>
+
+    <string name="note_text">(Note: Access to Credit will be given to Street Vendors who have started vending on or before 24th march 2020)</string>
+
+
+    <string name="submit_data">Submit Data</string>
+
+    <string name="others">Others</string>
+    <string name="state_val">Select State</string>
+    <string name="telangana">Telangana</string>
+    <string name="sel_dis_val">Select District</string>
+    <string name="sel_man_val">Select Mandal</string>
+    <string name="sel_vil_val">Select Village</string>
+</resources>

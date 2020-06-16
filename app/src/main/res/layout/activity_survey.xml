@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ven_col"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/cv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary" />
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/action_bar_layout" />
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/cl"
+            android:layout_below="@+id/header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/muli_bold"
+                                android:padding="@dimen/dimen_5dp"
+                                android:text="@string/basic_details"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dip"
+                            android:background="@color/black" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_5dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/elmessiri_regular"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/ulb_name"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_16sp"
+                                    android:textStyle="normal" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+                                    android:id="@+id/ulb_spinner"
+                                    style="@style/Widget.App.Spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                    app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen_5dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/elmessiri_regular"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/ward_number"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_16sp" />
+
+                                <androidx.appcompat.widget.AppCompatSpinner
+
+                                    android:id="@+id/ward_spinner"
+                                    style="@style/Widget.App.Spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                    app:theme="@style/ThemeOverlay.AppCompat.Light" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/muli_bold"
+                                android:padding="@dimen/dimen_5dp"
+                                android:text="@string/vendor_details"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dip"
+                            android:background="@color/black" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_5dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:layout_weight="1"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_aadhaar_num"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/aad_num"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="number"
+                                        android:maxLength="12"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <Button
+                                    android:id="@+id/btn_verify"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimen_8dp"
+                                    android:layout_marginRight="@dimen/dimen_8dp"
+                                    android:text="@string/verify"
+                                    android:textColor="@color/white" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ven_rem_ll"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_vendor_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz. \n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/name_of_vendor"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_father_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz. \n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/father_husband_name"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/radio_ll"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:orientation="vertical">
+
+                                    <RadioGroup
+                                        android:id="@+id/radio_group"
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <RadioButton
+                                            android:id="@+id/dob_rb"
+                                            android:text="@string/dob"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"/>
+
+                                        <RadioButton
+                                            android:id="@+id/age_rb"
+                                            android:layout_marginLeft="@dimen/dimen_8dp"
+                                            android:text="@string/form_age"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/dimen_8dp" />
+                                    </RadioGroup>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:id="@+id/dob_ll"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/t_dob"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColorHint="@color/black"
+                                            app:boxStrokeColor="@color/black"
+                                            app:errorEnabled="true"
+                                            app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                            app:hintEnabled="true"
+                                            app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+
+                                            <EditText
+                                                android:id="@+id/et_dob"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                                                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                                                android:focusable="false"
+                                                android:focusableInTouchMode="false"
+                                                android:fontFamily="@font/elmessiri_regular"
+                                                android:hint="@string/dob"
+                                                android:imeOptions="actionNext"
+                                                android:maxLines="1"
+                                                android:singleLine="true"
+                                                android:textColor="@color/black" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                        <TextView
+                                            android:layout_marginLeft="@dimen/dimen_8dp"
+                                            android:id="@+id/tv_age"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:layout_marginStart="@dimen/dimen_8dp" />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:visibility="gone"
+                                        android:id="@+id/age_ll"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/t_age"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1.5"
+                                            android:textColorHint="@color/black"
+                                            app:boxStrokeColor="@color/black"
+                                            app:errorEnabled="true"
+                                            app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                            app:hintEnabled="true"
+                                            app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+
+                                            <EditText
+                                                android:id="@+id/et_age"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/elmessiri_regular"
+                                                android:hint="@string/form_age"
+                                                android:imeOptions="actionNext"
+                                                android:inputType="number"
+                                                android:maxLength="2"
+                                                android:maxLines="1"
+                                                android:singleLine="true"
+                                                android:textColor="@color/black" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                        <TextView
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:layout_marginLeft="@dimen/dimen_8dp"
+                                            android:id="@+id/tv_dob"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black"
+                                            android:layout_marginStart="@dimen/dimen_8dp" />
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_gender"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/gender_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/religion"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/religion_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tv_oth_religion"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    android:visibility="gone"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_oth_religion"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz. \n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/other_religion"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_caste"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/caste_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tv_oth_caste"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    android:visibility="gone"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_oth_caste"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz. \n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/other_caste"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_physically_challenged"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/pwd_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_high_qualification"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/qualification_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_applicant"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iv_applicant"
+                                            android:layout_width="@dimen/_150dp"
+                                            android:layout_height="@dimen/_150dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="@dimen/dimen_8dp"
+                                            android:layout_marginBottom="@dimen/dimen_5dp"
+                                            android:src="@android:drawable/ic_menu_camera" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_8dp"
+                                            android:text="@string/applicant_photo"
+                                            android:textSize="@dimen/dimen_16sp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_vending"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+
+                                        <ImageView
+                                            android:id="@+id/iv_vending_photo"
+                                            android:layout_width="@dimen/_150dp"
+                                            android:layout_height="@dimen/_150dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="@dimen/dimen_8dp"
+                                            android:layout_marginBottom="@dimen/dimen_5dp"
+                                            android:src="@android:drawable/ic_menu_camera" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_8dp"
+                                            android:text="@string/vending_photo"
+                                            android:textSize="@dimen/dimen_16sp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/other_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/account_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_bold"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/account_details"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dip"
+                                android:background="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="vertical">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_bank"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/bank_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/sel_branch"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+
+                                        android:id="@+id/branch_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_ifsc_code"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:enabled="false"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/ifsc"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_acc_num"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/bank_acc_num"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="numberPassword"
+                                        android:maxLength="15"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_con_acc_num"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/confirm_bank_acc_num"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="number"
+                                        android:maxLength="15"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_bold"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/contact_details"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dip"
+                                android:background="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="vertical">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_mob_num"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/mob_num"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="number"
+                                        android:maxLength="10"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_ice_num"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/ice_num"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="number"
+                                        android:maxLength="10"
+                                        android:maxLines="1"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="150dp"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+
+                                    <EditText
+                                        android:id="@+id/et_res_address"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,/-&amp;;\n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:gravity="start"
+                                        android:hint="@string/residential_address"
+                                        android:imeOptions="actionNext"
+                                        android:inputType="textMultiLine"
+                                        android:textColor="@color/black" />
+
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:text="@string/permanent_address"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:paddingLeft="@dimen/dimen_5dp"
+                                        android:paddingTop="@dimen/dimen_5dp"
+                                        android:paddingRight="@dimen/dimen_5dp">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_5dp"
+                                            android:text="@string/sel_state"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:textStyle="normal" />
+
+                                        <androidx.appcompat.widget.AppCompatSpinner
+                                            android:id="@+id/state_spinner"
+                                            style="@style/Widget.App.Spinner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/dist_ll"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:paddingLeft="@dimen/dimen_5dp"
+                                        android:paddingTop="@dimen/dimen_5dp"
+                                        android:paddingRight="@dimen/dimen_5dp"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_5dp"
+                                            android:text="@string/sel_dist"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:textStyle="normal" />
+
+                                        <androidx.appcompat.widget.AppCompatSpinner
+
+                                            android:id="@+id/district_spinner"
+                                            style="@style/Widget.App.Spinner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+                                    </LinearLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tv_per_dist"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimen_5dp"
+                                        android:layout_marginLeft="@dimen/dimen_5dp"
+                                        android:textColorHint="@color/black"
+                                        android:visibility="gone"
+                                        app:boxStrokeColor="@color/black"
+                                        app:errorEnabled="true"
+                                        app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                        app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                        <EditText
+                                            android:id="@+id/et_per_dist"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,./-&amp;\n "
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:hint="@string/dist_name"
+                                            android:imeOptions="actionNext"
+                                            android:maxLines="1"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/mandal_ll"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:paddingLeft="@dimen/dimen_5dp"
+                                        android:paddingTop="@dimen/dimen_5dp"
+                                        android:paddingRight="@dimen/dimen_5dp"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_5dp"
+                                            android:text="@string/sel_man"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:textStyle="normal" />
+
+                                        <androidx.appcompat.widget.AppCompatSpinner
+
+                                            android:id="@+id/mandal_spinner"
+                                            style="@style/Widget.App.Spinner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+                                    </LinearLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tv_per_man"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimen_5dp"
+                                        android:layout_marginLeft="@dimen/dimen_5dp"
+                                        android:textColorHint="@color/black"
+                                        android:visibility="gone"
+                                        app:boxStrokeColor="@color/black"
+                                        app:errorEnabled="true"
+                                        app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                        app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                        <EditText
+                                            android:id="@+id/et_per_man"
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,./-&amp;\n "
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:hint="@string/man_name"
+                                            android:imeOptions="actionNext"
+                                            android:maxLines="1"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/village_ll"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:paddingLeft="@dimen/dimen_5dp"
+                                        android:paddingTop="@dimen/dimen_5dp"
+                                        android:paddingRight="@dimen/dimen_5dp"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:padding="@dimen/dimen_5dp"
+                                            android:text="@string/sel_vil"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/dimen_16sp"
+                                            android:textStyle="normal" />
+
+                                        <androidx.appcompat.widget.AppCompatSpinner
+                                            android:id="@+id/village_spinner"
+                                            style="@style/Widget.App.Spinner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                            app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+                                    </LinearLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tv_per_vil"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimen_5dp"
+                                        android:layout_marginLeft="@dimen/dimen_5dp"
+                                        android:textColorHint="@color/black"
+                                        android:visibility="gone"
+                                        app:boxStrokeColor="@color/black"
+                                        app:errorEnabled="true"
+                                        app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                        app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                        <EditText
+                                            android:id="@+id/et_per_vil"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,./-&amp;\n "
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:hint="@string/vil_name"
+                                            android:imeOptions="actionNext"
+                                            android:maxLines="1"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tv_per_h_no"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimen_5dp"
+                                        android:layout_marginLeft="@dimen/dimen_5dp"
+                                        android:textColorHint="@color/black"
+                                        app:boxStrokeColor="@color/black"
+                                        app:errorEnabled="true"
+                                        app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                        app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                        <EditText
+                                            android:id="@+id/et_per_h_no"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ,./-&amp;\n "
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:hint="@string/house_no"
+                                            android:imeOptions="actionNext"
+                                            android:maxLines="1"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/tv_per_street"
+                                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dimen_5dp"
+                                        android:layout_marginLeft="@dimen/dimen_5dp"
+                                        android:textColorHint="@color/black"
+                                        app:boxStrokeColor="@color/black"
+                                        app:errorEnabled="true"
+                                        app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                        app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                        <EditText
+                                            android:id="@+id/et_per_street"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ,./-&amp;\n "
+                                            android:fontFamily="@font/elmessiri_regular"
+                                            android:hint="@string/street"
+                                            android:imeOptions="actionNext"
+                                            android:maxLines="1"
+                                            android:singleLine="true"
+                                            android:textColor="@color/black" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/vending_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_bold"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/vending_details"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dip"
+                                android:background="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/type_of_business"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/business_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tv_oth_business"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    android:visibility="gone"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_oth_business"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz. \n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/other_business"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/type_of_vending"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/vending_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingTop="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:padding="@dimen/dimen_5dp"
+                                        android:text="@string/vending_address"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/dimen_16sp"
+                                        android:textStyle="normal" />
+
+                                    <androidx.appcompat.widget.AppCompatSpinner
+                                        android:id="@+id/vending_area_spinner"
+                                        style="@style/Widget.App.Spinner"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                                        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/ven_tv_dob"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintEnabled="true"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+
+                                    <EditText
+                                        android:id="@+id/et_evn_dob"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                                        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                                        android:focusable="false"
+                                        android:focusableInTouchMode="false"
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/vending_date"
+                                        android:imeOptions="actionDone"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/tv_pol_sta"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:textColorHint="@color/black"
+                                    app:boxStrokeColor="@color/black"
+                                    app:errorEnabled="true"
+                                    app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+
+                                    <EditText
+                                        android:id="@+id/et_pol_sta"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ,./-&amp;\n "
+                                        android:fontFamily="@font/elmessiri_regular"
+                                        android:hint="@string/police_station"
+                                        android:imeOptions="actionNext"
+                                        android:maxLines="1"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/family_ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_10dp"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dimen_5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/muli_bold"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/family_member"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:src="@android:drawable/ic_input_add"
+                                    android:tint="@color/colorPrimary" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_5dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_bold"
+                        android:padding="@dimen/dimen_5dp"
+                        android:text="@string/note_text"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_submit"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/muli_bold"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20sp"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+</layout>
