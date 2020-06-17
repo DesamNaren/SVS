@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,6 +28,7 @@ import androidx.lifecycle.Observer;
 
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.application.AppConstants;
+import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivitySplashBinding;
 import com.cgg.streetvendor.databinding.CustomLayoutForPermissionsBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
@@ -47,11 +49,15 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
     private SplashViewModel splashViewModel;
     private String appVersion;
     private ActivitySplashBinding binding;
+    private SharedPreferences sharedPreferences;
+    private String locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+
+        sharedPreferences = SVSApplication.get(SplashActivity.this).getPreferences();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int startColor = getWindow().getStatusBarColor();
@@ -62,7 +68,12 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
         appVersion = Utils.getVersionName(this);
         splashViewModel = new SplashViewModel(this, getApplication());
 
-        LocaleHelper.setLocale(SplashActivity.this, "en");
+        locale = sharedPreferences.getString(AppConstants.LOCALE_LANG, "");
+        if (!TextUtils.isEmpty(locale)) {
+            LocaleHelper.setLocale(SplashActivity.this, locale);
+        } else {
+            LocaleHelper.setLocale(SplashActivity.this, "en");
+        }
 
         if (Utils.checkInternetConnection(this)) {
             splashViewModel.getCurrentVersion().observe(this, new Observer<VersionCheckResponse>() {
@@ -188,7 +199,7 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
     }
 
 
-    private void customAlert () {
+    private void customAlert() {
         try {
             final Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

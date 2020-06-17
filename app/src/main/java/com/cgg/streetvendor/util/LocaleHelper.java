@@ -6,10 +6,15 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
+import com.cgg.streetvendor.application.AppConstants;
+import com.cgg.streetvendor.application.SVSApplication;
+import com.cgg.streetvendor.ui.DashboardActivity;
+
 import java.util.Locale;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class LocaleHelper {
-    private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
 
     public static void onCreate(Context context) {
 
@@ -38,16 +43,17 @@ public class LocaleHelper {
     }
 
     private static String getPersistedData(Context context, String defaultLanguage) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+        SharedPreferences sharedPreferences = SVSApplication.get(context).getPreferences();
+        return sharedPreferences.getString(AppConstants.LOCALE_LANG, defaultLanguage);
     }
 
     private static void persist(Context context, String language) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putString(SELECTED_LANGUAGE, language);
-        editor.apply();
+        SharedPreferences sharedPreferences = SVSApplication.get(context).getPreferences();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(AppConstants.LOCALE_LANG, language);
+        editor.commit();
     }
 
     private static void updateResources(Context context, String language) {

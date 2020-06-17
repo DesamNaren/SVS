@@ -279,7 +279,8 @@
     <string name="language">తెలుగు</string>
     <string name="select_bank">--Select Bank--</string>
     <string name="languagealertTitle">Language Selection</string>
-    <string name="languagealertinfo">Do you want to change the language?</string>
+    <string name="languagealertinfo_tel">Do you want to switch to Telugu language?</string>
+    <string name="languagealertinfo">Do you want to switch to English language?</string>
 
     <string name="no_banks">No Banks found</string>
     <string name="no_districts">No Districts found</string>
@@ -299,6 +300,7 @@
     <string name="no_ven_area">No vending area data found</string>
     <string name="no_ward">No ward data found</string>
     <string name="no_ulb">No ULB data found</string>
+    <string name="plz_ctc_admin">Please contact admin</string>
     <string name="no_gender">No gender data found</string>
     <string name="sel_religion">Select Religion</string>
     <string name="religion">Religion *</string>

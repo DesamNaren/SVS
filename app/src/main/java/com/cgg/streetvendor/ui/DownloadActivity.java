@@ -2,6 +2,7 @@ package com.cgg.streetvendor.ui;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer;
 
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.application.AppConstants;
+import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivityDownloadBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
 import com.cgg.streetvendor.interfaces.GCCDivisionInterface;
@@ -82,10 +84,15 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     private SVSSyncVendingRepository svsSyncVendingRepository;
     private ActivityDownloadBinding binding;
 
+    private String distId, ulbId;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_download);
+        sharedPreferences = SVSApplication.get(this).getPreferences();
+        distId = sharedPreferences.getString(AppConstants.DISTRICT_ID, "");
+        ulbId = sharedPreferences.getString(AppConstants.ULB_ID, "");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int startColor = getWindow().getStatusBarColor();
@@ -1090,7 +1097,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void stateCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callDistrictAPI();
         } else {
             customProgressDialog.hide();
@@ -1101,7 +1108,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void distCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callMandalAPI();
         } else {
             customProgressDialog.hide();
@@ -1112,7 +1119,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void manCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callVillageAPI();
         } else {
             customProgressDialog.hide();
@@ -1124,7 +1131,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void vilCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
             binding.btnPlacesMaster.setText(getString(R.string.re_download));
             // Success Alert
             Utils.customSuccessAlert(DownloadActivity.this, getString(R.string.app_name),
@@ -1139,7 +1146,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void bankCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callBranchAPI();
         } else {
             customProgressDialog.hide();
@@ -1151,7 +1158,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void branchCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
             binding.btnBankBranch.setText(getString(R.string.re_download));
             Utils.customSuccessAlert(DownloadActivity.this, getString(R.string.app_name),
                     getString(R.string.bb_message_success));
@@ -1164,7 +1171,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void ulbCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callWardAPI();
         } else {
             customProgressDialog.hide();
@@ -1176,7 +1183,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void wardCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
             binding.btnUlbMaster.setText(getString(R.string.re_download));
             Utils.customSuccessAlert(DownloadActivity.this, getString(R.string.app_name),
                     getString(R.string.ulb_message_success));
@@ -1188,7 +1195,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void genderCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callCasteAPI();
         } else {
             customProgressDialog.hide();
@@ -1200,7 +1207,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void religionCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
             binding.btnKycMaster.setText(getString(R.string.re_download));
             Utils.customSuccessAlert(DownloadActivity.this, getString(R.string.app_name),
                     getString(R.string.kyc_message_success));
@@ -1212,7 +1219,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void casteCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callPWDAPI();
         } else {
             customProgressDialog.hide();
@@ -1223,7 +1230,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void pwdCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callQualAPI();
         } else {
             customProgressDialog.hide();
@@ -1234,7 +1241,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void quaCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callRelationAPI();
         } else {
             customProgressDialog.hide();
@@ -1246,7 +1253,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void relCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
            callReligionAPI();
         } else {
             customProgressDialog.hide();
@@ -1257,7 +1264,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void businessCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callVenTypeAPI();
         } else {
             customProgressDialog.hide();
@@ -1268,7 +1275,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     @Override
     public void venTypeCount(int count) {
-        if (count > 0) {
+        if (count > 1) {
             callVenAddressAPI();
         } else {
             customProgressDialog.hide();
@@ -1280,7 +1287,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void venAddCount(int count) {
         customProgressDialog.hide();
-        if (count > 0) {
+        if (count > 1) {
             binding.btnBusinessMaster.setText(getString(R.string.re_download));
             Utils.customSuccessAlert(DownloadActivity.this, getString(R.string.app_name),
                     getString(R.string.vending_message_success));

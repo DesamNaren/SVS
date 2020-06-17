@@ -92,8 +92,7 @@ public class Utils {
                         if (dialog.isShowing()) {
                             dialog.dismiss();
                         }
-                        editor.clear();
-                        editor.commit();
+
 
                         Intent newIntent = new Intent(activity, LoginActivity.class);
                         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
@@ -227,7 +226,13 @@ public class Utils {
                 TextView dialogTitle = dialog.findViewById(R.id.dialog_title);
                 dialogTitle.setText(activity.getResources().getString(R.string.languagealertTitle));
                 TextView dialogMessage = dialog.findViewById(R.id.dialog_message);
-                dialogMessage.setText(activity.getResources().getString(R.string.languagealertinfo));
+                if (LocaleHelper.getLanguage(activity).equalsIgnoreCase("te")) {
+                    dialogMessage.setText(activity.getResources().getString(R.string.languagealertinfo));
+                } else {
+                    dialogMessage.setText(activity.getResources().getString(R.string.languagealertinfo_tel));
+                }
+
+
                 Button btDialogYes = dialog.findViewById(R.id.btDialogYes);
                 Button no = dialog.findViewById(R.id.btDialogNo);
                 no.setText(activity.getString(R.string.no));
@@ -967,9 +972,6 @@ public class Utils {
                         if (dialog.isShowing()) {
                             dialog.dismiss();
                         }
-                        Intent intent = new Intent(activity, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        activity.startActivity(intent);
                     }
                 });
                 if (!dialog.isShowing())
@@ -1194,6 +1196,46 @@ public class Utils {
 //        }
 //    }
 //
+
+    public static void customSyncAlertCancel(Activity activity, String title, String msg) {
+        try {
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            if (dialog.getWindow() != null && dialog.getWindow().getAttributes() != null) {
+                dialog.getWindow().getAttributes().windowAnimations = R.style.exitdialog_animation1;
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setContentView(R.layout.custom_alert_sync);
+
+                dialog.setCancelable(false);
+                TextView dialogTitle = dialog.findViewById(R.id.dialog_title);
+                dialogTitle.setText(title);
+                TextView dialogMessage = dialog.findViewById(R.id.dialog_message);
+                dialogMessage.setText(msg);
+                Button yes = dialog.findViewById(R.id.btDialogYes);
+                Button no = dialog.findViewById(R.id.btDialogNo);
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        activity.startActivity(new Intent(activity, DownloadActivity.class));
+                        activity.finish();
+                    }
+                });
+                if (!dialog.isShowing())
+                    dialog.show();
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void customSyncAlert(Activity activity, String title, String msg) {
         try {
             final Dialog dialog = new Dialog(activity);

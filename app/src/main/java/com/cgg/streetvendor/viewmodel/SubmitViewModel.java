@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
+import com.cgg.streetvendor.interfaces.SubmitInterface;
 import com.cgg.streetvendor.network.SVSService;
 import com.cgg.streetvendor.source.reposnse.SubmitResponse;
 import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
@@ -21,30 +22,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SubmitViewModel extends AndroidViewModel {
-    private MutableLiveData<SubmitResponse> submitResponseMutableLiveData;
     private Context context;
     private ErrorHandlerInterface errorHandlerInterface;
-
-    public MutableLiveData<ValidateAadharResponse> aadharResponseLiveData;
+    private SubmitInterface submitInterface;
 
     public SubmitViewModel(Context context, Application application) {
         super(application);
         this.context = context;
-        submitResponseMutableLiveData = new MutableLiveData<>();
-        aadharResponseLiveData = new MutableLiveData<>();
         errorHandlerInterface = (ErrorHandlerInterface) context;
+        submitInterface = (SubmitInterface) context;
 
     }
 
 
-    public LiveData<SubmitResponse> submitCallResponse(SubmitRequest submitRequest) {
-        if (submitResponseMutableLiveData != null) {
-            submitCall(submitRequest);
-        }
-        return submitResponseMutableLiveData;
-    }
-
-    private void submitCall(SubmitRequest submitRequest) {
+    public void submitCall(SubmitRequest submitRequest) {
         SVSService twdService = SVSService.Factory.create();
         Gson gson = new Gson();
         String str = gson.toJson(submitRequest);
@@ -54,7 +45,7 @@ public class SubmitViewModel extends AndroidViewModel {
             public void onResponse(@NotNull Call<SubmitResponse> call,
                                    @NotNull Response<SubmitResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    submitResponseMutableLiveData.setValue(response.body());
+                    submitInterface.getData(response.body());
                 }
             }
 
@@ -66,20 +57,13 @@ public class SubmitViewModel extends AndroidViewModel {
     }
 
 
-    public LiveData<ValidateAadharResponse> validateAadharResponseLiveData(long  aadharNo) {
-        if (aadharResponseLiveData != null) {
-            validateAadhar(aadharNo);
-        }
-        return aadharResponseLiveData;
-    }
-
-    private void validateAadhar(long aadharNo) {
+    public void validateAadhar(long aadharNo) {
         SVSService svsService = SVSService.Factory.create();
         svsService.validateAadhar(aadharNo)
                 .enqueue(new Callback<ValidateAadharResponse>() {
                     @Override
                     public void onResponse(@NotNull Call<ValidateAadharResponse> call, @NotNull Response<ValidateAadharResponse> response) {
-                        aadharResponseLiveData.setValue(response.body());
+                        submitInterface.getAadharData(response.body());
                     }
 
                     @Override

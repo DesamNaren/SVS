@@ -42,7 +42,7 @@ import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivitySurveyBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
-import com.cgg.streetvendor.network.SVSService;
+import com.cgg.streetvendor.interfaces.SubmitInterface;
 import com.cgg.streetvendor.room.repository.SVSSyncPlacesRepository;
 import com.cgg.streetvendor.source.reposnse.SubmitResponse;
 import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
@@ -78,8 +78,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,11 +85,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class MainActivity extends AppCompatActivity implements ErrorHandlerInterface,
+public class MainActivity extends AppCompatActivity implements ErrorHandlerInterface, SubmitInterface,
         AdapterView.OnItemSelectedListener {
 
     private static final int PERMISSION_REQUEST_CODE = 1001;
@@ -192,86 +186,21 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 if (binding.btnVerify.getText().equals(getString(R.string.verify))) {
                     if (validateData()) {
-
                         if (Utils.checkInternetConnection(MainActivity.this)) {
+
                             aadharNo = binding.etAadhaarNum.getText().toString();
                             long aadhar = Long.valueOf(aadharNo);
-                            if (Utils.checkInternetConnection(MainActivity.this)) {
-                                customProgressDialog.show();
-
-                                LiveData<ValidateAadharResponse> liveData = submitViewModel.validateAadharResponseLiveData(aadhar);
-                                liveData.observe(MainActivity.this, new Observer<ValidateAadharResponse>() {
-                                    @Override
-                                    public void onChanged(ValidateAadharResponse validateAadharResponse) {
-                                        customProgressDialog.hide();
-                                        liveData.removeObservers(MainActivity.this);
-                                        if (validateAadharResponse != null && validateAadharResponse.getStatusCode() != null) {
-
-                                            if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)
-                                                    && validateAadharResponse.getSvData() != null && validateAadharResponse.getSvData().size() == 0) {
-                                                binding.venRemLl.setVisibility(View.VISIBLE);
-                                                binding.otherLl.setVisibility(View.VISIBLE);
-                                                binding.btnVerify.setText(getString(R.string.edit));
-                                                binding.etAadhaarNum.setEnabled(false);
-
-
-                                            } else if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)
-                                                    && validateAadharResponse.getSvData() != null && validateAadharResponse.getSvData().size() > 0) {
-
-
-                                                binding.etAadhaarNum.setText("");
-                                                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                        aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
-                                                                validateAadharResponse.getSvData().get(0).getSvName());
-
-/*
-                                                if (!TextUtils.isEmpty(validateAadharResponse.getSvData().get(0).getSvPhoto())) {
-                                                    String replacedPhoto =
-                                                            validateAadharResponse.getSvData().get(0).getSvPhoto().
-                                                                    replace("data:image/png;base64,", "");
-                                                    try {
-                                                        byte[] decodedString = Base64.decode(replacedPhoto, Base64.DEFAULT);
-                                                        Utils.customErrorAlertExitPhoto(MainActivity.this, getString(R.string.app_name),
-                                                                aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
-                                                                        validateAadharResponse.getSvData().get(0).getSvName(),
-                                                                decodedString,validateAadharResponse.getSvData().get(0).getSvName());
-
-                                                    } catch (Exception e) {
-                                                        Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                                aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
-                                                                        validateAadharResponse.getSvData().get(0).getSvName());
-                                                    }
-                                                } else {
-                                                    Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                            aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
-                                                                    validateAadharResponse.getSvData().get(0).getSvName());
-                                                }
-*/
-
-                                            } else if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
-                                                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                        validateAadharResponse.getStatusMessage());
-
-                                                binding.etAadhaarNum.setText("");
-                                            } else {
-                                                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                        getString(R.string.something));
-                                                binding.etAadhaarNum.setText("");
-                                            }
-                                        } else {
-                                            binding.etAadhaarNum.setText("");
-                                            Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
-                                                    getString(R.string.something));
-                                        }
-                                    }
-
-                                });
-                            } else {
-                                Utils.customErrorAlert(MainActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
-                            }
+                            customProgressDialog.show();
+                            submitViewModel.validateAadhar(aadhar);
                         } else {
                             Utils.customErrorAlert(MainActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
                         }
+
+                        if (!(venAddresses != null && venAddresses.size() > 0)) {
+                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                                    getString(R.string.no_ven_area)+", "+getString(R.string.plz_ctc_admin));
+                        }
+
                     }
                 } else {
                     flag_applicant = 0;
@@ -751,7 +680,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                         vaListLiveData.removeObservers(MainActivity.this);
 
                                         if (vendingAddressEntities == null || vendingAddressEntities.size() <= 0) {
-                                            Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
+                                            Utils.customSyncAlertCancel(MainActivity.this, getString(R.string.app_name),
                                                     getString(R.string.vending_message));
                                         } else {
                                             //load based on language type
@@ -1325,87 +1254,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         }
                         if (Utils.checkInternetConnection(MainActivity.this)) {
                             customProgressDialog.show();
-
-                            SVSService twdService = SVSService.Factory.create();
-                            Gson gson = new Gson();
-                            String str = gson.toJson(submitRequest);
-
-                            Call<SubmitResponse> call3 = twdService.submitServiceResponse(submitRequest);
-                            call3.enqueue(new Callback<SubmitResponse>() {
-                                @Override
-                                public void onResponse(@NotNull Call<SubmitResponse> call, @NotNull Response<SubmitResponse> response) {
-                                    customProgressDialog.hide();
-                                    if (response.isSuccessful() && response.body() != null) {
-                                        SubmitResponse submitResponse = response.body();
-                                        if (submitResponse.getStatusCode() != null) {
-
-                                            if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
-                                                editor.putString(AppConstants.MEMBER_DATA, "");
-                                                editor.commit();
-                                                familyInfoArrayList.clear();
-
-
-                                                Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
-                                                        submitResponse.getStatusMessage());
-                                            } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
-
-                                                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                                        submitResponse.getStatusMessage());
-                                            } else {
-                                                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                                        getString(R.string.something));
-                                            }
-                                        } else {
-                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                                    getString(R.string.something));
-                                        }
-                                    } else {
-                                        Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                                getString(R.string.something));
-                                    }
-
-                                }
-
-                                @Override
-                                public void onFailure(Call<SubmitResponse> call, Throwable t) {
-
-                                    handleError(t, MainActivity.this);
-                                }
-                            });
-
-//                            LiveData<SubmitResponse> officesResponseLiveData = submitViewModel.submitCallResponse(submitRequest);
-
-//                            officesResponseLiveData.observe(MainActivity.this, new Observer<SubmitResponse>() {
-//                                @Override
-//                                public void onChanged(SubmitResponse submitResponse) {
-//                                    customProgressDialog.hide();
-//
-//                                    officesResponseLiveData.removeObservers(MainActivity.this);
-//                                    if (submitResponse != null && submitResponse.getStatusCode() != null) {
-//
-//                                        if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
-//                                            editor.putString(AppConstants.MEMBER_DATA, "");
-//                                            editor.commit();
-//                                            familyInfoArrayList.clear();
-//
-//
-//                                            Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
-//                                                    submitResponse.getStatusMessage());
-//                                        } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
-//
-//                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-//                                                    submitResponse.getStatusMessage());
-//                                        } else {
-//                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-//                                                    getString(R.string.something));
-//                                        }
-//                                    } else {
-//                                        Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-//                                                getString(R.string.something));
-//                                    }
-//                                }
-//
-//                            });
+                            submitViewModel.submitCall(submitRequest);
                         } else {
                             Utils.customErrorAlert(MainActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
                         }
@@ -2559,6 +2408,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             binding.vendingSpinner.requestFocus();
             return false;
         }
+
+
         if (TextUtils.isEmpty(vendingArea) || vendingArea.contains(getString(R.string.select))) {
             ScrollToView(binding.vendingAreaSpinner);
             showBottomSheetSnackBar(getResources().getString(R.string.sel_vending_area_val));
@@ -2633,5 +2484,96 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
         Utils.customAlertExit(MainActivity.this,
                 getResources().getString(R.string.app_name),
                 getString(R.string.enroll_cancel), editor);
+    }
+
+    @Override
+    public void getData(SubmitResponse submitResponse) {
+        customProgressDialog.hide();
+        if (submitResponse.getStatusCode() != null) {
+
+            if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
+                editor.putString(AppConstants.MEMBER_DATA, "");
+                editor.commit();
+                familyInfoArrayList.clear();
+
+
+                Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
+                        submitResponse.getStatusMessage());
+            } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
+
+                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                        submitResponse.getStatusMessage());
+            } else {
+                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                        getString(R.string.something));
+            }
+        } else {
+            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                    getString(R.string.something));
+        }
+
+    }
+
+    @Override
+    public void getAadharData(ValidateAadharResponse validateAadharResponse) {
+        customProgressDialog.hide();
+        if (validateAadharResponse != null && validateAadharResponse.getStatusCode() != null) {
+
+            if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)
+                    && validateAadharResponse.getSvData() != null && validateAadharResponse.getSvData().size() == 0) {
+                binding.venRemLl.setVisibility(View.VISIBLE);
+                binding.otherLl.setVisibility(View.VISIBLE);
+                binding.btnVerify.setText(getString(R.string.edit));
+                binding.etAadhaarNum.setEnabled(false);
+
+
+            } else if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)
+                    && validateAadharResponse.getSvData() != null && validateAadharResponse.getSvData().size() > 0) {
+
+
+                binding.etAadhaarNum.setText("");
+                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                        aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
+                                validateAadharResponse.getSvData().get(0).getSvName());
+
+/*
+                                                if (!TextUtils.isEmpty(validateAadharResponse.getSvData().get(0).getSvPhoto())) {
+                                                    String replacedPhoto =
+                                                            validateAadharResponse.getSvData().get(0).getSvPhoto().
+                                                                    replace("data:image/png;base64,", "");
+                                                    try {
+                                                        byte[] decodedString = Base64.decode(replacedPhoto, Base64.DEFAULT);
+                                                        Utils.customErrorAlertExitPhoto(MainActivity.this, getString(R.string.app_name),
+                                                                aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
+                                                                        validateAadharResponse.getSvData().get(0).getSvName(),
+                                                                decodedString,validateAadharResponse.getSvData().get(0).getSvName());
+
+                                                    } catch (Exception e) {
+                                                        Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                                                                aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
+                                                                        validateAadharResponse.getSvData().get(0).getSvName());
+                                                    }
+                                                } else {
+                                                    Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                                                            aadharNo + " is " + validateAadharResponse.getStatusMessage() + " with the name " +
+                                                                    validateAadharResponse.getSvData().get(0).getSvName());
+                                                }
+*/
+
+            } else if (validateAadharResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
+                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                        validateAadharResponse.getStatusMessage());
+
+                binding.etAadhaarNum.setText("");
+            } else {
+                Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                        getString(R.string.something));
+                binding.etAadhaarNum.setText("");
+            }
+        } else {
+            binding.etAadhaarNum.setText("");
+            Utils.customErrorAlertExit(MainActivity.this, getString(R.string.app_name),
+                    getString(R.string.something));
+        }
     }
 }

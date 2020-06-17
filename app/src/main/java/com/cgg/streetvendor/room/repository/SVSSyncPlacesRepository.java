@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.cgg.streetvendor.interfaces.DeleteVendingInterface;
 import com.cgg.streetvendor.interfaces.GCCDivisionInterface;
 import com.cgg.streetvendor.room.dao.SVSSyncPlacesDao;
 import com.cgg.streetvendor.room.database.SVSDatabase;
@@ -18,15 +19,21 @@ import java.util.List;
 
 public class SVSSyncPlacesRepository {
     private SVSSyncPlacesDao syncDao;
+    private SVSDatabase db;
 
     public SVSSyncPlacesRepository(Application application) {
-        SVSDatabase db = SVSDatabase.getDatabase(application);
+        db = SVSDatabase.getDatabase(application);
         syncDao = db.syncPlacesDao();
     }
 
     public LiveData<List<MandalEntity>> getDistrictMandals(String distId) {
         return syncDao.getDistrictMandals(distId);
     }
+
+    public void deleteAllVendings(final DeleteVendingInterface vendingInterface) {
+        new DeleteVendingAsyncTask(vendingInterface).execute();
+    }
+
 
     public LiveData<List<VillageEntity>> getMandalVillages(String distId, String manId) {
         return syncDao.getMandalVillages(distId, manId);
@@ -95,6 +102,25 @@ public class SVSSyncPlacesRepository {
         new InsertVillageAsyncTask(dmvInterface, villageEntities).execute();
     }
 
+
+    @SuppressLint("StaticFieldLeak")
+    private class DeleteVendingAsyncTask extends AsyncTask<Void, Void, Integer> {
+        DeleteVendingInterface vendingInterface;
+        DeleteVendingAsyncTask(DeleteVendingInterface vendingInterface){
+            this.vendingInterface = vendingInterface;
+        }
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            db.svsSyncVendingDao().deleteVenAddress();
+            return db.svsSyncVendingDao().venAddressCount();
+        }
+
+        @Override
+        protected void onPostExecute(Integer v) {
+            super.onPostExecute(v);
+            vendingInterface.venCount(v);
+        }
+    }
 
 //    public void insertDRGoDowns(final GCCDivisionInterface dmvInterface, final List<DrGodowns> DRGoDowns) {
 //        new InsertDRGoDownAsyncTask(dmvInterface, DRGoDowns).execute();

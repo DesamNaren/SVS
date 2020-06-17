@@ -493,7 +493,6 @@
 
     <string name="language">English</string>
     <string name="languagealertTitle">భాషా ఎంపిక</string>
-    <string name="languagealertinfo">మీరు భాషను మార్చాలనుకుంటున్నారా?</string>
 
     <string name="select_bank">--బ్యాంకును ఎంచుకోండి--</string>
     <string name="select_branch">--బ్రాంచ్ ఎంచుకోండి--</string>
@@ -599,4 +598,9 @@
     <string name="pwd_type">విభిన్నా ప్రతిభావంతులు *</string>
     <string name="pwd_type_sel">విభిన్నా ప్రతిభావంతులు ఎంచుకోండి</string>
     <string name="pwd_type_sel_some">విభిన్నా ప్రతిభావంతులు రకాన్ని ఎంచుకోండి</string>
+
+    <string name="languagealertinfo">మీరు ఆంగ్ల భాషకు మారాలనుకుంటున్నారా?</string>
+    <string name="languagealertinfo_tel">మీరు తెలుగు భాషకు మారాలనుకుంటున్నారా?</string>
+
+    <string name="plz_ctc_admin">దయచేసి నిర్వాహకుడిని సంప్రదించండి</string>
 </resources>

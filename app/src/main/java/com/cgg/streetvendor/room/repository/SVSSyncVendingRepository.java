@@ -70,6 +70,8 @@ public class SVSSyncVendingRepository {
         return vendingDao.getAllVenAddress(ulbId, distId);
     }
 
+
+
     public void insertBusiness(final GCCDivisionInterface dmvInterface, final List<BusinessEntity> businessEntities) {
         new InsertBusinessAsyncTask(dmvInterface, businessEntities).execute();
     }

@@ -14,6 +14,7 @@ public class AppConstants {
     public static final String PIC_VENDOR = "PIC_VENDOR";
     public static final String TELANGANA = "Telangana";
     public static final String MEMBER_DATA = "MEMBER_DATA";
+    public static final String LOCALE_LANG = "LOCALE_LANG";
 
 
 }
