@@ -25,7 +25,7 @@
     <string name="form_dob">పుట్టిన తేది</string>
 
     <string name="sel_dob_age">పుట్టిన తేదీని లేదా వయస్సును ఎంచుకోండి</string>
-    <string name="year">సంవత్సరాలు</string>
+    <string name="year">సం. లు</string>
     <string name="sel_dob">పుట్టిన తేది ఎంచుకోండి</string>
     <string name="age">వయస్సు</string>
     <string name="form_age">వయస్సు *</string>
@@ -596,4 +596,7 @@
 
     <string name="member_registration">సభ్యుల నమోదు</string>
 
+    <string name="pwd_type">విభిన్నా ప్రతిభావంతులు *</string>
+    <string name="pwd_type_sel">విభిన్నా ప్రతిభావంతులు ఎంచుకోండి</string>
+    <string name="pwd_type_sel_some">విభిన్నా ప్రతిభావంతులు రకాన్ని ఎంచుకోండి</string>
 </resources>

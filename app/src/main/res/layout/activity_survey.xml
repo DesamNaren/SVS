@@ -225,9 +225,10 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
-                                    app:hintTextAppearance="@style/text_in_layout_hint_Style">
+                                    app:hintTextAppearance="@style/text_in_layout_hint_Style"
+                                    android:layout_marginStart="@dimen/dimen_5dp">
 
                                     <EditText
                                         android:id="@+id/et_vendor_name"
@@ -244,13 +245,14 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -269,6 +271,7 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <LinearLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     android:id="@+id/radio_ll"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -317,10 +320,10 @@
                                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1.5"
+                                            android:layout_weight="1"
                                             android:textColorHint="@color/black"
                                             app:boxStrokeColor="@color/black"
-                                            app:errorEnabled="true"
+                                            app:errorEnabled="false"
                                             app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                             app:hintEnabled="true"
                                             app:hintTextAppearance="@style/text_in_layout_hint_Style">
@@ -371,10 +374,10 @@
                                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1.5"
+                                            android:layout_weight="1"
                                             android:textColorHint="@color/black"
                                             app:boxStrokeColor="@color/black"
-                                            app:errorEnabled="true"
+                                            app:errorEnabled="false"
                                             app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                             app:hintEnabled="true"
                                             app:hintTextAppearance="@style/text_in_layout_hint_Style">
@@ -415,6 +418,7 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
@@ -475,6 +479,7 @@
                                 </LinearLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_8dp"
                                     android:id="@+id/tv_oth_religion"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
@@ -484,7 +489,7 @@
                                     android:textColorHint="@color/black"
                                     android:visibility="gone"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -508,7 +513,6 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:paddingLeft="@dimen/dimen_5dp"
-                                    android:paddingTop="@dimen/dimen_5dp"
                                     android:paddingRight="@dimen/dimen_5dp"
                                     android:visibility="visible">
 
@@ -535,6 +539,7 @@
 
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_8dp"
                                     android:id="@+id/tv_oth_caste"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
@@ -544,7 +549,7 @@
                                     android:textColorHint="@color/black"
                                     android:visibility="gone"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -563,24 +568,60 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                                <TextView
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/elmessiri_regular"
+                                    android:layout_marginLeft="@dimen/dimen_8dp"
+                                    android:padding="@dimen/dimen_5dp"
+                                    android:text="@string/pwd_type"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/dimen_16sp"
+                                    android:textStyle="normal"
+                                    android:layout_marginStart="@dimen/dimen_8dp" />
+
                                 <LinearLayout
+                                    android:id="@+id/pwd__ll"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/dimen_5dp"
+                                    android:layout_marginLeft="@dimen/dimen_5dp"
+                                    android:orientation="vertical">
+
+                                    <RadioGroup
+                                        android:id="@+id/radio_group_pwd"
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <RadioButton
+                                            android:id="@+id/pwd_rb_yes"
+                                            android:text="@string/yes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"/>
+
+                                        <RadioButton
+                                            android:id="@+id/pwd_rb_no"
+                                            android:layout_marginLeft="@dimen/dimen_8dp"
+                                            android:text="@string/no"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/dimen_8dp" />
+                                    </RadioGroup>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/pwd_dd_ll"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
                                     android:paddingLeft="@dimen/dimen_5dp"
                                     android:paddingTop="@dimen/dimen_5dp"
                                     android:paddingRight="@dimen/dimen_5dp"
-                                    android:visibility="visible">
+                                    android:visibility="gone">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/elmessiri_regular"
-                                        android:padding="@dimen/dimen_5dp"
-                                        android:text="@string/sel_physically_challenged"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/dimen_16sp"
-                                        android:textStyle="normal" />
+
 
                                     <androidx.appcompat.widget.AppCompatSpinner
                                         android:id="@+id/pwd_spinner"
@@ -795,6 +836,7 @@
                                 </LinearLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -802,7 +844,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -821,6 +863,7 @@
 
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -828,7 +871,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -848,6 +891,8 @@
 
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -855,7 +900,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -923,7 +968,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -942,6 +987,8 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -949,7 +996,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -968,6 +1015,8 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="150dp"
@@ -975,7 +1024,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -996,6 +1045,7 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <LinearLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/dimen_5dp"
@@ -1043,6 +1093,7 @@
 
 
                                     <LinearLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
                                         android:id="@+id/dist_ll"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -1076,6 +1127,8 @@
                                     </LinearLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
+
                                         android:id="@+id/tv_per_dist"
                                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                         android:layout_width="match_parent"
@@ -1085,7 +1138,7 @@
                                         android:textColorHint="@color/black"
                                         android:visibility="gone"
                                         app:boxStrokeColor="@color/black"
-                                        app:errorEnabled="true"
+                                        app:errorEnabled="false"
                                         app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                         app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1105,6 +1158,8 @@
 
 
                                     <LinearLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
+
                                         android:id="@+id/mandal_ll"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -1138,6 +1193,8 @@
                                     </LinearLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
+
                                         android:id="@+id/tv_per_man"
                                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                         android:layout_width="match_parent"
@@ -1147,7 +1204,7 @@
                                         android:textColorHint="@color/black"
                                         android:visibility="gone"
                                         app:boxStrokeColor="@color/black"
-                                        app:errorEnabled="true"
+                                        app:errorEnabled="false"
                                         app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                         app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1167,6 +1224,8 @@
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <LinearLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
+
                                         android:id="@+id/village_ll"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -1199,6 +1258,8 @@
                                     </LinearLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
+
                                         android:id="@+id/tv_per_vil"
                                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                         android:layout_width="match_parent"
@@ -1208,7 +1269,7 @@
                                         android:textColorHint="@color/black"
                                         android:visibility="gone"
                                         app:boxStrokeColor="@color/black"
-                                        app:errorEnabled="true"
+                                        app:errorEnabled="false"
                                         app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                         app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1228,6 +1289,7 @@
 
 
                                     <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
                                         android:id="@+id/tv_per_h_no"
                                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                         android:layout_width="match_parent"
@@ -1236,7 +1298,7 @@
                                         android:layout_marginLeft="@dimen/dimen_5dp"
                                         android:textColorHint="@color/black"
                                         app:boxStrokeColor="@color/black"
-                                        app:errorEnabled="true"
+                                        app:errorEnabled="false"
                                         app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                         app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1255,6 +1317,7 @@
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_marginTop="@dimen/dimen_10dp"
                                         android:id="@+id/tv_per_street"
                                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                         android:layout_width="match_parent"
@@ -1263,7 +1326,7 @@
                                         android:layout_marginLeft="@dimen/dimen_5dp"
                                         android:textColorHint="@color/black"
                                         app:boxStrokeColor="@color/black"
-                                        app:errorEnabled="true"
+                                        app:errorEnabled="false"
                                         app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                         app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1356,6 +1419,8 @@
                                 </LinearLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     android:id="@+id/tv_oth_business"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
@@ -1365,7 +1430,7 @@
                                     android:textColorHint="@color/black"
                                     android:visibility="gone"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1385,6 +1450,8 @@
 
 
                                 <LinearLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
@@ -1414,6 +1481,8 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
+
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
@@ -1443,13 +1512,16 @@
                                 </LinearLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     android:id="@+id/ven_tv_dob"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    android:paddingLeft="@dimen/dimen_5dp"
+                                    android:paddingRight="@dimen/dimen_5dp"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintEnabled="true"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
@@ -1473,6 +1545,7 @@
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_marginTop="@dimen/dimen_10dp"
                                     android:id="@+id/tv_pol_sta"
                                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                                     android:layout_width="match_parent"
@@ -1481,7 +1554,7 @@
                                     android:layout_marginLeft="@dimen/dimen_5dp"
                                     android:textColorHint="@color/black"
                                     app:boxStrokeColor="@color/black"
-                                    app:errorEnabled="true"
+                                    app:errorEnabled="false"
                                     app:errorTextAppearance="@style/text_in_layout_error_hint_Style"
                                     app:hintTextAppearance="@style/text_in_layout_hint_Style">
 
@@ -1507,6 +1580,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginTop="@dimen/dimen_10dp"
                             android:id="@+id/family_ll"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

@@ -289,6 +289,9 @@
     <string name="no_religion">No religion data found</string>
     <string name="no_catse">No caste found</string>
     <string name="no_pwd_data">No PWD data found</string>
+    <string name="pwd_type">PWD *</string>
+    <string name="pwd_type_sel">Select PWD</string>
+    <string name="pwd_type_sel_some">Select PWD type</string>
     <string name="no_qual">No qualification data found</string>
     <string name="no_relation">No relationship data found</string>
     <string name="no_business">No business data found</string>

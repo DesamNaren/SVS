@@ -105,11 +105,11 @@ public interface SVSSyncPlacesDao {
     LiveData<String> getTelMandalId(String manName, String distID);
 
 
-    @Query("SELECT districtId from village_info " +
+    @Query("SELECT villageId from village_info " +
             "where villageName LIKE :vilName AND districtId LIKE :distId AND mandalId LIKE :manId")
     LiveData<String> getVillageId(String vilName, String distId, String manId);
 
-    @Query("SELECT districtId from village_info " +
+    @Query("SELECT villageId from village_info " +
             "where villageNameTel LIKE :vilName AND districtId LIKE :distId AND mandalId LIKE :manId")
     LiveData<String> getTelVillageId(String vilName, String distId, String manId);
 

@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
     String PICTYPE;
     private String ulb_str, ward_str, aadharNo, nameOfVendor, fatherHusbName, dob, gender_str, age_str,
-            religion_str, caste_str, physChall, highQual, bank_str, branch_str, ifscCode, accntNo, confAccntNo, mobNo, ICENo,
+            religion_str, caste_str, physicalVal, physChall, highQual, bank_str, branch_str, ifscCode, accntNo, confAccntNo, mobNo, ICENo,
             businessType, vendingType, vendingArea, resAddress, state, district, mandal, village, HNo, street, policeStation, vendingDOB;
     private int flag_applicant = 0, flag_vendorAct = 0;
     private String other_caste, other_business, other_religion;
@@ -835,6 +834,22 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 binding.tvAge.setText(age_str);
             }
         });
+        binding.radioGroupPwd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.pwd_rb_yes) {
+                    physicalVal = getString(R.string.yes);
+                    binding.pwdDdLl.setVisibility(View.VISIBLE);
+                } else {
+                    physicalVal = getString(R.string.no);
+                    binding.pwdDdLl.setVisibility(View.GONE);
+                    binding.pwdSpinner.setSelection(0);
+                    pwdId = "0";
+                }
+
+
+            }
+        });
 
         binding.etAge.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1305,10 +1320,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         if (Utils.checkInternetConnection(MainActivity.this)) {
                             customProgressDialog.show();
                             LiveData<SubmitResponse> officesResponseLiveData = submitViewModel.submitCallResponse(submitRequest);
-                            officesResponseLiveData.observe(MainActivity.this, new Observer<SubmitResponse>() {
+
+                           officesResponseLiveData.observe(MainActivity.this, new Observer<SubmitResponse>() {
                                 @Override
                                 public void onChanged(SubmitResponse submitResponse) {
                                     customProgressDialog.hide();
+
                                     officesResponseLiveData.removeObservers(MainActivity.this);
                                     if (submitResponse != null && submitResponse.getStatusCode() != null) {
 
@@ -1447,8 +1464,6 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
     @Override
     public void handleError(Throwable e, Context context) {
-        flag_applicant = 0;
-        flag_vendorAct = 0;
         customProgressDialog.hide();
         String errMsg = ErrorHandler.handleError(e, context);
         Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
@@ -1787,6 +1802,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.bank_spinner:
                     try {
+                        branch_str = "";
                         binding.etIfscCode.setText("");
                         bank_str = parent.getSelectedItem().toString();
                         if (!bank_str.contains(getString(R.string.select))) {
@@ -1890,6 +1906,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.state_spinner:
                     try {
+                        district = "";
+                        mandal = "";
+                        village = "";
+                        binding.etPerDist.setText(district);
+                        binding.etPerMan.setText(mandal);
+                        binding.etPerVil.setText(village);
                         state = parent.getSelectedItem().toString();
                         if (!state.contains(getString(R.string.select))) {
                             LiveData<String> liveData;
@@ -1976,6 +1998,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.district_spinner:
                     try {
+                        mandal = "";
+                        village = "";
                         district = parent.getSelectedItem().toString();
                         if (!district.contains(getString(R.string.select))) {
                             LiveData<String> liveData;
@@ -2044,6 +2068,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.mandal_spinner:
                     try {
+                        village = "";
+
                         mandal = parent.getSelectedItem().toString();
                         if (!mandal.contains(getString(R.string.select))) {
                             LiveData<String> liveData;
@@ -2270,9 +2296,17 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
         }
 
 
-        if (TextUtils.isEmpty(physChall) || physChall.contains(getString(R.string.select))) {
+        if (TextUtils.isEmpty(physicalVal)) {
+            ScrollToView(binding.radioLl);
+            showBottomSheetSnackBar(getResources().getString(R.string.pwd_type_sel));
+            binding.radioGroupPwd.requestFocus();
+            return false;
+        }
+
+
+        if (physicalVal.equals(getString(R.string.yes)) && physChall.contains(getString(R.string.select))) {
             ScrollToView(binding.pwdSpinner);
-            showBottomSheetSnackBar(getResources().getString(R.string.sel_physically_challenged_val));
+            showBottomSheetSnackBar(getResources().getString(R.string.pwd_type_sel_some));
             binding.pwdSpinner.requestFocus();
             return false;
         }
@@ -2388,37 +2422,48 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             binding.stateSpinner.requestFocus();
             return false;
         }
-        if (!(state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA)) && TextUtils.isEmpty(district)) {
+
+
+        if (TextUtils.isEmpty(district) && !(state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
             ScrollToView(binding.etPerDist);
             showBottomSheetSnackBar(getResources().getString(R.string.ent_dist_name));
             binding.etPerDist.requestFocus();
             return false;
         }
-        if ((state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA)) && district.contains(getString(R.string.select))) {
+
+        if ((TextUtils.isEmpty(district) || district.contains(getString(R.string.select)))
+                && (state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
             ScrollToView(binding.districtSpinner);
             showBottomSheetSnackBar(getResources().getString(R.string.sel_dis_val));
             binding.districtSpinner.requestFocus();
             return false;
         }
-        if (!(state.equals(getString(R.string.telangana))|| state.equalsIgnoreCase(AppConstants.TELANGANA)) && TextUtils.isEmpty(mandal)) {
+
+        if (TextUtils.isEmpty(mandal) && !(state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
             ScrollToView(binding.etPerMan);
             showBottomSheetSnackBar(getResources().getString(R.string.ent_man_name));
             binding.etPerMan.requestFocus();
             return false;
         }
-        if ((state.equals(getString(R.string.telangana))|| state.equalsIgnoreCase(AppConstants.TELANGANA)) && mandal.contains(getString(R.string.select))) {
+
+        if ((TextUtils.isEmpty(mandal) || mandal.contains(getString(R.string.select)))
+                && (state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
             ScrollToView(binding.mandalSpinner);
             showBottomSheetSnackBar(getResources().getString(R.string.sel_man_val));
             binding.mandalSpinner.requestFocus();
             return false;
         }
-        if (!(state.equals(getString(R.string.telangana))|| state.equalsIgnoreCase(AppConstants.TELANGANA)) && TextUtils.isEmpty(village)) {
-            ScrollToView(binding.villageSpinner);
+
+
+        if (TextUtils.isEmpty(village) && !(state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
+            ScrollToView(binding.etPerVil);
             showBottomSheetSnackBar(getResources().getString(R.string.ent_vil_nmae));
             binding.etPerVil.requestFocus();
             return false;
         }
-        if ((state.equals(getString(R.string.telangana))|| state.equalsIgnoreCase(AppConstants.TELANGANA)) && village.contains(getString(R.string.select))) {
+
+        if ((TextUtils.isEmpty(village) || village.contains(getString(R.string.select)))
+                && (state.equals(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA))) {
             ScrollToView(binding.villageSpinner);
             showBottomSheetSnackBar(getResources().getString(R.string.sel_vil_val));
             binding.villageSpinner.requestFocus();
