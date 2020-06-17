@@ -120,6 +120,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
     private String ipAddress, deviceId;
     private String locale;
+    private String select_empty;
+    private ArrayList<String> emptyList = new ArrayList<>();
+
+
+    final android.os.Handler handler = new android.os.Handler();
+    Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +134,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_survey);
 
+        select_empty = getString(R.string.select_empty);
+        emptyList.add(select_empty);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int startColor = getWindow().getStatusBarColor();
             int endColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
@@ -198,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                         if (!(venAddresses != null && venAddresses.size() > 0)) {
                             Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                    getString(R.string.no_ven_area)+", "+getString(R.string.plz_ctc_admin));
+                                    getString(R.string.no_ven_area));
                         }
 
                     }
@@ -233,8 +241,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 if (stateEntities == null || stateEntities.size() <= 0) {
 
-                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                            getString(R.string.places_message));
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.stateSpinner);
+
+                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                            getString(R.string.state_message));
                 } else {
                     //load based on language type
 
@@ -262,8 +272,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                             if (districtEntities == null || districtEntities.size() <= 0) {
 
-                                Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                        getString(R.string.places_message));
+                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
+
+                                Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                        getString(R.string.dist_message));
                             } else {
 
                                 //load based on language type
@@ -292,8 +304,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                                         if (mandalEntities == null || mandalEntities.size() <= 0) {
 
-                                            Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                                    getString(R.string.places_message));
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+
+                                            Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                    getString(R.string.mandal_message));
                                         } else {
 
                                             //load based on language type
@@ -321,8 +335,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                     vilListLiveData.removeObservers(MainActivity.this);
 
                                                     if (villageEntities == null || villageEntities.size() <= 0) {
-                                                        Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                                                getString(R.string.places_message));
+
+
+                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+                                                        Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                                getString(R.string.village_message));
                                                     } else {
                                                         //load based on language type
                                                         if (locale.equals("te")) {
@@ -364,9 +381,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 bankListLiveData.removeObservers(MainActivity.this);
 
                 if (bankEntities == null || bankEntities.size() <= 0) {
-
-                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                            getString(R.string.bb_message));
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.bankSpinner);
+                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                            getString(R.string.bank_message));
                 } else {
 
                     //load based on language type
@@ -396,9 +413,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             branchListLiveData.removeObservers(MainActivity.this);
 
                             if (branchEntities == null || branchEntities.size() <= 0) {
-
-                                Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                        getString(R.string.bb_message));
+                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
+                                Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                        getString(R.string.branch_message));
                             } else {
                                 //load based on language type
 
@@ -433,7 +450,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 ulbListLiveData.removeObservers(MainActivity.this);
 
                 if (ulbEntities == null || ulbEntities.size() <= 0) {
-                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.ulbSpinner);
+                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
                             getString(R.string.ulb_message));
                 } else {
 
@@ -465,8 +483,14 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 genderListLiveData.removeObservers(MainActivity.this);
 
                 if (genderEntities == null || genderEntities.size() <= 0) {
-                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                            getString(R.string.kyc_message));
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.genderSpinner);
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.casteSpinner);
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.pwdSpinner);
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.qualificationSpinner);
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.religionSpinner);
+
+                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                            getString(R.string.gender_message));
                 } else {
 
                     //load based on language type
@@ -494,8 +518,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             castListLiveData.removeObservers(MainActivity.this);
 
                             if (casteEntities == null || casteEntities.size() <= 0) {
-                                Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                        getString(R.string.kyc_message));
+
+
+                                Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                        getString(R.string.caste_message));
                             } else {
 
                                 //load based on language type
@@ -523,8 +549,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                         pwdListLiveData.removeObservers(MainActivity.this);
 
                                         if (pwdEntities == null || pwdEntities.size() <= 0) {
-                                            Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                                    getString(R.string.kyc_message));
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.pwdSpinner);
+
+                                            Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                    getString(R.string.pwd_message));
                                         } else {
 
                                             //load based on language type
@@ -551,8 +579,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                     qListLiveData.removeObservers(MainActivity.this);
 
                                                     if (qualificationEntities == null || qualificationEntities.size() <= 0) {
-                                                        Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                                                getString(R.string.kyc_message));
+
+                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.qualificationSpinner);
+
+                                                        Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                                getString(R.string.qual_message));
                                                     } else {
 
                                                         //load based on language type
@@ -579,8 +610,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                                 rListLiveData.removeObservers(MainActivity.this);
 
                                                                 if (religionEntities == null || religionEntities.size() <= 0) {
-                                                                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                                                            getString(R.string.kyc_message));
+                                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.religionSpinner);
+
+                                                                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                                            getString(R.string.religion_message));
                                                                 } else {
                                                                     //load based on language type
                                                                     if (locale.equals("te")) {
@@ -625,8 +658,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 businessListLiveData.removeObservers(MainActivity.this);
 
                 if (businessEntities == null || businessEntities.size() <= 0) {
-                    Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                            getString(R.string.vending_message));
+                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.businessSpinner);
+                    Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                            getString(R.string.business_message));
                 } else {
                     //load based on language type
                     if (locale.equals("te")) {
@@ -652,8 +686,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             vListLiveData.removeObservers(MainActivity.this);
 
                             if (vendingTypeEntities == null || vendingTypeEntities.size() <= 0) {
-                                Utils.customSyncAlert(MainActivity.this, getString(R.string.app_name),
-                                        getString(R.string.vending_message));
+
+                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.vendingSpinner);
+
+                                Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                        getString(R.string.vending_type_message));
                             } else {
 
                                 //load based on language type
@@ -680,8 +717,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                         vaListLiveData.removeObservers(MainActivity.this);
 
                                         if (vendingAddressEntities == null || vendingAddressEntities.size() <= 0) {
-                                            Utils.customSyncAlertCancel(MainActivity.this, getString(R.string.app_name),
-                                                    getString(R.string.vending_message));
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.vendingAreaSpinner);
+
+                                            Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
+                                                    getString(R.string.vending_area_message));
                                         } else {
                                             //load based on language type
                                             venAddresses = new ArrayList<>();
@@ -786,7 +825,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             }
         });
 
+
         binding.etAge.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -794,21 +835,41 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-                    int age = Integer.valueOf(s.toString());
-                    Calendar cal = Calendar.getInstance();
-                    cal.add(Calendar.YEAR, -age);
-                    int mYear = cal.get(Calendar.YEAR);
-                    String mMonth = "01";
-                    String mDay = "01";
-                    dob = mDay + "/" + mMonth + "/" + mYear;
-                    age_str = String.valueOf(age);
-                    binding.tvDob.setText(getString(R.string.form_dob) + ": " + dob);
-                }
+                handler.removeCallbacks(runnable);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        if (s.length() > 0) {
+                            int age = Integer.valueOf(s.toString());
+                            if (!(age > 18)) {
+                                age_str = "";
+                                dob = "";
+                                binding.etAge.setText(age_str);
+                                binding.tvDob.setText(dob);
+                                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                                        getString(R.string.age_val_less));
+                            } else {
+                                Calendar cal = Calendar.getInstance();
+                                cal.add(Calendar.YEAR, -age);
+                                int mYear = cal.get(Calendar.YEAR);
+                                String mMonth = "01";
+                                String mDay = "01";
+                                dob = mDay + "/" + mMonth + "/" + mYear;
+                                age_str = String.valueOf(age);
+                                binding.tvDob.setText(getString(R.string.form_dob) + ": " + dob);
+                            }
+                        }else {
+                            age_str = "";
+                            binding.tvAge.setText(age_str);
+                            binding.tvDob.setText("");
+                        }
+                    }
+                };
+                handler.postDelayed(runnable, 500);
 
             }
         });
@@ -1425,7 +1486,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
 
                                                     binding.wardSpinner.setEnabled(false);
-                                                    binding.wardSpinner.setAdapter(null);
+                                                    Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
                                                 }
                                             }
                                         });
@@ -1434,7 +1495,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             });
                         } else {
                             binding.wardSpinner.setEnabled(false);
-                            binding.wardSpinner.setAdapter(null);
+                            Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
                         }
 
                     } catch (Exception e) {
@@ -1749,7 +1810,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                 } else {
                                                     Snackbar.make(binding.cl, getString(R.string.no_branches), BaseTransientBottomBar.LENGTH_SHORT).show();
                                                     binding.branchSpinner.setEnabled(false);
-                                                    binding.branchSpinner.setAdapter(null);
+                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
                                                 }
                                             }
                                         });
@@ -1759,7 +1820,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         } else {
                             binding.etIfscCode.setText("");
                             binding.branchSpinner.setEnabled(false);
-                            binding.branchSpinner.setAdapter(null);
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
                         }
 
                     } catch (Exception e) {
@@ -1866,9 +1927,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                         binding.mandalSpinner.setEnabled(false);
                                                         binding.villageSpinner.setEnabled(false);
                                                         binding.districtSpinner.setEnabled(false);
-                                                        binding.districtSpinner.setAdapter(null);
-                                                        binding.mandalSpinner.setAdapter(null);
-                                                        binding.villageSpinner.setAdapter(null);
+                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
+                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
                                                     }
                                                 }
                                             });
@@ -1888,9 +1949,14 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             binding.mandalSpinner.setEnabled(false);
                             binding.villageSpinner.setEnabled(false);
                             binding.districtSpinner.setEnabled(false);
-                            binding.districtSpinner.setAdapter(null);
-                            binding.mandalSpinner.setAdapter(null);
-                            binding.villageSpinner.setAdapter(null);
+
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+
+//                            binding.districtSpinner.setAdapter(null);
+//                            binding.mandalSpinner.setAdapter(null);
+//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -1946,8 +2012,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                                                     binding.mandalSpinner.setEnabled(false);
                                                     binding.villageSpinner.setEnabled(false);
-                                                    binding.mandalSpinner.setAdapter(null);
-                                                    binding.villageSpinner.setAdapter(null);
+
+                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+
+//                                                    binding.mandalSpinner.setAdapter(null);
+//                                                    binding.villageSpinner.setAdapter(null);
                                                 }
                                             }
                                         });
@@ -1959,8 +2029,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         } else {
                             binding.mandalSpinner.setEnabled(false);
                             binding.villageSpinner.setEnabled(false);
-                            binding.mandalSpinner.setAdapter(null);
-                            binding.villageSpinner.setAdapter(null);
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+
+//                            binding.mandalSpinner.setAdapter(null);
+//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -2015,9 +2088,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                 } else {
                                                     Snackbar.make(binding.cl, getString(R.string.no_villages), BaseTransientBottomBar.LENGTH_SHORT).show();
 
+                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
 
                                                     binding.villageSpinner.setEnabled(false);
-                                                    binding.villageSpinner.setAdapter(null);
+//                                                    binding.villageSpinner.setAdapter(null);
                                                 }
                                             }
                                         });
@@ -2028,7 +2102,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             });
                         } else {
                             binding.villageSpinner.setEnabled(false);
-                            binding.villageSpinner.setAdapter(null);
+
+                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+
+//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -2409,6 +2486,13 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             return false;
         }
 
+        if (!(venAddresses != null && venAddresses.size() > 0)) {
+            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                    getString(R.string.no_ven_area));
+            binding.vendingSpinner.requestFocus();
+            return false;
+        }
+
 
         if (TextUtils.isEmpty(vendingArea) || vendingArea.contains(getString(R.string.select))) {
             ScrollToView(binding.vendingAreaSpinner);
@@ -2481,6 +2565,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
     @Override
     public void onBackPressed() {
+
         Utils.customAlertExit(MainActivity.this,
                 getResources().getString(R.string.app_name),
                 getString(R.string.enroll_cancel), editor);

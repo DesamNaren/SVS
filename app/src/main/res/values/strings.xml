@@ -28,10 +28,10 @@
     <string name="ent_mob_num">Enter Mobile Number</string>
     <string name="val_mob_num">Enter Valid Mobile Number</string>
 
-   <!-- <string name="ice_num">ICE (In case of Emergency) - Contact Number *</string>-->
-    <string name="ice_num">ICE- Emergency Contact Number *</string>
-    <string name="ent_ice_num">Enter ICE- Emergency Contact Number</string>
-    <string name="val_ice_num">Enter Valid ICE- Emergency Contact Number</string>
+    <!-- <string name="ice_num">ICE (In case of Emergency) - Contact Number *</string>-->
+    <string name="ice_num">In Case of Emergency - Mobile No. *</string>
+    <string name="ent_ice_num">Enter In Case of Emergency - Mobile No.</string>
+    <string name="val_ice_num">Enter Valid In Case of Emergency - Mobile No.</string>
 
 
     <string name="aad_num">Aadhaar Number *</string>
@@ -234,11 +234,34 @@
     <string name="re_download">Re-Download</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="places_message">No places information found… \n Do you want sync places master data to proceed further</string>
-    <string name="bb_message">No bank &amp; branch information found… \n Do you want sync bank branch master data to proceed further</string>
-    <string name="ulb_message">No ULB &amp; wards information found… \n Do you want sync ULB master data to proceed further</string>
-    <string name="kyc_message">No KYC information found… \n Do you want sync KYC master data to proceed further</string>
-    <string name="vending_message">No vending business information found… \n Do you want sync business master data to proceed further</string>
+
+    <string name="continue_str">Continue</string>
+
+
+
+    <string name="state_message">Data not available for STATES, would you like to continue or download the data</string>
+    <string name="dist_message">Data not available for DISTRICTS, would you like to continue or download the data</string>
+    <string name="mandal_message">Data not available for MANDALS, would you like to continue or download the data</string>
+    <string name="village_message">Data not available for VILLAGES, would you like to continue or download the data</string>
+
+    <string name="ulb_message">Data not available for ULBS, would you like to continue or download the data</string>
+    <string name="ward_message">Data not available for WARDS, would you like to continue or download the data</string>
+
+    <string name="bank_message">Data not available for BANKS, would you like to continue or download the data</string>
+    <string name="branch_message">Data not available for BRANCHES, would you like to continue or download the data</string>
+
+    <string name="business_message">Data not available for BUSINESS TYPE, would you like to continue or download the data</string>
+    <string name="vending_type_message">Data not available for VENDING TYPE, would you like to continue or download the data</string>
+    <string name="vending_area_message">Data not available for VENDING AREA TYPE, would you like to continue or download the data</string>
+
+    <string name="gender_message">Data not available for GENDER, would you like to continue or download the data</string>
+    <string name="caste_message">Data not available for CASTE, would you like to continue or download the data</string>
+    <string name="religion_message">Data not available for RELIGION, would you like to continue or download the data</string>
+    <string name="pwd_message">Data not available for PWD, would you like to continue or download the data</string>
+    <string name="qual_message">Data not available for EDUCATION QUALIFICATION, would you like to continue or download the data</string>
+    <string name="relation_message">Data not available for RELATION TYPES, would you like to continue or download the data</string>
+
+
     <string name="ok">OK</string>
     <string name="places_message_succcess">Places master data downloaded successfully</string>
     <string name="bb_message_success">Bank Branch master data downloaded successfully</string>
@@ -266,6 +289,7 @@
     <string name="cap_applicant">Capture applicant photo</string>
     <string name="cap_vend_act">Capture vending activity photo</string>
     <string name="select">Select</string>
+    <string name="select_empty">--Select--</string>
     <string name="select_branch">--Select Branch--</string>
     <string name="select_ward">--Select Ward--</string>
     <string name="select_village">--Select Village--</string>
@@ -297,10 +321,10 @@
     <string name="no_relation">No relationship data found</string>
     <string name="no_business">No business data found</string>
     <string name="no_ven_types">No vending types found</string>
-    <string name="no_ven_area">No vending area data found</string>
+    <string name="no_ven_area">VENDING AREA TYPE data not found, Please contact Admin</string>
     <string name="no_ward">No ward data found</string>
     <string name="no_ulb">No ULB data found</string>
-    <string name="plz_ctc_admin">Please contact admin</string>
+    <string name="plz_ctc_admin">Please contact Admin</string>
     <string name="no_gender">No gender data found</string>
     <string name="sel_religion">Select Religion</string>
     <string name="religion">Religion *</string>
@@ -336,6 +360,7 @@
     <string name="logout">Do you want to logout from app?</string>
     <string name="enroll_cancel">Do you want to cancel the enrollment process?</string>
     <string name="age_val">Age should be in between 19 to 99 years. Select DOB to change age</string>
+    <string name="age_val_less">Age should be in between 19 to 99 years. Enter valid age</string>
 
     <string name="submit_text">Are you sure you want to submit the data?</string>
     <string name="ent_other_caste">Enter Other Caste Name</string>
@@ -353,7 +378,7 @@
 
     <string name="validationmobandemergency">Mobile No and emergency contact no should not be same</string>
 
-    <string name="note_text">(Note: Access to Credit will be given to Street Vendors who have started vending on or before 24th march 2020)</string>
+    <string name="note_text">Note: Access to Credit will be given to Street Vendors who have started vending on or before 24th march 2020</string>
 
 
     <string name="submit_data">Submit Data</string>

@@ -60,11 +60,14 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
     private ArrayList<String> qualifications, relations, genders;
     private String locale;
 
+    private String select_empty;
+    private ArrayList<String> emptyList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMemberBinding = DataBindingUtil.setContentView(MemberActivity.this, R.layout.activity_member);
-
+        emptyList.add(select_empty);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int startColor = getWindow().getStatusBarColor();
             int endColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
@@ -130,8 +133,9 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
                 rListLiveData.removeObservers(MemberActivity.this);
 
                 if (relationEntities == null || relationEntities.size() <= 0) {
-                    Utils.customSyncAlert(MemberActivity.this, getString(R.string.app_name),
-                            getString(R.string.kyc_message));
+
+                    Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
+                            getString(R.string.relation_message));
                 } else {
                     //load based on language type
 
@@ -163,8 +167,8 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
                 gListLiveData.removeObservers(MemberActivity.this);
 
                 if (genderEntities == null || genderEntities.size() <= 0) {
-                    Utils.customSyncAlert(MemberActivity.this, getString(R.string.app_name),
-                            getString(R.string.kyc_message));
+                    Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
+                            getString(R.string.gender_message));
                 } else {
                     //load based on language type
 
@@ -196,8 +200,8 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
                 qListLiveData.removeObservers(MemberActivity.this);
 
                 if (qualificationEntities == null || qualificationEntities.size() <= 0) {
-                    Utils.customSyncAlert(MemberActivity.this, getString(R.string.app_name),
-                            getString(R.string.kyc_message));
+                    Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
+                            getString(R.string.qual_message));
                 } else {
                     //load based on language type
 

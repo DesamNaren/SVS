@@ -40,7 +40,7 @@
 
     <string name="sel_physically_challenged">విభిన్నా ప్రతిభావంతులు *</string>
 
-    <string name="sel_high_qualification">విద్య అర్హత *</string>
+    <string name="sel_high_qualification">విద్యార్హత *</string>
 
     <string name="mob_num">మొబైల్ నెంబర్ *</string>
 
@@ -49,11 +49,11 @@
     <string name="val_mob_num">చెల్లుబాటు అయ్యే మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
 
     <!--<string name="ice_num">ఎమర్జెన్సీ సమయంలో కాంటాక్ట్ చేయవల్సిన మొబైల్ నెంబర్ *</string>-->
-    <string name="ice_num">ఐసిఇ- ఎమర్జెన్సీ కాంటాక్ట్ నెంబర్ *</string>
+    <string name="ice_num">అత్యవసర పరిస్థితుల్లో - మొబైల్ నం. *</string>
 
-    <string name="ent_ice_num">ఐసిఇ- ఎమర్జెన్సీ మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+    <string name="ent_ice_num">అత్యవసర పరిస్థితుల్లో - మొబైల్ నం.ను నమోదు చేయండి</string>
 
-    <string name="val_ice_num">చెల్లుబాటు అయ్యే ఐసిఇ- ఎమర్జెన్సీ  మొబైల్ నంబర్‌ను నమోదు చేయండి</string>
+    <string name="val_ice_num">చెల్లుబాటు అయ్యే అత్యవసర పరిస్థితుల్లో - మొబైల్ నం.‌ను నమోదు చేయండి</string>
 
     <string name="aad_num">ఆధార్ నెంబర్ *</string>
 
@@ -115,9 +115,9 @@
 
     <string name="enter_vending_address">వీధి వ్యాపారము చేయు చిరునామా నమోదు చేయండి</string>
 
-    <string name="residential_address">వీధి వ్యాపారి నివాస చిరునామా *</string>
+    <string name="residential_address">వీధి వ్యాపారి ప్రస్తుత నివాస చిరునామా *</string>
 
-    <string name="enter_residential_address">వీధి వ్యాపారి నివాస చిరునామా నమోదు చేయండి</string>
+    <string name="enter_residential_address">వీధి వ్యాపారి ప్రస్తుత నివాస చిరునామా నమోదు చేయండి</string>
 
     <string name="permanent_address">వీధి వ్యాపారి స్థిర నివాసం చిరునామా</string>
 
@@ -412,6 +412,7 @@
     <string name="business_master">బిజినెస్ మాస్టర్స్</string>
 
     <string name="language_selection">భాషా ఎంపిక</string>
+    <string name="select_empty">--ఎంచుకోండి--</string>
 
     <string name="dashboard">డాష్బోర్డ్</string>
 
@@ -430,16 +431,6 @@
     <string name="no">కాదు</string>
 
     <string name="yes">అవును</string>
-
-    <string name="places_message">స్థలాల సమాచారం కనుగొనబడలేదు…  సమకాలీకరణ స్థలాల మాస్టర్ డేటా మరింత ముందుకు వెళ్లాలని మీరు కోరుకుంటున్నారా</string>
-
-    <string name="bb_message">బ్యాంక్ &amp; బ్రాంచ్ సమాచారం కనుగొనబడలేదు…  సమకాలీకరణ బ్యాంక్ బ్రాంచ్ మాస్టర్ డేటా మరింత ముందుకు సాగాలని మీరు కోరుకుంటున్నారా</string>
-
-    <string name="ulb_message">మున్సిపాలిటీ &amp; వార్డుల సమాచారం ఏదీ కనుగొనబడలేదు…  మరింత ముందుకు సాగడానికి మున్సిపాలిటీ మాస్టర్ డేటాను సమకాలీకరించాలనుకుంటున్నారా</string>
-
-    <string name="kyc_message">KYC సమాచారం కనుగొనబడలేదు…  KYC మాస్టర్ డేటాను మరింత సమకాలీకరించడానికి మీరు సమకాలీకరించాలనుకుంటున్నారా</string>
-
-    <string name="vending_message">వ్యాపార సమాచారం ఏదీ కనుగొనబడలేదు…  సమకాలీకరణ వ్యాపార మాస్టర్ డేటా మరింత ముందుకు సాగాలని మీరు కోరుకుంటున్నారా</string>
 
     <string name="ok">సరే</string>
 
@@ -518,7 +509,7 @@
     <string name="no_relation">వీధి విక్రయదారునితో సంబంధం డేటా కనుగొనబడలేదు </string>
     <string name="no_business">వ్యాపార డేటా కనుగొనబడలేదు</string>
     <string name="no_ven_types">వవ్యాపారము చేయు రకాలు డేటా కనుగొనబడలేదు</string>
-    <string name="no_ven_area"> వ్యాపారము చేయు చిరునామా డేటా కనుగొనబడలేదు</string>
+    <string name="no_ven_area">వ్యాపారము చేయు చిరునామా రకం సమాచారం కనుగొనబడలేదు, దయచేసి నిర్వాహకుడిని సంప్రదించండి</string>
     <string name="no_ward">వార్డ్ డేటా కనుగొనబడలేదు</string>
     <string name="no_ulb">No ULB data found</string>
     <string name="no_gender">లలింగం డేటా కనుగొనబడలేదు</string>
@@ -526,8 +517,8 @@
     <string name="religion">మతం *</string>
     <string name="police_station">పోలీసు స్టేషన్ *</string>
     <string name="ent_police_station">పోలీసు స్టేషన్ నమోదు చేయండి</string>
-    <string name="vending_date">విక్రయ కార్యాచరణ ప్రారంభించిన తేదీ *</string>
-    <string name="sel_vending_date">విధి వ్యాపారం ఎప్పటినుంచి చేయుచున్నారో  ఎంచుకోండి</string>
+    <string name="vending_date">వీధి వ్యాపారం ప్రారంభించిన తేది *</string>
+    <string name="sel_vending_date">వీధి వ్యాపారం ప్రారంభించిన తేది ఎంచుకోండి</string>
     <string name="done">పూర్తి</string>
     <string name="update_msg">మీకు నవీకరణ ఉంది. దయచేసి తాజా సంస్కరణను నవీకరించండి!</string>
     <string name="app_ver">అప్ వెర్షన్ క్లయింట్ నుండి శూన్యమైనది</string>
@@ -558,7 +549,7 @@
     <string name="logout">మీరు ఆప్ నుండి లాగ్ అవుట్ చేయాలనుకుంటున్నారా?</string>
     <string name="enroll_cancel">మీరు నమోదు ప్రక్రియను రద్దు చేయాలనుకుంటున్నారా?</string>
     <string name="age_val">వయస్సు 19 నుండి 99 సంవత్సరాల మధ్య ఉండాలి. వయస్సు మార్చడానికి DOB ని ఎంచుకోండి</string>
-
+    <string name="age_val_less">వయస్సు 19 నుండి 99 సంవత్సరాల మధ్య ఉండాలి. చెల్లుబాటు అయ్యే వయస్సును నమోదు చేయండి</string>
     <string name="submit_text">మీరు ఖచ్చితంగా డేటాను సమర్పించాలనుకుంటున్నారా?</string>
     <string name="ent_other_caste">ఇతర కులం పేరును నమోదు చేయండి</string>
     <string name="ent_other_religion">ఇతర మతం పేరును నమోదు చేయండి</string>
@@ -575,7 +566,7 @@
 
     <string name="validationmobandemergency">మొబైల్ నెంబర్ మరియు అత్యవసర సంపర్క నెంబర్ ఒకేలా ఉండకూడదు</string>
 
-    <string name="note_text">(గమనిక: 2020 మార్చి 24 న లేదా అంతకు ముందు అమ్మకం ప్రారంభించిన విక్రయదారులకి లోన్ ఇవ్వబడును)</string>
+    <string name="note_text">గమనిక: 2020 మార్చి 24 న లేదా అంతకు ముందు అమ్మకం ప్రారంభించిన విక్రయదారులకి లోన్ ఇవ్వబడును</string>
     <string name="submit_data">డేటాను సమర్పించండి</string>
 
 
@@ -603,4 +594,29 @@
     <string name="languagealertinfo_tel">మీరు తెలుగు భాషకు మారాలనుకుంటున్నారా?</string>
 
     <string name="plz_ctc_admin">దయచేసి నిర్వాహకుడిని సంప్రదించండి</string>
+
+    <string name="state_message">రాష్ట్ర సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="dist_message">జిల్లా సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="mandal_message">మండల సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="village_message">గ్రామ సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+
+    <string name="ulb_message">మునిసిపాలిటీ సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="ward_message">వార్డ్ సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+
+    <string name="bank_message">బ్యాంకు సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="branch_message">బ్రాంచ్ సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+
+    <string name="business_message">వ్యాపార రకం సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="vending_type_message">వ్యాపార రకం సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="vending_area_message">వ్యాపారము చేయు చిరునామా రకం సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+
+    <string name="gender_message">లింగ సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="caste_message">కుల సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="religion_message">మత సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="pwd_message">విభిన్నా ప్రతిభావంతుల సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="qual_message">విద్యార్హత సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+    <string name="relation_message">విక్రయదారునితో సంబంధం సమాచారం కనుగొనబడలేదు, మీరు ముందుకు కొనసాగాలనుకుంటున్నారా, లేకున్న డేటాను డౌన్లోడ్ చెయండి</string>
+
+    <string name="continue_str">కొనసాగించు</string>
+
 </resources>
