@@ -42,6 +42,7 @@ import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivitySurveyBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
+import com.cgg.streetvendor.network.SVSService;
 import com.cgg.streetvendor.room.repository.SVSSyncPlacesRepository;
 import com.cgg.streetvendor.source.reposnse.SubmitResponse;
 import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
@@ -77,12 +78,18 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements ErrorHandlerInterface,
         AdapterView.OnItemSelectedListener {
@@ -187,7 +194,6 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                     if (validateData()) {
 
                         if (Utils.checkInternetConnection(MainActivity.this)) {
-                            customProgressDialog.show();
                             aadharNo = binding.etAadhaarNum.getText().toString();
                             long aadhar = Long.valueOf(aadharNo);
                             if (Utils.checkInternetConnection(MainActivity.this)) {
@@ -1319,28 +1325,36 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         }
                         if (Utils.checkInternetConnection(MainActivity.this)) {
                             customProgressDialog.show();
-                            LiveData<SubmitResponse> officesResponseLiveData = submitViewModel.submitCallResponse(submitRequest);
 
-                           officesResponseLiveData.observe(MainActivity.this, new Observer<SubmitResponse>() {
+                            SVSService twdService = SVSService.Factory.create();
+                            Gson gson = new Gson();
+                            String str = gson.toJson(submitRequest);
+
+                            Call<SubmitResponse> call3 = twdService.submitServiceResponse(submitRequest);
+                            call3.enqueue(new Callback<SubmitResponse>() {
                                 @Override
-                                public void onChanged(SubmitResponse submitResponse) {
+                                public void onResponse(@NotNull Call<SubmitResponse> call, @NotNull Response<SubmitResponse> response) {
                                     customProgressDialog.hide();
+                                    if (response.isSuccessful() && response.body() != null) {
+                                        SubmitResponse submitResponse = response.body();
+                                        if (submitResponse.getStatusCode() != null) {
 
-                                    officesResponseLiveData.removeObservers(MainActivity.this);
-                                    if (submitResponse != null && submitResponse.getStatusCode() != null) {
-
-                                        if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
-                                            editor.putString(AppConstants.MEMBER_DATA, "");
-                                            editor.commit();
-                                            familyInfoArrayList.clear();
+                                            if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
+                                                editor.putString(AppConstants.MEMBER_DATA, "");
+                                                editor.commit();
+                                                familyInfoArrayList.clear();
 
 
-                                            Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
-                                                    submitResponse.getStatusMessage());
-                                        } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
+                                                Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
+                                                        submitResponse.getStatusMessage());
+                                            } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
 
-                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
-                                                    submitResponse.getStatusMessage());
+                                                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                                                        submitResponse.getStatusMessage());
+                                            } else {
+                                                Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+                                                        getString(R.string.something));
+                                            }
                                         } else {
                                             Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
                                                     getString(R.string.something));
@@ -1349,9 +1363,49 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                         Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
                                                 getString(R.string.something));
                                     }
+
                                 }
 
+                                @Override
+                                public void onFailure(Call<SubmitResponse> call, Throwable t) {
+
+                                    handleError(t, MainActivity.this);
+                                }
                             });
+
+//                            LiveData<SubmitResponse> officesResponseLiveData = submitViewModel.submitCallResponse(submitRequest);
+
+//                            officesResponseLiveData.observe(MainActivity.this, new Observer<SubmitResponse>() {
+//                                @Override
+//                                public void onChanged(SubmitResponse submitResponse) {
+//                                    customProgressDialog.hide();
+//
+//                                    officesResponseLiveData.removeObservers(MainActivity.this);
+//                                    if (submitResponse != null && submitResponse.getStatusCode() != null) {
+//
+//                                        if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
+//                                            editor.putString(AppConstants.MEMBER_DATA, "");
+//                                            editor.commit();
+//                                            familyInfoArrayList.clear();
+//
+//
+//                                            Utils.customSaveAlert(MainActivity.this, getString(R.string.app_name),
+//                                                    submitResponse.getStatusMessage());
+//                                        } else if (submitResponse.getStatusCode().equalsIgnoreCase(AppConstants.FAILURE_STRING_CODE)) {
+//
+//                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+//                                                    submitResponse.getStatusMessage());
+//                                        } else {
+//                                            Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+//                                                    getString(R.string.something));
+//                                        }
+//                                    } else {
+//                                        Utils.customErrorAlert(MainActivity.this, getString(R.string.app_name),
+//                                                getString(R.string.something));
+//                                    }
+//                                }
+//
+//                            });
                         } else {
                             Utils.customErrorAlert(MainActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
                         }
