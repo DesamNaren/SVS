@@ -20,8 +20,7 @@ public abstract class ErrorHandler {
         } else if (e instanceof SocketTimeoutException) {
             msg = context.getString(R.string.con_time_out);
         } else if (e instanceof IOException) {
-            msg = context.getString(R.string.something) +
-                    context.getString(R.string.io_exe);
+            msg = context.getString(R.string.something);
         } else {
             msg = context.getString(R.string.server_not)
                     + ": " + e.getMessage();

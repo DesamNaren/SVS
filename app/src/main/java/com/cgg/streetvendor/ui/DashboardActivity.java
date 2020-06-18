@@ -119,6 +119,21 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        MenuItem navUserMan = navigationView.getMenu().findItem(R.id.nav_user_manual);
+        navUserMan.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                startActivity(new Intent(DashboardActivity.this, UserManualActivity.class));
+                //do as you want with the button click
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+
+                return true;
+            }
+        });
+
         MenuItem navLogout = navigationView.getMenu().findItem(R.id.nav_log_out);
         navLogout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

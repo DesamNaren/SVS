@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -45,6 +46,15 @@ public class LoginActivity extends AppCompatActivity implements ErrorHandlerInte
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         svsSyncPlacesRepository = new SVSSyncPlacesRepository(getApplication());
+
+        binding.userManualTv.setPaintFlags(binding.userManualTv.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        binding.userManualTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, UserManualActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int startColor = getWindow().getStatusBarColor();

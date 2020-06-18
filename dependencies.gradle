@@ -39,7 +39,7 @@ ext {
             roomCompiler         : "androidx.room:room-compiler:$room",
             roomRxJava2          : "android.arch.persistence.room:rxjava2:$roomRxJava2",
             lifecycle_version    : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
-//            rxBinding            : "com.jakewharton.rxbinding2:rxbinding:$rxBinding",
+            rxBinding            : "com.jakewharton.rxbinding2:rxbinding:$rxBinding",
             photoview            : "com.commit451:PhotoView:$photoview"
     ]
 }

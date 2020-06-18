@@ -389,4 +389,6 @@
     <string name="sel_dis_val">Select District</string>
     <string name="sel_man_val">Select Mandal</string>
     <string name="sel_vil_val">Select Village</string>
+
+    <string name="user_manual">User Manual</string>
 </resources>

@@ -158,6 +158,18 @@
                     android:text="@string/login"
                     android:textSize="@dimen/dimen_18sp" />
 
+                <TextView
+                    android:layout_marginRight="@dimen/dimen_8dp"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:id="@+id/user_manual_tv"
+                    android:layout_gravity="end"
+                    android:padding="@dimen/dimen_8dp"
+                    android:fontFamily="@font/muli_bold"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:text="@string/user_manual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
 
