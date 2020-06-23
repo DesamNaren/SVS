@@ -25,7 +25,7 @@ android {
     buildTypes {
         release {
             buildConfigField("String", "SERVER_URL", "\"http://tsmepmasvws.cgg.gov.in:8080/sv/\"")
-            buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana%20Pragathi_User%20Manual-V1.0.pdf\"")
+            buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana Pragathi_User Manual-V1.0.pdf\"")
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -33,7 +33,7 @@ android {
 
         debug {
             buildConfigField("String", "SERVER_URL", "\"http://demo8.cgg.gov.in:8080/tmepmaSV/sv/\"")
-            buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana%20Pragathi_User%20Manual-V1.0.pdf\"")
+            buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana Pragathi_User Manual-V1.0.pdf\"")
             signingConfig signingConfigs.release
         }
     }

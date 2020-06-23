@@ -159,6 +159,7 @@
                     android:textSize="@dimen/dimen_18sp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_marginRight="@dimen/dimen_8dp"
                     android:layout_marginTop="@dimen/dimen_8dp"
                     android:id="@+id/user_manual_tv"
