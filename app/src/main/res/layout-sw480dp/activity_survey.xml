@@ -1565,7 +1565,7 @@
                                         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ,./-&amp;\n "
                                         android:fontFamily="@font/elmessiri_regular"
                                         android:hint="@string/police_station"
-                                        android:imeOptions="actionNext"
+                                        android:imeOptions="actionDone"
                                         android:maxLines="1"
                                         android:singleLine="true"
                                         android:textColor="@color/black" />

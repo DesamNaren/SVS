@@ -1811,6 +1811,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                     Snackbar.make(binding.cl, getString(R.string.no_branches), BaseTransientBottomBar.LENGTH_SHORT).show();
                                                     binding.branchSpinner.setEnabled(false);
                                                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
+
+                                                    ScrollToView(binding.branchSpinner);
+                                                    binding.branchSpinner.requestFocus();
                                                 }
                                             }
                                         });
