@@ -83,7 +83,8 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
                         if (versionResponse.getStatusCode() != null && versionResponse.getStatusCode().equalsIgnoreCase(AppConstants.SUCCESS_STRING_CODE)) {
                             if (appVersion != null) {
                                 if (versionResponse.getVersionData() != null && versionResponse.getVersionData().size() > 0
-                                        && versionResponse.getVersionData().get(0).getVersionNo().equalsIgnoreCase("V1.0")) {
+                                        && versionResponse.getVersionData().get(0).getVersionNo().
+                                        equalsIgnoreCase(Utils.getVersionName(SplashActivity.this))) {
                                     new Handler().postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
