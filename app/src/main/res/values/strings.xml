@@ -299,7 +299,7 @@
     <string name="no_villages">No Villages found</string>
     <string name="select_vending_area">--Select Vending Address--</string>
     <string name="no_wards">No wards found</string>
-    <string name="add_atleast_member">Add atleast one family meber</string>
+    <string name="add_atleast_member">Add at least one family member</string>
     <string name="language">తెలుగు</string>
     <string name="select_bank">--Select Bank--</string>
     <string name="languagealertTitle">Language Selection</string>
@@ -371,7 +371,7 @@
     <string name="other_religion">Other Religion *</string>
     <string name="other_business">Other Business *</string>
 
-    <string name="sel_vending_area_val">Select Vending Area</string>
+    <string name="sel_vending_area_val">Select Vending Address</string>
     <string name="sel_branch_val">Select Branch</string>
     <string name="sel_high_qualification_val">Select Education Qualification</string>
     <string name="sel_caste_val">Select Caste</string>
