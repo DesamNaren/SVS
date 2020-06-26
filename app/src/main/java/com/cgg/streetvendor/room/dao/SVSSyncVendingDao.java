@@ -42,11 +42,11 @@ public interface SVSSyncVendingDao {
     @Query("SELECT vendingId from vending_type_info where vendingTypeTel LIKE :vType")
     LiveData<String> getTelVenTypeId(String vType);
 
-    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaName LIKE :vAddress")
-    LiveData<String> getVenAddressId(String vAddress);
+    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaName LIKE :vAddress AND ulbId LIKE :ULBId AND districtId LIKE :distId")
+    LiveData<String> getVenAddressId(String vAddress,String ULBId,String distId);
 
-    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaNameTel LIKE :vAddress")
-    LiveData<String> getTelVenAddressId(String vAddress);
+    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaNameTel LIKE :vAddress AND ulbId LIKE :ULBId AND districtId LIKE :distId")
+    LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId);
 
     @Query("DELETE FROM business_info")
     void deleteBusiness();

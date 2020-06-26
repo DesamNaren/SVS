@@ -1743,9 +1743,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         if (!vendingArea.contains(getString(R.string.select))) {
                             LiveData<String> liveData;
                             if (locale.equals("te")) {
-                                liveData = svsSyncVendingViewModel.getTelVenAddressId(vendingArea);
+                                liveData = svsSyncVendingViewModel.getTelVenAddressId(vendingArea,  loggedULBId, loggedDistId);
                             } else {
-                                liveData = svsSyncVendingViewModel.getVenAddressId(vendingArea);
+                                liveData = svsSyncVendingViewModel.getVenAddressId(vendingArea, loggedULBId, loggedDistId);
                             }
                             liveData.observe(MainActivity.this, new Observer<String>() {
                                 @Override

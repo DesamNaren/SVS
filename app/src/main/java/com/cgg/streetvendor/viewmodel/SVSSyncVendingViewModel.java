@@ -79,13 +79,13 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
 
 
 
-    public LiveData<String> getVenAddressId(String vAddress) {
-        return svsSyncVendingRepository.getVenAddressId(vAddress);
+    public LiveData<String> getVenAddressId(String vAddress, String ULBId,String distId) {
+        return svsSyncVendingRepository.getVenAddressId(vAddress, ULBId, distId);
     }
 
 
-    public LiveData<String> getTelVenAddressId(String vAddress) {
-        return svsSyncVendingRepository.getTelVenAddressId(vAddress);
+    public LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId) {
+        return svsSyncVendingRepository.getTelVenAddressId(vAddress, ULBId, distId);
     }
 
 

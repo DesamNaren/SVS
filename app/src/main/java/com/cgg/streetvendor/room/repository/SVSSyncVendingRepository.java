@@ -45,12 +45,12 @@ public class SVSSyncVendingRepository {
         return vendingDao.getTelVenTypeId(vType);
     }
 
-    public LiveData<String> getVenAddressId(String vAddress) {
-        return vendingDao.getVenAddressId(vAddress);
+    public LiveData<String> getVenAddressId(String vAddress,String ULBId,String distId) {
+        return vendingDao.getVenAddressId(vAddress, ULBId, distId);
     }
 
-    public LiveData<String> getTelVenAddressId(String vAddress) {
-        return vendingDao.getTelVenAddressId(vAddress);
+    public LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId) {
+        return vendingDao.getTelVenAddressId(vAddress, ULBId, distId);
     }
 
     public LiveData<List<BusinessEntity>> getAllBusiness() {
