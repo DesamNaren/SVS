@@ -60,12 +60,12 @@ public class SVSSyncBBViewModel extends AndroidViewModel {
         return svsSyncBBRepository.getIFSCCode(bankId, branchId);
     }
 
-    public LiveData<String> getBankID(String bankName) {
-        return svsSyncBBRepository.getBankID(bankName);
+    public LiveData<String> getBankID(String bankName, int pos) {
+        return svsSyncBBRepository.getBankID(bankName, pos);
     }
 
-    public LiveData<String> getTelBankId(String bankName) {
-        return svsSyncBBRepository.getTelBankId(bankName);
+    public LiveData<String> getTelBankId(String bankName, int pos) {
+        return svsSyncBBRepository.getTelBankId(bankName, pos);
     }
 
 

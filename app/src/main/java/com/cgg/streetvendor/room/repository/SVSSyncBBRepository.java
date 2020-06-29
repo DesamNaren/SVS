@@ -30,12 +30,12 @@ public class SVSSyncBBRepository {
         return bbDao.getIFSCCode(bankId, branchId);
     }
 
-    public LiveData<String> getBankID(String bankName) {
-        return bbDao.getBankId(bankName);
+    public LiveData<String> getBankID(String bankName, int pos) {
+        return bbDao.getBankId(bankName, pos);
     }
 
-    public LiveData<String> getTelBankId(String bankName) {
-        return bbDao.getTelBankId(bankName);
+    public LiveData<String> getTelBankId(String bankName, int pos) {
+        return bbDao.getTelBankId(bankName,pos);
     }
 
 
@@ -76,6 +76,7 @@ public class SVSSyncBBRepository {
 
         @Override
         protected Integer doInBackground(Void... voids) {
+            bbDao.clearPrimaryKey();
             bbDao.deleteBanks();
             bbDao.insertBanks(bankEntities);
             return bbDao.bankCount();

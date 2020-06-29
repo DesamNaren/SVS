@@ -1772,9 +1772,9 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         if (!bank_str.contains(getString(R.string.select))) {
                             LiveData<String> liveData;
                             if (locale.equals("te")) {
-                                liveData = svsSyncBBViewModel.getTelBankId(bank_str);
+                                liveData = svsSyncBBViewModel.getTelBankId(bank_str, parent.getSelectedItemPosition()+1);
                             } else {
-                                liveData = svsSyncBBViewModel.getBankID(bank_str);
+                                liveData = svsSyncBBViewModel.getBankID(bank_str, parent.getSelectedItemPosition()+1);
                             }
                             liveData.observe(MainActivity.this, new Observer<String>() {
                                 @Override

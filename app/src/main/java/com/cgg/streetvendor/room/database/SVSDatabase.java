@@ -3,9 +3,12 @@ package com.cgg.streetvendor.room.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.cgg.streetvendor.room.dao.SVSSyncBBDao;
 import com.cgg.streetvendor.room.dao.SVSSyncKYCDao;
@@ -57,6 +60,7 @@ public abstract class SVSDatabase extends RoomDatabase {
 
     private static SVSDatabase INSTANCE;
 
+
     public static SVSDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (SVSDatabase.class) {
@@ -65,7 +69,6 @@ public abstract class SVSDatabase extends RoomDatabase {
                             SVSDatabase.class, "SVS.db")
                             // Wipes and rebuilds instead of migrating if no Migration object.
                             // Migration is not part of this codelab.
-//                            .createFromFile(new File("database/districts.json"))
                             .fallbackToDestructiveMigration()
                             .build();
                 }
