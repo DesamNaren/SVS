@@ -29,30 +29,6 @@ public class SVSSyncVendingRepository {
         vendingDao = db.svsSyncVendingDao();
     }
 
-    public LiveData<String> getBusinessId(String business) {
-        return vendingDao.getBusinessId(business);
-    }
-
-    public LiveData<String> getTelBusinessId(String business) {
-        return vendingDao.getTelBusinessId(business);
-    }
-
-    public LiveData<String> getVenTypeId(String vType) {
-        return vendingDao.getVenTypeId(vType);
-    }
-
-    public LiveData<String> getTelVenTypeId(String vType) {
-        return vendingDao.getTelVenTypeId(vType);
-    }
-
-    public LiveData<String> getVenAddressId(String vAddress,String ULBId,String distId) {
-        return vendingDao.getVenAddressId(vAddress, ULBId, distId);
-    }
-
-    public LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId) {
-        return vendingDao.getTelVenAddressId(vAddress, ULBId, distId);
-    }
-
     public LiveData<List<BusinessEntity>> getAllBusiness() {
         return vendingDao.getAllBusiness();
     }

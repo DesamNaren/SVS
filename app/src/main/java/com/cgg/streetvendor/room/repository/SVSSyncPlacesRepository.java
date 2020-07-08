@@ -39,36 +39,6 @@ public class SVSSyncPlacesRepository {
         return syncDao.getMandalVillages(distId, manId);
     }
 
-    public LiveData<String> getStateId(String stateName) {
-        return syncDao.getStateId(stateName);
-    }
-
-    public LiveData<String> getTelStateId(String stateName) {
-        return syncDao.getTelStateId(stateName);
-    }
-
-    public LiveData<String> getDistrictID(String distName) {
-        return syncDao.getDistId(distName);
-    }
-
-    public LiveData<String> getTelDistId(String distName) {
-        return syncDao.getTelDistId(distName);
-    }
-
-    public LiveData<String> getMandalID(String manName, String distID) {
-        return syncDao.getMandalId(manName, distID);
-    }
-
-    public LiveData<String> getTelMandalId(String manName, String distID) {
-        return syncDao.getTelMandalId(manName, distID);
-    }
-
-    public LiveData<String> getVillageId(String vilName, String distID, String manID) {
-        return syncDao.getVillageId(vilName, distID, manID);
-    }    public LiveData<String> getTelVillageId(String vilName, String distID, String manID) {
-        return syncDao.getTelVillageId(vilName, distID, manID);
-    }
-
     public LiveData<List<StateEntity>> getAllstates() {
         return syncDao.getAllStates();
     }
@@ -121,26 +91,6 @@ public class SVSSyncPlacesRepository {
             vendingInterface.venCount(v);
         }
     }
-
-//    public void insertDRGoDowns(final GCCDivisionInterface dmvInterface, final List<DrGodowns> DRGoDowns) {
-//        new InsertDRGoDownAsyncTask(dmvInterface, DRGoDowns).execute();
-//    }
-//
-//    public void insertMFPGoDowns(final GCCDivisionInterface dmvInterface, final List<MFPGoDowns> mfpGoDowns) {
-//        new InsertMFPGoDownAsyncTask(dmvInterface, mfpGoDowns).execute();
-//    }
-//
-//    public void insertPUnits(final GCCDivisionInterface dmvInterface, final List<PUnits> pUnits) {
-//        new InsertPUnitAsyncTask(dmvInterface, pUnits).execute();
-//    }
-//
-//    public void insertPetrolPumps(final GCCDivisionInterface dmvInterface, final List<PetrolSupplierInfo> petrolSupplierInfos) {
-//        new InsertPetrolAsyncTask(dmvInterface, petrolSupplierInfos).execute();
-//    }
-//
-//    public void insertLpg(final GCCDivisionInterface dmvInterface, final List<LPGSupplierInfo> lpgSupplierInfos) {
-//        new InsertLPGAsyncTask(dmvInterface, lpgSupplierInfos).execute();
-//    }
 
 
     @SuppressLint("StaticFieldLeak")

@@ -51,19 +51,6 @@ public interface SVSSyncBBDao {
     @Query("SELECT * from branch_info")
     LiveData<List<BranchEntity>> getAllBranches();
 
-    @Query("SELECT bankId from bank_info where bankName LIKE :bankName AND id LIKE :pos")
-    LiveData<String> getBankId(String bankName, int pos);
-
-    @Query("SELECT bankId from bank_info where bankNameTel LIKE :bankName AND id LIKE :pos")
-    LiveData<String> getTelBankId(String bankName, int pos);
-
-
-    @Query("SELECT branchId from branch_info where branchName LIKE :branchName AND bankId LIKE :bankId")
-    LiveData<String> getBranchId(String branchName, String bankId);
-
-    @Query("SELECT branchId from branch_info where branchNameTel LIKE :branchName AND bankId LIKE :bankId")
-    LiveData<String> getTelBranchId(String branchName, String bankId);
-
     @Query("SELECT * from branch_info where bankId LIKE :bankId")
     LiveData<List<BranchEntity>> getBankBranches(String bankId);
 

@@ -68,18 +68,6 @@ public class SVSSyncULBViewModel extends AndroidViewModel {
         return allWards;
     }
 
-    public LiveData<String> getULBID(String ulbName) {
-        return svsSyncULBRepository.getULBID(ulbName);
-    }
-
-    public LiveData<String> getTelULBId(String ulbName) {
-        return svsSyncULBRepository.getTelULBId(ulbName);
-    }
-
-    public LiveData<String> getWardID(String wardName, String ulbId) {
-        return svsSyncULBRepository.getWardID(wardName, ulbId);
-    }
-
 
     public LiveData<List<WardEntity>> getULBWards(String UlbId) {
         if (ulbWards != null) {

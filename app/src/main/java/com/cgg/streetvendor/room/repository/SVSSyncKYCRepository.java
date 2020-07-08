@@ -26,56 +26,6 @@ public class SVSSyncKYCRepository {
         kycDao = db.syncKYCDao();
     }
 
-    public LiveData<String> getReligionId(String religion) {
-        return kycDao.getReligionId(religion);
-    }
-    public LiveData<String> getTelReligionId(String religion) {
-        return kycDao.getTelReligionId(religion);
-    }
-    public LiveData<String> getRelationId(String religion) {
-        return kycDao.getRelationId(religion);
-    }    public LiveData<String> getTelRelationId(String religion) {
-        return kycDao.getTelRelationId(religion);
-    }
-
-
-    public LiveData<String> getCasteId(String caste) {
-        return kycDao.getCasteId(caste);
-    }
-
-    public LiveData<String> getTelCasteId(String caste) {
-        return kycDao.getTelCasteId(caste);
-    }
-
-    public LiveData<String> getGenderCode(String gender) {
-        return kycDao.getGenderCode(gender);
-    }
-    public LiveData<String> getTelGenderCode(String gender) {
-        return kycDao.getTelGenderCode(gender);
-    }
-   public LiveData<String> getGenderID(String gender) {
-        return kycDao.getGenderID(gender);
-    }   public LiveData<String> getTelGenderID(String gender) {
-        return kycDao.getTelGenderID(gender);
-    }
-
-    public LiveData<String> getPWDId(String pwd) {
-        return kycDao.getPWDId(pwd);
-    }
-
-    public LiveData<String> getTelPWDId(String pwd) {
-        return kycDao.getTelPWDId(pwd);
-    }
-
-    public LiveData<String> getQualificationId(String qul) {
-        return kycDao.getQualificationId(qul);
-    }
-
-    public LiveData<String> getTelQualificationId(String qul) {
-        return kycDao.getTelQualificationId(qul);
-    }
-
-
     public LiveData<List<ReligionEntity>> getAllReligions() {
         return kycDao.getAllReligions();
     }
@@ -134,7 +84,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertReligionAsyncTask(GCCDivisionInterface dmvInterface,
-                              List<ReligionEntity> religionEntities) {
+                                List<ReligionEntity> religionEntities) {
             this.religionEntities = religionEntities;
             this.dmvInterface = dmvInterface;
         }
@@ -159,7 +109,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertGenderAsyncTask(GCCDivisionInterface dmvInterface,
-                             List<GenderEntity> genderEntities) {
+                              List<GenderEntity> genderEntities) {
             this.genderEntities = genderEntities;
             this.dmvInterface = dmvInterface;
         }
@@ -184,7 +134,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertCasteAsyncTask(GCCDivisionInterface dmvInterface,
-                                List<CasteEntity> casteEntities) {
+                             List<CasteEntity> casteEntities) {
             this.casteEntities = casteEntities;
             this.dmvInterface = dmvInterface;
         }
@@ -210,7 +160,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertPWDAsyncTask(GCCDivisionInterface dmvInterface,
-                             List<PWDEntity> pwdEntities) {
+                           List<PWDEntity> pwdEntities) {
             this.pwdEntities = pwdEntities;
             this.dmvInterface = dmvInterface;
         }
@@ -236,7 +186,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertQuaAsyncTask(GCCDivisionInterface dmvInterface,
-                             List<QualificationEntity> qualificationEntities) {
+                           List<QualificationEntity> qualificationEntities) {
             this.qualificationEntities = qualificationEntities;
             this.dmvInterface = dmvInterface;
         }
@@ -261,7 +211,7 @@ public class SVSSyncKYCRepository {
         GCCDivisionInterface dmvInterface;
 
         InsertRelationAsyncTask(GCCDivisionInterface dmvInterface,
-                             List<RelationEntity> relationEntities) {
+                                List<RelationEntity> relationEntities) {
             this.relationEntities = relationEntities;
             this.dmvInterface = dmvInterface;
         }

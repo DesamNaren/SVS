@@ -63,6 +63,10 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
     private String select_empty;
     private ArrayList<String> emptyList = new ArrayList<>();
 
+    private List<GenderEntity> genderEntities;
+    private List<RelationEntity> relationEntities;
+    private List<QualificationEntity> qualificationEntities;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,7 +135,7 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
             @Override
             public void onChanged(List<RelationEntity> relationEntities) {
                 rListLiveData.removeObservers(MemberActivity.this);
-
+                MemberActivity.this.relationEntities = relationEntities;
                 if (relationEntities == null || relationEntities.size() <= 0) {
 
                     Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
@@ -165,6 +169,7 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
             @Override
             public void onChanged(List<GenderEntity> genderEntities) {
                 gListLiveData.removeObservers(MemberActivity.this);
+                MemberActivity.this.genderEntities = genderEntities;
 
                 if (genderEntities == null || genderEntities.size() <= 0) {
                     Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
@@ -198,7 +203,7 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
             @Override
             public void onChanged(List<QualificationEntity> qualificationEntities) {
                 qListLiveData.removeObservers(MemberActivity.this);
-
+                MemberActivity.this.qualificationEntities = qualificationEntities;
                 if (qualificationEntities == null || qualificationEntities.size() <= 0) {
                     Utils.customSyncAlertDownload(MemberActivity.this, getString(R.string.app_name),
                             getString(R.string.qual_message));
@@ -263,24 +268,11 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
         activityAddMemberBinding.genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genId="";
                 if (parent.getSelectedItem() != null) {
                     String gender = parent.getSelectedItem().toString();
                     if (!gender.contains(getString(R.string.select))) {
-                        LiveData<String> liveData;
-                        if(locale.equals("te")) {
-                            liveData = svsSyncKYCViewModel.getTelGenderID(gender);
-                        }else{
-                            liveData = svsSyncKYCViewModel.getGenderID(gender);
-                        }
-                        liveData.observe(MemberActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String genId) {
-                                liveData.removeObservers(MemberActivity.this);
-                                MemberActivity.this.genId = genId;
-
-                            }
-
-                        });
+                        MemberActivity.this.genId = genderEntities.get(position).getGenderId();
                     }
 
                 }
@@ -296,23 +288,11 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
         activityAddMemberBinding.relationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                relId="";
                 if (parent.getSelectedItem() != null) {
                     String relation = parent.getSelectedItem().toString();
                     if (!relation.contains(getString(R.string.select))) {
-                        LiveData<String> liveData;
-                        if(locale.equals("te")) {
-                            liveData = svsSyncKYCViewModel.getTelRelationId(relation);
-                        }else {
-                            liveData = svsSyncKYCViewModel.getRelationId(relation);
-                        }
-                        liveData.observe(MemberActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String relId) {
-                                liveData.removeObservers(MemberActivity.this);
-                                MemberActivity.this.relId = relId;
-                            }
-
-                        });
+                        MemberActivity.this.relId = relationEntities.get(position).getRelationId();
                     }
 
                 }
@@ -326,23 +306,11 @@ public class MemberActivity extends AppCompatActivity implements MemberInterface
         activityAddMemberBinding.qualificationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                quaId="";
                 if (parent.getSelectedItem() != null) {
                     String qua = parent.getSelectedItem().toString();
                     if (!qua.contains(getString(R.string.select))) {
-                        LiveData<String> liveData;
-                        if (locale.equals("te")) {
-                            liveData = svsSyncKYCViewModel.getTelQualificationId(qua);
-                        } else {
-                            liveData = svsSyncKYCViewModel.getQualificationId(qua);
-                        }
-                        liveData.observe(MemberActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String quaId) {
-                                liveData.removeObservers(MemberActivity.this);
-                                MemberActivity.this.quaId = quaId;
-                            }
-
-                        });
+                        MemberActivity.this.quaId = qualificationEntities.get(position).getQualificationId();
                     }
 
                 }

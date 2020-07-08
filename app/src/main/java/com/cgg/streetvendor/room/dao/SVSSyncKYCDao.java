@@ -28,52 +28,6 @@ import java.util.List;
 @Dao
 public interface SVSSyncKYCDao {
 
-    @Query("SELECT religionId from religion_info where religionName LIKE :religion")
-    LiveData<String> getReligionId(String religion);
-
-    @Query("SELECT religionId from religion_info where religionNameTel LIKE :religion")
-    LiveData<String> getTelReligionId(String religion);
-
-
-    @Query("SELECT relationId from relation_info where relationName LIKE :relation")
-    LiveData<String> getRelationId(String relation);
-
-    @Query("SELECT relationId from relation_info where relationNameTel LIKE :relation")
-    LiveData<String> getTelRelationId(String relation);
-
-    @Query("SELECT casteId from caste_info where caste LIKE :caste")
-    LiveData<String> getCasteId(String caste);
-
-    @Query("SELECT casteId from caste_info where casteTel LIKE :caste")
-    LiveData<String> getTelCasteId(String caste);
-
-    @Query("SELECT genderCode from gender_info where genderName LIKE :gender")
-    LiveData<String> getGenderCode(String gender);
-
-
-    @Query("SELECT genderCode from gender_info where genderNameTel LIKE :gender")
-    LiveData<String> getTelGenderCode(String gender);
-
-    @Query("SELECT genderId from gender_info where genderName LIKE :gender")
-    LiveData<String> getGenderID(String gender);
-
-    @Query("SELECT genderId from gender_info where genderNameTel LIKE :gender")
-    LiveData<String> getTelGenderID(String gender);
-
-
-    @Query("SELECT pwdId from pwd_info where pwdType LIKE :pwd")
-    LiveData<String> getPWDId(String pwd);
-
-    @Query("SELECT pwdId from pwd_info where pwdTypeTel LIKE :pwd")
-    LiveData<String> getTelPWDId(String pwd);
-
-    @Query("SELECT qualificationId from qualification_info where qualificationType LIKE :quaName")
-    LiveData<String> getQualificationId(String quaName);
-
-    @Query("SELECT qualificationId from qualification_info where qualificationTypeTel LIKE :quaName")
-    LiveData<String> getTelQualificationId(String quaName);
-
-
     @Insert
     void insertReligions(List<ReligionEntity> religionEntities);
 

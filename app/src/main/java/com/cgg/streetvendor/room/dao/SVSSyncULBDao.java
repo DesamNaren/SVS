@@ -57,16 +57,6 @@ public interface SVSSyncULBDao {
     @Query("SELECT * from ward_info")
     LiveData<List<WardEntity>> getAllWards();
 
-
-    @Query("SELECT ulbId from ulb_info where ulbName LIKE :ulbName")
-    LiveData<String> getULBId(String ulbName);
-
-    @Query("SELECT ulbId from ulb_info where ulbNameTel LIKE :ulbName")
-    LiveData<String> getTelULBId(String ulbName);
-
-    @Query("SELECT wardId from ward_info where wardName LIKE :wardName AND ulbId LIKE :ulbId")
-    LiveData<String> getWardId(String wardName, String ulbId);
-
     @Query("SELECT * from ward_info where ulbId LIKE :UlbID")
     LiveData<List<WardEntity>> getULBWards(String UlbID);
 

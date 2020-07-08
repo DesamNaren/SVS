@@ -1,8 +1,6 @@
 package com.cgg.streetvendor.network;
 
 
-
-
 import com.cgg.streetvendor.source.reposnse.SubmitResponse;
 import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
 import com.cgg.streetvendor.source.reposnse.bankbranch.BankResponse;
@@ -26,7 +24,6 @@ import com.cgg.streetvendor.source.reposnse.ulb.WardResponse;
 import com.cgg.streetvendor.source.reposnse.version.VersionCheckResponse;
 import com.cgg.streetvendor.source.request.LoginRequest;
 import com.cgg.streetvendor.source.request.SubmitRequest;
-import com.cgg.streetvendor.ui.FamilyInfo;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +35,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface SVSService {
     class Factory {
@@ -60,8 +58,8 @@ public interface SVSService {
     @GET("masters/getStateData")
     Call<StateResponse> getStateResponse();
 
-    @GET("masters/getDistrictData/stateID=36")
-    Call<DistrictResponse> getDistrictResponse();
+    @GET("masters/getDistrictData/stateID={stateID}")
+    Call<DistrictResponse> getDistrictResponse(@Path("stateID") String stateID);
 
     @GET("masters/getMandalData/stateID=36&districtID=0")
     Call<MandalResponse> getMandalResponse();
@@ -111,127 +109,14 @@ public interface SVSService {
     @GET("masters/getVendingData")
     Call<VendingTypeResponse> getVenTypeResponse();
 
-    @GET("masters/getVendindAreaData/districtID=0&ulbID=0")
-    Call<VendingAddressResponse> getVenAddressResponse();
+    @GET("masters/getVendindAreaData/{districtID}")
+    Call<VendingAddressResponse> getVenAddressResponse(@Path(value = "districtID") String districtID);
 
     @POST("services/validateLogin")
     Call<LoginResponse> getLoginResponse(@Body LoginRequest loginRequest);
 
     @GET("services/getVersionDetails")
     Call<VersionCheckResponse> getVersionCheckResponse();
-//
-//    @GET("CTWServiceDetails/getGCCDetails")
-//    Call<GCCReportResponse> getGCCReports(@Query("officerId") String username);
-//
-//    @GET("CTWWorks/viewWorkDetails")
-//    Call<WorkReportResponse> getEngReports(@Query("officerId") String officerId);
-//
-//    @GET("CTWServiceDetails/getSchemeDetails") //
-//    Call<SchemeReportResponse> getSchemeReports(@Query("officerId") String username);
-//
-//   @GET("CTWServiceDetails/getSchoolDetails")
-//    Call<InspReportResponse> getInspectionReports(@Query("officerId") String username);
-//
-//    @GET("getBenificiaryDetails")
-//    Call<BeneficiaryReport> getBeneficiaryDetails(@Query("distId") int distId, @Query("mandalId") int mandalId, @Query("villageId") int villageId, @Query("finYearId") String finYearId);
-//
-//    @GET("getInspectionRemarks")
-//    Call<InspectionRemarkResponse> getInspectionRemarks();
-//
-//    @GET("getDMVMasters")
-//    Call<SchemeDMVResponse> getSchemeDMV();
-//
-//    @GET("getFinancialYears")
-//    Call<FinancialYearResponse> getFinancialYears();
-//
-//    @GET("getSchemes")
-//    Call<SchemeResponse> getSchemeResponse();
-//
-//    @POST("submitSchemeInspectionDetails")
-//    Call<SchemeSubmitResponse> getSchemeSubmitResponse(@Body SchemeSubmitRequest schemeSubmitRequest);
-//
-//    @POST("submitGCCInspectionDetails")
-//    Call<GCCSubmitResponse> getGCCSubmitResponse(@Body GCCSubmitRequest gccSubmitRequest);
-//
-//    @POST("submitSchoolInspectionDetails")
-//    Call<InstSubmitResponse> getInstSubmitResponse(@Body InstSubmitRequest instSubmitRequest);
-//
-//    @Multipart
-//    @POST("upload/uploadSchemeInspectionPhotos")
-//    Call<SchemePhotoSubmitResponse> uploadSchemeImageCall(@Part List<MultipartBody.Part> partList);
-//
-//    @Multipart
-//    @POST("upload/uploadSchoolInspectionPhotos")
-//    Call<SchemePhotoSubmitResponse> uploadSchoolImageCall(@Part List<MultipartBody.Part> partList);
-//
-//    @Multipart
-//    @POST("upload/uploadGCCInspectionPhotos")
-//    Call<GCCPhotoSubmitResponse> uploadGCCImageCall(@Part List<MultipartBody.Part> partList);
-//
-//    @GET("CTWServiceDetails/getDMVMasters")
-//    Call<SchoolDMVResponse> getSchoolDMV(@Query("userId") String officerId);
-//
-//    @GET("CTWServiceDetails/getInstInfo")
-//    Call<InstMasterResponse> getInstMasterResponse();
-//    //------------------- Login & Logout ----------------------------------------
-//
-//
-//    //------------------- GCC ----------------------------------------
-//
-//    @POST("getOffices")
-//    Call<GetOfficesResponse> getDivisionMasterResponse();
-//
-//    @POST("getGodowns/DR Depot")
-//    Call<DRDepotMasterResponse> getDRDepotMasterResponse();
-//
-//    @POST("getGodowns/DR Godown")
-//    Call<DRGoDownMasterResponse> getDRGoDownMasterResponse();
-//
-//    @POST("getGodowns/MFP Godown")
-//    Call<MFPGoDownMasterResponse> getMFPDownMasterResponse();
-//
-//    @POST("getGodowns/Processing unit")
-//    Call<PUnitMasterResponse> getPUnitMasterResponse();
-//
-//
-//    @POST("getGodowns/Petrolpump")
-//    Call<PetrolPumpMasterResponse> getPetrolPumpMasterResponse();
-//
-//    @POST("getGodowns/LPG")
-//    Call<LPGMasterResponse> getLPGMasterResponse();
-//
-//    @POST("getStockDetails/{id}")
-//    Call<StockDetailsResponse> getDRDepotMasterResponse(@Path("id") String id);
-//
-//    @POST("getStockDetails/{id}")
-//    Call<PetrolStockDetailsResponse> getPLPGMasterResponse(@Path("id") String id);
-//
-//    //------------------- Engineering ----------------------------------------
-//
-//
-//    @GET("CTWWorks/getWorksMaster")
-//    Call<WorksMasterResponse> getWorksMaster();
-//
-//    @GET("CTWWorks/getMajorStage")
-//    Call<SubmittedStageResponse> getSubmittedStage(@Query("work_id") int workId);
-//
-//
-//    @GET("CTWWorks/getSectors")
-//    Call<SectorsResponse> getSectorsMaster();
-//
-//
-//    @GET("CTWWorks/getGrantSandSchemes")
-//    Call<GrantSchemesResponse> getGrantSandSchemes();
-//
-//    @GET("CTWWorks/getStages")
-//    Call<StagesResponse> getStages(@Query("sector_id") int sectorId);
-//
-//    @Multipart
-//    @POST("upload/uploadEngineeringWorksPhotos")
-//    Call<GCCPhotoSubmitResponse> uploadEngPhotoCall(@Part List<MultipartBody.Part> partList);
-//
-//    @POST("submitWorkInspectionDetails")
-//    Call<SubmitEngWorksResponse> getEngWorksSubmitResponse(@Body SubmitEngWorksRequest submitEngWorksRequest);
 
 }
 

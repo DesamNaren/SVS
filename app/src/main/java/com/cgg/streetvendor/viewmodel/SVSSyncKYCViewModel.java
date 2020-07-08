@@ -69,59 +69,6 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
 
     }
 
-
-    public LiveData<String> getReligionId(String religion) {
-        return svsSyncKYCRepository.getReligionId(religion);
-    }    public LiveData<String> getTelReligionId(String religion) {
-        return svsSyncKYCRepository.getTelReligionId(religion);
-    }
-
-    public LiveData<String> getCasteId(String caste) {
-        return svsSyncKYCRepository.getCasteId(caste);
-    }
-
-    public LiveData<String> getTelCasteId(String caste) {
-        return svsSyncKYCRepository.getTelCasteId(caste);
-    }
-
-    public LiveData<String> getGenderCode(String gender) {
-        return svsSyncKYCRepository.getGenderCode(gender);
-    }
-    public LiveData<String> getTelGenderCode(String gender) {
-        return svsSyncKYCRepository.getTelGenderCode(gender);
-    }
-
-    public LiveData<String> getGenderID(String gender) {
-        return svsSyncKYCRepository.getGenderID(gender);
-    }    public LiveData<String> getTelGenderID(String gender) {
-        return svsSyncKYCRepository.getTelGenderID(gender);
-    }
-
-
-    public LiveData<String> getPWDId(String pwd) {
-        return svsSyncKYCRepository.getPWDId(pwd);
-    }
-
-    public LiveData<String> getTelPWDId(String pwd) {
-        return svsSyncKYCRepository.getTelPWDId(pwd);
-    }
-
-
-    public LiveData<String> getQualificationId(String qua) {
-        return svsSyncKYCRepository.getQualificationId(qua);
-    }
-
-    public LiveData<String> getTelQualificationId(String qua) {
-        return svsSyncKYCRepository.getTelQualificationId(qua);
-    }
-
-
-    public LiveData<String> getRelationId(String qua) {
-        return svsSyncKYCRepository.getRelationId(qua);
-    }    public LiveData<String> getTelRelationId(String qua) {
-        return svsSyncKYCRepository.getTelRelationId(qua);
-    }
-
     public LiveData<List<ReligionEntity>> getAllReligion() {
         if (allReligion != null) {
             allReligion = svsSyncKYCRepository.getAllReligions();

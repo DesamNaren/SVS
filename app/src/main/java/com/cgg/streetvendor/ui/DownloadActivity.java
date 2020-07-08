@@ -578,10 +578,10 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
 
     }
 
-    private void callDistrictAPI() {
+    private void callDistrictAPI(String stateID) {
         if (Utils.checkInternetConnection(DownloadActivity.this)) {
 
-            LiveData<DistrictResponse> officesResponseLiveData = svsSyncPlaceViewModel.getDistrictResponse();
+            LiveData<DistrictResponse> officesResponseLiveData = svsSyncPlaceViewModel.getDistrictResponse(stateID);
             officesResponseLiveData.observe(DownloadActivity.this, new Observer<DistrictResponse>() {
                 @Override
                 public void onChanged(DistrictResponse officesResponse) {
@@ -1048,7 +1048,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     private void callVenAddressAPI() {
         if (Utils.checkInternetConnection(DownloadActivity.this)) {
 
-            LiveData<VendingAddressResponse> officesResponseLiveData = svsSyncVendingViewModel.getVenAddressResponse();
+            LiveData<VendingAddressResponse> officesResponseLiveData = svsSyncVendingViewModel.getVenAddressResponse("districtID="+"0"+"&"+"ulbID="+"0");
             officesResponseLiveData.observe(DownloadActivity.this, new Observer<VendingAddressResponse>() {
                 @Override
                 public void onChanged(VendingAddressResponse officesResponse) {
@@ -1098,7 +1098,7 @@ public class DownloadActivity extends AppCompatActivity implements ErrorHandlerI
     @Override
     public void stateCount(int count) {
         if (count > 1) {
-            callDistrictAPI();
+            callDistrictAPI("36");
         } else {
             customProgressDialog.hide();
             Utils.customErrorAlert(DownloadActivity.this, getResources().getString(R.string.app_name),

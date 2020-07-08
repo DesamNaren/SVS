@@ -30,22 +30,6 @@ public class SVSSyncBBRepository {
         return bbDao.getIFSCCode(bankId, branchId);
     }
 
-    public LiveData<String> getBankID(String bankName, int pos) {
-        return bbDao.getBankId(bankName, pos);
-    }
-
-    public LiveData<String> getTelBankId(String bankName, int pos) {
-        return bbDao.getTelBankId(bankName,pos);
-    }
-
-
-    public LiveData<String> getBranchId(String branchName, String bankId) {
-        return bbDao.getBranchId(branchName, bankId);
-    }
-
-    public LiveData<String> getTelBranchId(String branchName, String bankId) {
-        return bbDao.getTelBranchId(branchName, bankId);
-    }
 
     public LiveData<List<BankEntity>> getAllBanks() {
         return bbDao.getAllBanks();

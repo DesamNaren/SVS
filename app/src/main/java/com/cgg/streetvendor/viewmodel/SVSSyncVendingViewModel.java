@@ -60,34 +60,6 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
     }
 
 
-    public LiveData<String> getBusinessId(String business) {
-        return svsSyncVendingRepository.getBusinessId(business);
-    }
-
-    public LiveData<String> getTelBusinessId(String business) {
-        return svsSyncVendingRepository.getTelBusinessId(business);
-    }
-
-
-    public LiveData<String> getVenTypeId(String vType) {
-        return svsSyncVendingRepository.getVenTypeId(vType);
-    }
-
-    public LiveData<String> getTelVenTypeId(String vType) {
-        return svsSyncVendingRepository.getTelVenTypeId(vType);
-    }
-
-
-
-    public LiveData<String> getVenAddressId(String vAddress, String ULBId,String distId) {
-        return svsSyncVendingRepository.getVenAddressId(vAddress, ULBId, distId);
-    }
-
-
-    public LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId) {
-        return svsSyncVendingRepository.getTelVenAddressId(vAddress, ULBId, distId);
-    }
-
 
     public LiveData<List<BusinessEntity>> getAllBusiness() {
         if (allBusiness != null) {
@@ -166,16 +138,16 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
         });
     }
 
-    public LiveData<VendingAddressResponse> getVenAddressResponse() {
+    public LiveData<VendingAddressResponse> getVenAddressResponse(String distULB) {
         if (vendingAddressResponseMutableLiveData != null) {
-            getVenAddressMasterCall();
+            getVenAddressMasterCall(distULB);
         }
         return vendingAddressResponseMutableLiveData;
     }
 
-    private void getVenAddressMasterCall() {
+    private void getVenAddressMasterCall(String distULB) {
         SVSService twdService = SVSService.Factory.create();
-        twdService.getVenAddressResponse().enqueue(new Callback<VendingAddressResponse>() {
+        twdService.getVenAddressResponse(distULB).enqueue(new Callback<VendingAddressResponse>() {
             @Override
             public void onResponse(@NotNull Call<VendingAddressResponse> call, @NotNull Response<VendingAddressResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {

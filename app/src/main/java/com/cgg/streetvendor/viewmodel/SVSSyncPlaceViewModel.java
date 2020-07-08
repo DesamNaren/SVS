@@ -63,39 +63,6 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<String> getStateId(String stateName) {
-        return svsSyncPlacesRepository.getStateId(stateName);
-    }
-
-
-    public LiveData<String> getTelStateId(String stateName) {
-        return svsSyncPlacesRepository.getTelStateId(stateName);
-    }
-
-
-    public LiveData<String> getDistId(String distName) {
-        return svsSyncPlacesRepository.getDistrictID(distName);
-    }
-
-    public LiveData<String> getTelDistId(String distName) {
-        return svsSyncPlacesRepository.getTelDistId(distName);
-    }
-
-    public LiveData<String> getManId(String manName, String distId) {
-        return svsSyncPlacesRepository.getMandalID(manName, distId);
-    }
-
-    public LiveData<String> getTelMandalId(String manName, String distId) {
-        return svsSyncPlacesRepository.getTelMandalId(manName, distId);
-    }
-
-
-    public LiveData<String> getVilId(String vilName, String distId, String manId) {
-        return svsSyncPlacesRepository.getVillageId(vilName, distId, manId);
-    }    public LiveData<String> getTelVillageId(String vilName, String distId, String manId) {
-        return svsSyncPlacesRepository.getTelVillageId(vilName, distId, manId);
-    }
-
     public LiveData<List<MandalEntity>> getDistrictMandals(String distId) {
         if (distMandals != null) {
             distMandals = svsSyncPlacesRepository.getDistrictMandals(distId);
@@ -165,16 +132,16 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
         });
     }
 
-    public LiveData<DistrictResponse> getDistrictResponse() {
+    public LiveData<DistrictResponse> getDistrictResponse(String stateID) {
         if (districtResponseMutableLiveData != null) {
-            getDistrictMasterCall();
+            getDistrictMasterCall(stateID);
         }
         return districtResponseMutableLiveData;
     }
 
-    private void getDistrictMasterCall() {
+    private void getDistrictMasterCall(String stateID) {
         SVSService twdService = SVSService.Factory.create();
-        twdService.getDistrictResponse().enqueue(new Callback<DistrictResponse>() {
+        twdService.getDistrictResponse(stateID).enqueue(new Callback<DistrictResponse>() {
             @Override
             public void onResponse(@NotNull Call<DistrictResponse> call, @NotNull Response<DistrictResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {

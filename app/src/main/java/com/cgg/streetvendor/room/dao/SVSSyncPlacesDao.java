@@ -87,30 +87,4 @@ public interface SVSSyncPlacesDao {
 
     @Query("SELECT * from village_info where districtId LIKE :distID AND mandalId LIKE :manID")
     LiveData<List<VillageEntity>> getMandalVillages(String distID, String manID);
-
-    @Query("SELECT districtId from district_info where districtName LIKE :distName")
-    LiveData<String> getDistId(String distName);
-
-    @Query("SELECT districtId from district_info where districtNameTel LIKE :distName")
-    LiveData<String> getTelDistId(String distName);
-
-
-    @Query("SELECT mandalId from mandal_info " +
-            "where mandalName LIKE :manName AND districtId LIKE :distID")
-    LiveData<String> getMandalId(String manName, String distID);
-
-
-    @Query("SELECT mandalId from mandal_info " +
-            "where mandalNameTel LIKE :manName AND districtId LIKE :distID")
-    LiveData<String> getTelMandalId(String manName, String distID);
-
-
-    @Query("SELECT villageId from village_info " +
-            "where villageName LIKE :vilName AND districtId LIKE :distId AND mandalId LIKE :manId")
-    LiveData<String> getVillageId(String vilName, String distId, String manId);
-
-    @Query("SELECT villageId from village_info " +
-            "where villageNameTel LIKE :vilName AND districtId LIKE :distId AND mandalId LIKE :manId")
-    LiveData<String> getTelVillageId(String vilName, String distId, String manId);
-
 }

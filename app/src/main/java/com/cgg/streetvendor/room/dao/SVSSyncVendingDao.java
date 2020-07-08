@@ -30,24 +30,6 @@ import java.util.List;
 @Dao
 public interface SVSSyncVendingDao {
 
-    @Query("SELECT businessId from business_info where businessName LIKE :business")
-    LiveData<String> getBusinessId(String business);
-
-    @Query("SELECT businessId from business_info where businessNameTel LIKE :business")
-    LiveData<String> getTelBusinessId(String business);
-
-    @Query("SELECT vendingId from vending_type_info where vendingType LIKE :vType")
-    LiveData<String> getVenTypeId(String vType);
-
-    @Query("SELECT vendingId from vending_type_info where vendingTypeTel LIKE :vType")
-    LiveData<String> getTelVenTypeId(String vType);
-
-    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaName LIKE :vAddress AND ulbId LIKE :ULBId AND districtId LIKE :distId")
-    LiveData<String> getVenAddressId(String vAddress,String ULBId,String distId);
-
-    @Query("SELECT vendingAreaId from vending_address_info where vendingAreaNameTel LIKE :vAddress AND ulbId LIKE :ULBId AND districtId LIKE :distId")
-    LiveData<String> getTelVenAddressId(String vAddress, String ULBId,String distId);
-
     @Query("DELETE FROM business_info")
     void deleteBusiness();
 

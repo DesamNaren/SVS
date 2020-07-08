@@ -40,16 +40,6 @@ public class SVSSyncULBRepository {
         return ulbDao.getAllWards();
     }
 
-    public LiveData<String> getULBID(String ulbName) {
-        return ulbDao.getULBId(ulbName);
-    }    public LiveData<String> getTelULBId(String ulbName) {
-        return ulbDao.getTelULBId(ulbName);
-    }
-
-    public LiveData<String> getWardID(String wardName, String ulbId) {
-        return ulbDao.getWardId(wardName, ulbId);
-    }
-
 
     public LiveData<List<WardEntity>> getULBWards(String UlbId) {
         return ulbDao.getULBWards(UlbId);

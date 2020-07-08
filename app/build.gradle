@@ -8,7 +8,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 3
-        versionName "V1.0.2"
+        versionName "V1.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -24,6 +24,7 @@ android {
 
     buildTypes {
         release {
+            debuggable true
             buildConfigField("String", "SERVER_URL", "\"http://tsmepmasvws.cgg.gov.in:8080/sv/\"")
             buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana Pragathi_User Manual-V1.0.pdf\"")
             signingConfig signingConfigs.release

@@ -127,6 +127,23 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
     final android.os.Handler handler = new android.os.Handler();
     Runnable runnable;
 
+
+    private List<BankEntity> bankEntities;
+    private List<BranchEntity> branchEntities;
+    private List<ReligionEntity> religionEntities;
+    private List<GenderEntity> genderEntities;
+    private List<CasteEntity> casteEntities;
+    private List<PWDEntity> pwdEntities;
+    private List<QualificationEntity> qualificationEntities;
+    private List<BusinessEntity> businessEntities;
+    private List<VendingTypeEntity> vendingTypeEntities;
+    private List<StateEntity> stateEntities;
+    private List<DistrictEntity> districtEntities;
+    private List<MandalEntity> mandalEntities;
+    private List<VillageEntity> villageEntities;
+    private List<VendingAddressEntity> vendingAddressEntities;
+    private List<WardEntity> wardEntities;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -238,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             @Override
             public void onChanged(List<StateEntity> stateEntities) {
                 distListLiveData.removeObservers(MainActivity.this);
-
+                MainActivity.this.stateEntities = stateEntities;
                 if (stateEntities == null || stateEntities.size() <= 0) {
 
                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.stateSpinner);
@@ -269,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         @Override
                         public void onChanged(List<DistrictEntity> districtEntities) {
                             distListLiveData.removeObservers(MainActivity.this);
-
+                            MainActivity.this.districtEntities = districtEntities;
                             if (districtEntities == null || districtEntities.size() <= 0) {
 
                                 Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
@@ -379,6 +396,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             @Override
             public void onChanged(List<BankEntity> bankEntities) {
                 bankListLiveData.removeObservers(MainActivity.this);
+                MainActivity.this.bankEntities = bankEntities;
 
                 if (bankEntities == null || bankEntities.size() <= 0) {
                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.bankSpinner);
@@ -481,6 +499,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             @Override
             public void onChanged(List<GenderEntity> genderEntities) {
                 genderListLiveData.removeObservers(MainActivity.this);
+                MainActivity.this.genderEntities = genderEntities;
 
                 if (genderEntities == null || genderEntities.size() <= 0) {
                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.genderSpinner);
@@ -517,6 +536,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         public void onChanged(List<CasteEntity> casteEntities) {
                             castListLiveData.removeObservers(MainActivity.this);
 
+                            MainActivity.this.casteEntities = casteEntities;
                             if (casteEntities == null || casteEntities.size() <= 0) {
 
 
@@ -547,7 +567,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                     @Override
                                     public void onChanged(List<PWDEntity> pwdEntities) {
                                         pwdListLiveData.removeObservers(MainActivity.this);
-
+                                        MainActivity.this.pwdEntities = pwdEntities;
                                         if (pwdEntities == null || pwdEntities.size() <= 0) {
                                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.pwdSpinner);
 
@@ -577,7 +597,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                 @Override
                                                 public void onChanged(List<QualificationEntity> qualificationEntities) {
                                                     qListLiveData.removeObservers(MainActivity.this);
-
+                                                    MainActivity.this.qualificationEntities = qualificationEntities;
                                                     if (qualificationEntities == null || qualificationEntities.size() <= 0) {
 
                                                         Utils.loadSpinnerData(MainActivity.this, emptyList, binding.qualificationSpinner);
@@ -608,6 +628,8 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                                             @Override
                                                             public void onChanged(List<ReligionEntity> religionEntities) {
                                                                 rListLiveData.removeObservers(MainActivity.this);
+
+                                                                MainActivity.this.religionEntities = religionEntities;
 
                                                                 if (religionEntities == null || religionEntities.size() <= 0) {
                                                                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.religionSpinner);
@@ -656,7 +678,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             @Override
             public void onChanged(List<BusinessEntity> businessEntities) {
                 businessListLiveData.removeObservers(MainActivity.this);
-
+                MainActivity.this.businessEntities = businessEntities;
                 if (businessEntities == null || businessEntities.size() <= 0) {
                     Utils.loadSpinnerData(MainActivity.this, emptyList, binding.businessSpinner);
                     Utils.customSyncAlertDownload(MainActivity.this, getString(R.string.app_name),
@@ -684,7 +706,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         @Override
                         public void onChanged(List<VendingTypeEntity> vendingTypeEntities) {
                             vListLiveData.removeObservers(MainActivity.this);
-
+                            MainActivity.this.vendingTypeEntities = vendingTypeEntities;
                             if (vendingTypeEntities == null || vendingTypeEntities.size() <= 0) {
 
                                 Utils.loadSpinnerData(MainActivity.this, emptyList, binding.vendingSpinner);
@@ -715,7 +737,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                     @Override
                                     public void onChanged(List<VendingAddressEntity> vendingAddressEntities) {
                                         vaListLiveData.removeObservers(MainActivity.this);
-
+                                        MainActivity.this.vendingAddressEntities = vendingAddressEntities;
                                         if (vendingAddressEntities == null || vendingAddressEntities.size() <= 0) {
                                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.vendingAreaSpinner);
 
@@ -862,7 +884,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                                 age_str = String.valueOf(age);
                                 binding.tvDob.setText(getString(R.string.form_dob) + ": " + dob);
                             }
-                        }else {
+                        } else {
                             age_str = "";
                             binding.tvAge.setText(age_str);
                             binding.tvDob.setText("");
@@ -1434,7 +1456,7 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                 errMsg);
     }
 
-    private String loggedULBId, loggedDistId, ulbID, wardId, bankId, branchId;
+    private String loggedULBId, loggedDistId, wardId, bankId, branchId;
     private String stateId, distId, manId, vilId;
 
     @Override
@@ -1443,56 +1465,49 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             switch (parent.getId()) {
                 case R.id.ulb_spinner:
                     try {
+                        ward_str = "";
+                        wardId = "";
+                        wardEntities = new ArrayList<>();
+
                         ulb_str = parent.getSelectedItem().toString();
                         if (!ulb_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncULBViewModel.getTelULBId(ulb_str);
-                            } else {
-                                liveData = svsSyncULBViewModel.getULBID(ulb_str);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String ulbID) {
-                                    MainActivity.this.ulbID = ulbID;
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(ulbID)) {
-                                        LiveData<List<WardEntity>> wardListLiveData = svsSyncULBViewModel.getULBWards(ulbID);
-                                        wardListLiveData.observe(MainActivity.this, new Observer<List<WardEntity>>() {
-                                            @Override
-                                            public void onChanged(List<WardEntity> wardEntities) {
-                                                if (wardEntities != null && wardEntities.size() > 0) {
-                                                    //load based on language type
-                                                    wards = new ArrayList<>();
-                                                    wards.add(getString(R.string.select_ward));
-                                                    binding.wardSpinner.setEnabled(true);
+                            if (!TextUtils.isEmpty(loggedULBId)) {
+                                LiveData<List<WardEntity>> wardListLiveData = svsSyncULBViewModel.getULBWards(loggedULBId);
+                                wardListLiveData.observe(MainActivity.this, new Observer<List<WardEntity>>() {
+                                    @Override
+                                    public void onChanged(List<WardEntity> wardEntities) {
+                                        if (wardEntities != null && wardEntities.size() > 0) {
+                                            MainActivity.this.wardEntities = wardEntities;
+                                            //load based on language type
+                                            wards = new ArrayList<>();
+                                            wards.add(getString(R.string.select_ward));
+                                            binding.wardSpinner.setEnabled(true);
 
-                                                    if (locale.equals("te")) {
-                                                        for (int x = 0; x < wardEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(wardEntities.get(x).getWardName())) {
-                                                                wards.add(wardEntities.get(x).getWardName());
-                                                            }
-                                                        }
-                                                    } else {
-                                                        for (int x = 0; x < wardEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(wardEntities.get(x).getWardName())) {
-                                                                wards.add(wardEntities.get(x).getWardName());
-                                                            }
-                                                        }
+                                            if (locale.equals("te")) {
+                                                for (int x = 0; x < wardEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(wardEntities.get(x).getWardName())) {
+                                                        wards.add(wardEntities.get(x).getWardName());
                                                     }
-                                                    Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
-                                                } else {
-                                                    Snackbar.make(binding.cl, getString(R.string.no_wards), BaseTransientBottomBar.LENGTH_SHORT).show();
-
-
-                                                    binding.wardSpinner.setEnabled(false);
-                                                    Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
+                                                }
+                                            } else {
+                                                for (int x = 0; x < wardEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(wardEntities.get(x).getWardName())) {
+                                                        wards.add(wardEntities.get(x).getWardName());
+                                                    }
                                                 }
                                             }
-                                        });
+                                            Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
+                                        } else {
+                                            Snackbar.make(binding.cl, getString(R.string.no_wards), BaseTransientBottomBar.LENGTH_SHORT).show();
+
+
+                                            binding.wardSpinner.setEnabled(false);
+                                            Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
+
                         } else {
                             binding.wardSpinner.setEnabled(false);
                             Utils.loadSpinnerData(MainActivity.this, wards, binding.wardSpinner);
@@ -1506,17 +1521,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.ward_spinner:
                     try {
-                        ward_str = parent.getSelectedItem().toString();
-                        if (!ward_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData = svsSyncULBViewModel.getWardID(ward_str, ulbID);
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String wardId) {
-                                    MainActivity.this.wardId = wardId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
+                        wardId = "";
 
-                            });
+                        ward_str = parent.getSelectedItem().toString();
+
+                        if (!ward_str.contains(getString(R.string.select))) {
+                            MainActivity.this.wardId = wardEntities.get(position - 1).getWardId();
                         }
 
                     } catch (Exception e) {
@@ -1528,24 +1538,12 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.religion_spinner:
                     try {
+                        religionId = "";
                         other_religion = "";
                         religion_str = parent.getSelectedItem().toString();
                         if (!religion_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncKYCViewModel.getTelReligionId(religion_str);
-                            } else {
-                                liveData = svsSyncKYCViewModel.getReligionId(religion_str);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String religionId) {
-                                    MainActivity.this.religionId = religionId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
-
+                            MainActivity.this.religionId = religionEntities.get(position).getReligionId();
 
                             if (religion_str.equals(getString(R.string.others))) {
                                 binding.tvOthReligion.setVisibility(View.VISIBLE);
@@ -1561,22 +1559,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.gender_spinner:
                     try {
+                        genCode = "";
                         gender_str = parent.getSelectedItem().toString();
                         if (!gender_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncKYCViewModel.getTelGenderCode(gender_str);
-                            } else {
-                                liveData = svsSyncKYCViewModel.getGenderCode(gender_str);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String genCode) {
-                                    MainActivity.this.genCode = genCode;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
+                            MainActivity.this.genCode = genderEntities.get(position).getGenderCode();
                         }
 
                     } catch (Exception e) {
@@ -1588,26 +1575,13 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.caste_spinner:
                     try {
+                        casteId = "";
                         other_caste = "";
                         binding.tvOthCaste.setVisibility(View.GONE);
                         caste_str = parent.getSelectedItem().toString();
                         if (!caste_str.contains(getString(R.string.select))) {
 
-
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncKYCViewModel.getTelCasteId(caste_str);
-                            } else {
-                                liveData = svsSyncKYCViewModel.getCasteId(caste_str);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String casteId) {
-                                    MainActivity.this.casteId = casteId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
-
-                            });
+                            MainActivity.this.casteId = casteEntities.get(position).getCasteId();
 
                             if (caste_str.equals(getString(R.string.others))) {
                                 binding.tvOthCaste.setVisibility(View.VISIBLE);
@@ -1625,22 +1599,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.pwd_spinner:
                     try {
+                        pwdId = "";
                         physChall = parent.getSelectedItem().toString();
                         if (!physChall.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncKYCViewModel.getTelPWDId(physChall);
-                            } else {
-                                liveData = svsSyncKYCViewModel.getPWDId(physChall);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String pwdId) {
-                                    MainActivity.this.pwdId = pwdId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
+                            MainActivity.this.pwdId = pwdEntities.get(position).getPwdId();
                         }
 
                     } catch (Exception e) {
@@ -1652,22 +1615,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.qualification_spinner:
                     try {
+                        quaId = "";
                         highQual = parent.getSelectedItem().toString();
                         if (!highQual.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncKYCViewModel.getTelQualificationId(highQual);
-                            } else {
-                                liveData = svsSyncKYCViewModel.getQualificationId(highQual);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String quaId) {
-                                    MainActivity.this.quaId = quaId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
+                            MainActivity.this.quaId = qualificationEntities.get(position).getQualificationId();
                         }
 
                     } catch (Exception e) {
@@ -1678,24 +1630,13 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                     break;
                 case R.id.business_spinner:
                     try {
+                        businessId = "";
                         other_business = "";
                         binding.tvOthBusiness.setVisibility(View.GONE);
                         businessType = parent.getSelectedItem().toString();
                         if (!businessType.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncVendingViewModel.getTelBusinessId(businessType);
-                            } else {
-                                liveData = svsSyncVendingViewModel.getBusinessId(businessType);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String businessId) {
-                                    MainActivity.this.businessId = businessId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
+                            MainActivity.this.businessId = businessEntities.get(position).getBusinessId();
 
                             if (businessType.equals(getString(R.string.others))) {
                                 binding.tvOthBusiness.setVisibility(View.VISIBLE);
@@ -1712,22 +1653,11 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.vending_spinner:
                     try {
+                        vTypeId = "";
                         vendingType = parent.getSelectedItem().toString();
                         if (!vendingType.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncVendingViewModel.getTelVenTypeId(vendingType);
-                            } else {
-                                liveData = svsSyncVendingViewModel.getVenTypeId(vendingType);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String vTypeId) {
-                                    MainActivity.this.vTypeId = vTypeId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
 
-                            });
+                            MainActivity.this.vTypeId = vendingTypeEntities.get(position).getVendingId();
                         }
 
                     } catch (Exception e) {
@@ -1739,22 +1669,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.vending_area_spinner:
                     try {
+                        vAddressId = "";
                         vendingArea = parent.getSelectedItem().toString();
                         if (!vendingArea.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncVendingViewModel.getTelVenAddressId(vendingArea,  loggedULBId, loggedDistId);
-                            } else {
-                                liveData = svsSyncVendingViewModel.getVenAddressId(vendingArea, loggedULBId, loggedDistId);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String vAddressId) {
-                                    MainActivity.this.vAddressId = vAddressId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
-
-                            });
+                            MainActivity.this.vAddressId = vendingAddressEntities.get(position - 1).getVendingAreaId();
                         }
 
                     } catch (Exception e) {
@@ -1766,60 +1684,55 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.bank_spinner:
                     try {
+                        branchEntities = new ArrayList<>();
+                        bankId = "";
+                        branchId = "";
+                        ifscCode = "";
                         branch_str = "";
-                        binding.etIfscCode.setText("");
+                        binding.etIfscCode.setText(ifscCode);
                         bank_str = parent.getSelectedItem().toString();
                         if (!bank_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncBBViewModel.getTelBankId(bank_str, parent.getSelectedItemPosition()+1);
-                            } else {
-                                liveData = svsSyncBBViewModel.getBankID(bank_str, parent.getSelectedItemPosition()+1);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String bankId) {
-                                    MainActivity.this.bankId = bankId;
 
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(bankId)) {
 
-                                        LiveData<List<BranchEntity>> branchListLiveData = svsSyncBBViewModel.getBankBranches(bankId);
-                                        branchListLiveData.observe(MainActivity.this, new Observer<List<BranchEntity>>() {
-                                            @Override
-                                            public void onChanged(List<BranchEntity> branchEntities) {
-                                                if (branchEntities != null && branchEntities.size() > 0) {
-                                                    //load based on language type
-                                                    branches = new ArrayList<>();
-                                                    branches.add(getString(R.string.select_branch));
-                                                    binding.branchSpinner.setEnabled(true);
-                                                    if (locale.equals("te")) {
-                                                        for (int x = 0; x < branchEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(branchEntities.get(x).getBranchNameTel())) {
-                                                                branches.add(branchEntities.get(x).getBranchNameTel());
-                                                            }
-                                                        }
-                                                    } else {
-                                                        for (int x = 0; x < branchEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(branchEntities.get(x).getBranchName())) {
-                                                                branches.add(branchEntities.get(x).getBranchName());
-                                                            }
-                                                        }
+                            BankEntity bankEntity = bankEntities.get(position);
+                            MainActivity.this.bankId = bankEntity.getBankId();
+                            if (!TextUtils.isEmpty(bankId)) {
+
+                                LiveData<List<BranchEntity>> branchListLiveData = svsSyncBBViewModel.getBankBranches(bankId);
+                                branchListLiveData.observe(MainActivity.this, new Observer<List<BranchEntity>>() {
+                                    @Override
+                                    public void onChanged(List<BranchEntity> branchEntities) {
+                                        if (branchEntities != null && branchEntities.size() > 0) {
+                                            MainActivity.this.branchEntities = branchEntities;
+                                            //load based on language type
+                                            branches = new ArrayList<>();
+                                            branches.add(getString(R.string.select_branch));
+                                            binding.branchSpinner.setEnabled(true);
+                                            if (locale.equals("te")) {
+                                                for (int x = 0; x < branchEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(branchEntities.get(x).getBranchNameTel())) {
+                                                        branches.add(branchEntities.get(x).getBranchNameTel());
                                                     }
-                                                    Utils.loadSpinnerData(MainActivity.this, branches, binding.branchSpinner);
-                                                } else {
-                                                    Snackbar.make(binding.cl, getString(R.string.no_branches), BaseTransientBottomBar.LENGTH_SHORT).show();
-                                                    binding.branchSpinner.setEnabled(false);
-                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
-
-                                                    ScrollToView(binding.branchSpinner);
-                                                    binding.branchSpinner.requestFocus();
+                                                }
+                                            } else {
+                                                for (int x = 0; x < branchEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(branchEntities.get(x).getBranchName())) {
+                                                        branches.add(branchEntities.get(x).getBranchName());
+                                                    }
                                                 }
                                             }
-                                        });
+                                            Utils.loadSpinnerData(MainActivity.this, branches, binding.branchSpinner);
+                                        } else {
+                                            Snackbar.make(binding.cl, getString(R.string.no_branches), BaseTransientBottomBar.LENGTH_SHORT).show();
+                                            binding.branchSpinner.setEnabled(false);
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.branchSpinner);
+
+                                            ScrollToView(binding.branchSpinner);
+                                            binding.branchSpinner.requestFocus();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
                         } else {
                             binding.etIfscCode.setText("");
                             binding.branchSpinner.setEnabled(false);
@@ -1834,35 +1747,25 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.branch_spinner:
                     try {
-                        binding.etIfscCode.setText("");
+                        branchId = "";
+                        ifscCode = "";
+                        binding.etIfscCode.setText(ifscCode);
                         branch_str = parent.getSelectedItem().toString();
                         if (!branch_str.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncBBViewModel.getTelBranchId(branch_str, bankId);
-                            } else {
-                                liveData = svsSyncBBViewModel.getBranchID(branch_str, bankId);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String branchId) {
-                                    MainActivity.this.branchId = branchId;
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(branchId)) {
-                                        LiveData<String> ifscCodeLiveData = svsSyncBBViewModel.getIFSCCode(bankId, branchId);
-                                        ifscCodeLiveData.observe(MainActivity.this, new Observer<String>() {
-                                            @Override
-                                            public void onChanged(String ifscCode) {
-                                                if (!TextUtils.isEmpty(ifscCode)) {
-                                                    binding.etIfscCode.setText(ifscCode);
-                                                } else {
-                                                    binding.etIfscCode.setText("");
-                                                }
-                                            }
-                                        });
+                            MainActivity.this.branchId = branchEntities.get(position - 1).getBranchId();
+                            if (!TextUtils.isEmpty(branchId)) {
+                                LiveData<String> ifscCodeLiveData = svsSyncBBViewModel.getIFSCCode(bankId, branchId);
+                                ifscCodeLiveData.observe(MainActivity.this, new Observer<String>() {
+                                    @Override
+                                    public void onChanged(String ifscCode) {
+                                        if (!TextUtils.isEmpty(ifscCode)) {
+                                            binding.etIfscCode.setText(ifscCode);
+                                        } else {
+                                            binding.etIfscCode.setText("");
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
                         }
 
                     } catch (Exception e) {
@@ -1881,73 +1784,63 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                         binding.etPerVil.setText(village);
                         state = parent.getSelectedItem().toString();
                         if (!state.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncPlaceViewModel.getTelStateId(state);
-                            } else {
-                                liveData = svsSyncPlaceViewModel.getStateId(state);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String stateId) {
-                                    MainActivity.this.stateId = stateId;
 
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(stateId)) {
-                                        if (state.contains(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA)) {
+                            MainActivity.this.stateId = stateEntities.get(position).getStateId();
+                            if (!TextUtils.isEmpty(stateId)) {
+                                if (state.contains(getString(R.string.telangana)) || state.equalsIgnoreCase(AppConstants.TELANGANA)) {
 
-                                            binding.distLl.setVisibility(View.VISIBLE);
-                                            binding.mandalLl.setVisibility(View.VISIBLE);
-                                            binding.villageLl.setVisibility(View.VISIBLE);
+                                    binding.distLl.setVisibility(View.VISIBLE);
+                                    binding.mandalLl.setVisibility(View.VISIBLE);
+                                    binding.villageLl.setVisibility(View.VISIBLE);
 
-                                            binding.tvPerDist.setVisibility(View.GONE);
-                                            binding.tvPerMan.setVisibility(View.GONE);
-                                            binding.tvPerVil.setVisibility(View.GONE);
+                                    binding.tvPerDist.setVisibility(View.GONE);
+                                    binding.tvPerMan.setVisibility(View.GONE);
+                                    binding.tvPerVil.setVisibility(View.GONE);
 
-                                            LiveData<List<DistrictEntity>> branchListLiveData = svsSyncPlaceViewModel.getAllDistricts();
-                                            branchListLiveData.observe(MainActivity.this, new Observer<List<DistrictEntity>>() {
-                                                @Override
-                                                public void onChanged(List<DistrictEntity> districtEntities) {
-                                                    if (districtEntities != null && districtEntities.size() > 0) {
-                                                        //load based on language type
-                                                        districts = new ArrayList<>();
-                                                        binding.districtSpinner.setEnabled(true);
-                                                        if (locale.equals("te")) {
-                                                            for (int x = 0; x < districtEntities.size(); x++) {
-                                                                if (!TextUtils.isEmpty(districtEntities.get(x).getDistrictNameTel())) {
-                                                                    districts.add(districtEntities.get(x).getDistrictNameTel());
-                                                                }
-                                                            }
-                                                        } else {
-                                                            for (int x = 0; x < districtEntities.size(); x++) {
-                                                                if (!TextUtils.isEmpty(districtEntities.get(x).getDistrictName())) {
-                                                                    districts.add(districtEntities.get(x).getDistrictName());
-                                                                }
-                                                            }
+                                    LiveData<List<DistrictEntity>> branchListLiveData = svsSyncPlaceViewModel.getAllDistricts();
+                                    branchListLiveData.observe(MainActivity.this, new Observer<List<DistrictEntity>>() {
+                                        @Override
+                                        public void onChanged(List<DistrictEntity> districtEntities) {
+
+                                            if (districtEntities != null && districtEntities.size() > 0) {
+                                                //load based on language type
+                                                districts = new ArrayList<>();
+                                                binding.districtSpinner.setEnabled(true);
+                                                if (locale.equals("te")) {
+                                                    for (int x = 0; x < districtEntities.size(); x++) {
+                                                        if (!TextUtils.isEmpty(districtEntities.get(x).getDistrictNameTel())) {
+                                                            districts.add(districtEntities.get(x).getDistrictNameTel());
                                                         }
-                                                        Utils.loadSpinnerData(MainActivity.this, districts, binding.districtSpinner);
-                                                    } else {
-                                                        binding.mandalSpinner.setEnabled(false);
-                                                        binding.villageSpinner.setEnabled(false);
-                                                        binding.districtSpinner.setEnabled(false);
-                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
-                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
-                                                        Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+                                                    }
+                                                } else {
+                                                    for (int x = 0; x < districtEntities.size(); x++) {
+                                                        if (!TextUtils.isEmpty(districtEntities.get(x).getDistrictName())) {
+                                                            districts.add(districtEntities.get(x).getDistrictName());
+                                                        }
                                                     }
                                                 }
-                                            });
-                                        } else {
-                                            binding.distLl.setVisibility(View.GONE);
-                                            binding.mandalLl.setVisibility(View.GONE);
-                                            binding.villageLl.setVisibility(View.GONE);
-
-                                            binding.tvPerDist.setVisibility(View.VISIBLE);
-                                            binding.tvPerMan.setVisibility(View.VISIBLE);
-                                            binding.tvPerVil.setVisibility(View.VISIBLE);
+                                                Utils.loadSpinnerData(MainActivity.this, districts, binding.districtSpinner);
+                                            } else {
+                                                binding.mandalSpinner.setEnabled(false);
+                                                binding.villageSpinner.setEnabled(false);
+                                                binding.districtSpinner.setEnabled(false);
+                                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
+                                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                                                Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+                                            }
                                         }
-                                    }
+                                    });
+                                } else {
+                                    binding.distLl.setVisibility(View.GONE);
+                                    binding.mandalLl.setVisibility(View.GONE);
+                                    binding.villageLl.setVisibility(View.GONE);
+
+                                    binding.tvPerDist.setVisibility(View.VISIBLE);
+                                    binding.tvPerMan.setVisibility(View.VISIBLE);
+                                    binding.tvPerVil.setVisibility(View.VISIBLE);
                                 }
-                            });
+                            }
+
                         } else {
                             binding.mandalSpinner.setEnabled(false);
                             binding.villageSpinner.setEnabled(false);
@@ -1956,10 +1849,6 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.districtSpinner);
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
-
-//                            binding.districtSpinner.setAdapter(null);
-//                            binding.mandalSpinner.setAdapter(null);
-//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -1970,73 +1859,59 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.district_spinner:
                     try {
+                        mandalEntities = new ArrayList<>();
+                        villageEntities = new ArrayList<>();
                         mandal = "";
                         village = "";
                         district = parent.getSelectedItem().toString();
                         if (!district.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncPlaceViewModel.getTelDistId(district);
-                            } else {
-                                liveData = svsSyncPlaceViewModel.getDistId(district);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String distId) {
-                                    MainActivity.this.distId = distId;
 
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(distId)) {
-                                        LiveData<List<MandalEntity>> maListLiveData = svsSyncPlaceViewModel.getDistrictMandals(distId);
-                                        maListLiveData.observe(MainActivity.this, new Observer<List<MandalEntity>>() {
-                                            @Override
-                                            public void onChanged(List<MandalEntity> mandalEntities) {
-                                                if (mandalEntities != null && mandalEntities.size() > 0) {
-                                                    //load based on language type
-                                                    mandals = new ArrayList<>();
-                                                    mandals.add(getString(R.string.select_mandal));
-                                                    binding.mandalSpinner.setEnabled(true);
-                                                    if (locale.equals("te")) {
-                                                        for (int x = 0; x < mandalEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(mandalEntities.get(x).getMandalNameTel())) {
-                                                                mandals.add(mandalEntities.get(x).getMandalNameTel());
-                                                            }
-                                                        }
-                                                    } else {
-                                                        for (int x = 0; x < mandalEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(mandalEntities.get(x).getMandalName())) {
-                                                                mandals.add(mandalEntities.get(x).getMandalName());
-                                                            }
-                                                        }
+                            MainActivity.this.distId = districtEntities.get(position).getDistrictId();
+                            if (!TextUtils.isEmpty(distId)) {
+                                LiveData<List<MandalEntity>> maListLiveData = svsSyncPlaceViewModel.getDistrictMandals(distId);
+                                maListLiveData.observe(MainActivity.this, new Observer<List<MandalEntity>>() {
+                                    @Override
+                                    public void onChanged(List<MandalEntity> mandalEntities) {
+                                        MainActivity.this.mandalEntities = mandalEntities;
+                                        if (mandalEntities != null && mandalEntities.size() > 0) {
+                                            //load based on language type
+                                            mandals = new ArrayList<>();
+                                            mandals.add(getString(R.string.select_mandal));
+                                            binding.mandalSpinner.setEnabled(true);
+                                            if (locale.equals("te")) {
+                                                for (int x = 0; x < mandalEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(mandalEntities.get(x).getMandalNameTel())) {
+                                                        mandals.add(mandalEntities.get(x).getMandalNameTel());
                                                     }
-                                                    Utils.loadSpinnerData(MainActivity.this, mandals, binding.mandalSpinner);
-                                                } else {
-                                                    Snackbar.make(binding.cl, getString(R.string.no_mandals), BaseTransientBottomBar.LENGTH_SHORT).show();
-
-                                                    binding.mandalSpinner.setEnabled(false);
-                                                    binding.villageSpinner.setEnabled(false);
-
-                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
-                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
-
-//                                                    binding.mandalSpinner.setAdapter(null);
-//                                                    binding.villageSpinner.setAdapter(null);
+                                                }
+                                            } else {
+                                                for (int x = 0; x < mandalEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(mandalEntities.get(x).getMandalName())) {
+                                                        mandals.add(mandalEntities.get(x).getMandalName());
+                                                    }
                                                 }
                                             }
-                                        });
+                                            Utils.loadSpinnerData(MainActivity.this, mandals, binding.mandalSpinner);
+                                        } else {
+                                            Snackbar.make(binding.cl, getString(R.string.no_mandals), BaseTransientBottomBar.LENGTH_SHORT).show();
 
+                                            binding.mandalSpinner.setEnabled(false);
+                                            binding.villageSpinner.setEnabled(false);
 
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
+                                        }
                                     }
-                                }
-                            });
+                                });
+
+
+                            }
+
                         } else {
                             binding.mandalSpinner.setEnabled(false);
                             binding.villageSpinner.setEnabled(false);
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.mandalSpinner);
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
-
-//                            binding.mandalSpinner.setAdapter(null);
-//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -2047,68 +1922,59 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.mandal_spinner:
                     try {
+                        villageEntities = new ArrayList<>();
                         village = "";
+                        manId = "";
+                        vilId = "";
 
                         mandal = parent.getSelectedItem().toString();
                         if (!mandal.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncPlaceViewModel.getTelMandalId(mandal, distId);
-                            } else {
-                                liveData = svsSyncPlaceViewModel.getManId(mandal, distId);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String manId) {
-                                    MainActivity.this.manId = manId;
 
-                                    liveData.removeObservers(MainActivity.this);
-                                    if (!TextUtils.isEmpty(manId)) {
-                                        LiveData<List<VillageEntity>> branchListLiveData = svsSyncPlaceViewModel.getMandalVillages(distId, manId);
-                                        branchListLiveData.observe(MainActivity.this, new Observer<List<VillageEntity>>() {
-                                            @Override
-                                            public void onChanged(List<VillageEntity> villageEntities) {
-                                                if (villageEntities != null && villageEntities.size() > 0) {
-                                                    //load based on language type
-                                                    binding.villageSpinner.setEnabled(true);
+                            MainActivity.this.manId = mandalEntities.get(position - 1).getMandalId();
+                            if (!TextUtils.isEmpty(manId)) {
+                                LiveData<List<VillageEntity>> branchListLiveData = svsSyncPlaceViewModel.getMandalVillages(distId, manId);
+                                branchListLiveData.observe(MainActivity.this, new Observer<List<VillageEntity>>() {
+                                    @Override
+                                    public void onChanged(List<VillageEntity> villageEntities) {
+                                        MainActivity.this.villageEntities = villageEntities;
+                                        if (villageEntities != null && villageEntities.size() > 0) {
+                                            //load based on language type
+                                            binding.villageSpinner.setEnabled(true);
 
-                                                    villages = new ArrayList<>();
-                                                    villages.add(getString(R.string.select_village));
-                                                    if (locale.equals("te")) {
-                                                        for (int x = 0; x < villageEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(villageEntities.get(x).getVillageNameTel())) {
-                                                                villages.add(villageEntities.get(x).getVillageNameTel());
-                                                            }
-                                                        }
-                                                    } else {
-                                                        for (int x = 0; x < villageEntities.size(); x++) {
-                                                            if (!TextUtils.isEmpty(villageEntities.get(x).getVillageName())) {
-                                                                villages.add(villageEntities.get(x).getVillageName());
-                                                            }
-                                                        }
+                                            villages = new ArrayList<>();
+                                            villages.add(getString(R.string.select_village));
+                                            if (locale.equals("te")) {
+                                                for (int x = 0; x < villageEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(villageEntities.get(x).getVillageNameTel())) {
+                                                        villages.add(villageEntities.get(x).getVillageNameTel());
                                                     }
-                                                    Utils.loadSpinnerData(MainActivity.this, villages, binding.villageSpinner);
-                                                } else {
-                                                    Snackbar.make(binding.cl, getString(R.string.no_villages), BaseTransientBottomBar.LENGTH_SHORT).show();
-
-                                                    Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
-
-                                                    binding.villageSpinner.setEnabled(false);
-//                                                    binding.villageSpinner.setAdapter(null);
+                                                }
+                                            } else {
+                                                for (int x = 0; x < villageEntities.size(); x++) {
+                                                    if (!TextUtils.isEmpty(villageEntities.get(x).getVillageName())) {
+                                                        villages.add(villageEntities.get(x).getVillageName());
+                                                    }
                                                 }
                                             }
-                                        });
+                                            Utils.loadSpinnerData(MainActivity.this, villages, binding.villageSpinner);
+                                        } else {
+                                            Snackbar.make(binding.cl, getString(R.string.no_villages), BaseTransientBottomBar.LENGTH_SHORT).show();
 
+                                            Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
 
+                                            binding.villageSpinner.setEnabled(false);
+                                        }
                                     }
-                                }
-                            });
+                                });
+
+
+                            }
+
                         } else {
                             binding.villageSpinner.setEnabled(false);
 
                             Utils.loadSpinnerData(MainActivity.this, emptyList, binding.villageSpinner);
 
-//                            binding.villageSpinner.setAdapter(null);
                         }
 
                     } catch (Exception e) {
@@ -2120,22 +1986,10 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
 
                 case R.id.village_spinner:
                     try {
+                        vilId = "";
                         village = parent.getSelectedItem().toString();
                         if (!village.contains(getString(R.string.select))) {
-                            LiveData<String> liveData;
-                            if (locale.equals("te")) {
-                                liveData = svsSyncPlaceViewModel.getTelVillageId(village, distId, manId);
-                            } else {
-                                liveData = svsSyncPlaceViewModel.getVilId(village, distId, manId);
-                            }
-                            liveData.observe(MainActivity.this, new Observer<String>() {
-                                @Override
-                                public void onChanged(String vilId) {
-                                    MainActivity.this.vilId = vilId;
-                                    liveData.removeObservers(MainActivity.this);
-                                }
-
-                            });
+                            MainActivity.this.vilId = villageEntities.get(position - 1).getVillageId();
                         }
 
                     } catch (Exception e) {
@@ -2317,13 +2171,13 @@ public class MainActivity extends AppCompatActivity implements ErrorHandlerInter
             binding.bankSpinner.requestFocus();
             return false;
         }
-        if (TextUtils.isEmpty(branch_str) || branch_str.contains(getString(R.string.select))) {
+        if (TextUtils.isEmpty(branch_str) || branch_str.contains(getString(R.string.select)) || branch_str.equals("-")) {
             ScrollToView(binding.branchSpinner);
             showBottomSheetSnackBar(getResources().getString(R.string.sel_branch_val));
             binding.branchSpinner.requestFocus();
             return false;
         }
-        if (TextUtils.isEmpty(ifscCode)) {
+        if (TextUtils.isEmpty(ifscCode) || ifscCode.equals("-")) {
             ScrollToView(binding.etIfscCode);
             showBottomSheetSnackBar(getResources().getString(R.string.no_ifsc));
             binding.etIfscCode.requestFocus();
