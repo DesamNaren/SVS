@@ -622,4 +622,9 @@
 
     <string name="user_manual">వాడుక సూచిక</string>
 
+
+    <string name="abstract_total">Abstract</string>
+    <string name="total_pop">Total Pop</string>
+    <string name="_3_5_of_pop">3.5% of Pop</string>
+
 </resources>

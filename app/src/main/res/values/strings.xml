@@ -391,4 +391,10 @@
     <string name="sel_vil_val">Select Village</string>
 
     <string name="user_manual">User Manual</string>
+    <string name="abstract_total">Abstract</string>
+    <string name="total_pop">Total Pop</string>
+    <string name="_3_5_of_pop">3.5% of Pop</string>
+    <string name="no_data_found">No data found</string>
+    <string name="daily_report">Daily Report</string>
+    <string name="search_by_dist">Search by District</string>
 </resources>

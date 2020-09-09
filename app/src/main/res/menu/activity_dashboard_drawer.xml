@@ -18,6 +18,11 @@
             android:title="@string/language_selection" />
 
         <item
+            android:id="@+id/nav_reports"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Daily Report" />
+
+        <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/logout"
             android:title="@string/logout_menu" />

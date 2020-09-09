@@ -1,8 +1,8 @@
 package com.cgg.streetvendor.network;
 
 
-import com.cgg.streetvendor.source.reposnse.SubmitResponse;
-import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
+import com.cgg.streetvendor.source.reposnse.submit.SubmitResponse;
+import com.cgg.streetvendor.source.reposnse.submit.ValidateAadharResponse;
 import com.cgg.streetvendor.source.reposnse.bankbranch.BankResponse;
 import com.cgg.streetvendor.source.reposnse.bankbranch.BranchResponse;
 import com.cgg.streetvendor.source.reposnse.kyc.BusinessResponse;
@@ -19,6 +19,8 @@ import com.cgg.streetvendor.source.reposnse.places.DistrictResponse;
 import com.cgg.streetvendor.source.reposnse.places.MandalResponse;
 import com.cgg.streetvendor.source.reposnse.places.StateResponse;
 import com.cgg.streetvendor.source.reposnse.places.VillageResponse;
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
+import com.cgg.streetvendor.source.reposnse.reports.DailyReportResponse;
 import com.cgg.streetvendor.source.reposnse.ulb.ULBResponse;
 import com.cgg.streetvendor.source.reposnse.ulb.WardResponse;
 import com.cgg.streetvendor.source.reposnse.version.VersionCheckResponse;
@@ -35,7 +37,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface SVSService {
     class Factory {
@@ -118,6 +119,11 @@ public interface SVSService {
     @GET("services/getVersionDetails")
     Call<VersionCheckResponse> getVersionCheckResponse();
 
+    @GET("services/getSVDailyProgressDetails")
+    Call<DailyReportResponse> getDailyReportResponse();
+
+    @GET("services/getSVAllFieldsReport")
+    Call<AllFieldReportData> getAllFieldReportDataCall();
 }
 
 

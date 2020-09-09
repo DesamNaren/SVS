@@ -64,6 +64,11 @@
             android:name=".ui.UserManualActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.DailyReportActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Light_AppTheme"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

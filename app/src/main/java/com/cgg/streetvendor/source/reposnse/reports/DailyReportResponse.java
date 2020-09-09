@@ -1,12 +1,11 @@
-package com.cgg.streetvendor.source.reposnse;
-
-import com.cgg.streetvendor.source.reposnse.kyc.GenderEntity;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package com.cgg.streetvendor.source.reposnse.reports;
 
 import java.util.List;
 
-public class SubmitResponse {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class DailyReportResponse {
 
     @SerializedName("status_message")
     @Expose
@@ -14,18 +13,9 @@ public class SubmitResponse {
     @SerializedName("status_code")
     @Expose
     private String statusCode;
-
-    @SerializedName("ref_no")
+    @SerializedName("sv_data")
     @Expose
-    private String refNO;
-
-    public String getRefNO() {
-        return refNO;
-    }
-
-    public void setRefNO(String refNO) {
-        this.refNO = refNO;
-    }
+    private List<DailyReportData> dailyReportData = null;
 
     public String getStatusMessage() {
         return statusMessage;
@@ -44,4 +34,12 @@ public class SubmitResponse {
     }
 
 
+    public List<DailyReportData> getDailyReportData() {
+        return dailyReportData;
+    }
+
+    public void setDailyReportData(List<DailyReportData> dailyReportData) {
+        this.dailyReportData = dailyReportData;
+    }
 }
+

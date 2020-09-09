@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:id="@+id/rlView"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/included_layout"
+            layout="@layout/daily_report_abstract" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/projectRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/data_ll"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:background="@color/colorPrimary"
+            android:visibility="visible"
+            tools:listitem="@layout/daily_report_abstract" />
+
+        <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+        <TextView
+            android:id="@+id/emptyTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:indeterminateTint="@android:color/holo_orange_light"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</layout>

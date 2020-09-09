@@ -1,4 +1,4 @@
-package com.cgg.streetvendor.source.reposnse;
+package com.cgg.streetvendor.source.reposnse.submit;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

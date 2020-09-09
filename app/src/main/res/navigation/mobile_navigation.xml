@@ -12,6 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_reports"
+        android:name="com.cgg.streetvendor.ui.DailyReportActivity"
+        android:label="@string/dashboard"
+        tools:layout="@layout/fragment_home" />
+
+
+    <fragment
         android:id="@+id/nav_gallery"
         android:name="com.cgg.streetvendor.ui.gallery.DownloadFragment"
         android:label="@string/download_masters"

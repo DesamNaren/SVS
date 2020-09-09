@@ -1,14 +1,11 @@
-package com.cgg.streetvendor.source.reposnse;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package com.cgg.streetvendor.source.reposnse.reports;
 
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ValidateAadharResponse {
+public class AllFieldReportResponse {
 
     @SerializedName("status_message")
     @Expose
@@ -18,7 +15,7 @@ public class ValidateAadharResponse {
     private String statusCode;
     @SerializedName("sv_data")
     @Expose
-    private List<SvDatum> svData = null;
+    private List<AllFieldReportData> allFieldReportData = null;
 
     public String getStatusMessage() {
         return statusMessage;
@@ -36,12 +33,13 @@ public class ValidateAadharResponse {
         this.statusCode = statusCode;
     }
 
-    public List<SvDatum> getSvData() {
-        return svData;
+
+    public List<AllFieldReportData> getAllFieldReportData() {
+        return allFieldReportData;
     }
 
-    public void setSvData(List<SvDatum> svData) {
-        this.svData = svData;
+    public void setAllFieldReportData(List<AllFieldReportData> allFieldReportData) {
+        this.allFieldReportData = allFieldReportData;
     }
-
 }
+

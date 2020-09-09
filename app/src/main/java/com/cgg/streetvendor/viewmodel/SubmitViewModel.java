@@ -4,14 +4,12 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
 import com.cgg.streetvendor.interfaces.SubmitInterface;
 import com.cgg.streetvendor.network.SVSService;
-import com.cgg.streetvendor.source.reposnse.SubmitResponse;
-import com.cgg.streetvendor.source.reposnse.ValidateAadharResponse;
+import com.cgg.streetvendor.source.reposnse.submit.SubmitResponse;
+import com.cgg.streetvendor.source.reposnse.submit.ValidateAadharResponse;
 import com.cgg.streetvendor.source.request.SubmitRequest;
 import com.google.gson.Gson;
 
@@ -31,7 +29,6 @@ public class SubmitViewModel extends AndroidViewModel {
         this.context = context;
         errorHandlerInterface = (ErrorHandlerInterface) context;
         submitInterface = (SubmitInterface) context;
-
     }
 
 
