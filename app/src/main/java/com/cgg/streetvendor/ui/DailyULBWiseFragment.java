@@ -21,6 +21,7 @@ import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.DailyDistrictWiseFragmentBinding;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportResponse;
+import com.cgg.streetvendor.util.Utils;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -74,15 +75,30 @@ public class DailyULBWiseFragment extends Fragment {
 
     private void setProjectData(DailyReportResponse reportResponse) {
         try {
-            long total_pop = 0, popPer = 0;
+            long total_pop = 0, popPer = 0, svs_prev_day_total = 0, today_svs_total = 0, cum_total = 0, balance_svs = 0;
 
             for (int x = 0; x < reportResponse.getDailyReportData().size(); x++) {
                 total_pop = total_pop + Long.valueOf(reportResponse.getDailyReportData().get(x).getSvMobileRevisedTarget());
                 popPer = popPer + Long.valueOf(reportResponse.getDailyReportData().get(x).getSvMobileRevisedTargetPercent());
+                svs_prev_day_total = svs_prev_day_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getPrevdayTotal());
+                today_svs_total = today_svs_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getTotal());
+                cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getCummTotal());
+                balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(x).getTotalBalance());
             }
 
-            binding.includedLayout.totalCount.setText(String.valueOf(total_pop));
-            binding.includedLayout.popperCount.setText(String.valueOf(popPer));
+
+            binding.includedLayout.totalPopTv.setText(String.valueOf(total_pop));
+            binding.includedLayout.popPerTv.setText(String.valueOf(popPer));
+            binding.includedLayout.pervDaySvsTv.setText(String.valueOf(svs_prev_day_total));
+            binding.includedLayout.todaySvs.setText(String.valueOf(today_svs_total));
+            binding.includedLayout.cuumSvsTv.setText(String.valueOf(cum_total));
+            binding.includedLayout.balanceSvsTv.setText(String.valueOf(balance_svs));
+            binding.includedLayout.balanceSvsTv.setText(String.valueOf(balance_svs));
+
+            binding.includedLayout.preDayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
+            binding.includedLayout.todayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            binding.includedLayout.title.setText(getString(R.string.abstract_total));
+
 
             prepareAdapter(reportResponse);
         } catch (Exception e) {
@@ -100,16 +116,30 @@ public class DailyULBWiseFragment extends Fragment {
                 ArrayList<DailyReportData> projectReportData = new ArrayList<>();
                 DailyReportData reportData = null;
 
-                for (int z = 0; z < reportResponse.getDailyReportData().size(); z++) {
-                    reportData = new DailyReportData();
 
+                for (int z = 0; z < reportResponse.getDailyReportData().size(); z++) {
+                    long total_pop = 0, popPer = 0, svs_prev_day_total = 0, today_svs_total = 0, cum_total = 0, balance_svs = 0;
+
+                    reportData = new DailyReportData();
+                    total_pop = total_pop + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTarget());
+                    popPer = popPer + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTargetPercent());
+                    svs_prev_day_total = svs_prev_day_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getPrevdayTotal());
+                    today_svs_total = today_svs_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotal());
+                    cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getCummTotal());
+                    balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotalBalance());
                     reportData.setCityName(reportResponse.getDailyReportData().get(z).getCityName());
-                    reportData.setSvMobileRevisedTarget(String.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTarget()));
-                    reportData.setSvMobileRevisedTargetPercent(String.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTargetPercent()));
+
+
+                    reportData.setSvMobileRevisedTarget(String.valueOf(total_pop));
+                    reportData.setSvMobileRevisedTargetPercent(String.valueOf(popPer));
+                    reportData.setPrevdayTotal(String.valueOf(svs_prev_day_total));
+                    reportData.setTotal(String.valueOf(today_svs_total));
+                    reportData.setCummTotal(String.valueOf(cum_total));
+                    reportData.setTotalBalance(String.valueOf(balance_svs));
 
                     projectReportData.add(reportData);
-
                 }
+
 
                 if (projectReportData.size() > 0) {
 
@@ -122,11 +152,9 @@ public class DailyULBWiseFragment extends Fragment {
                 }
 
             }
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void sortData(ArrayList<DailyReportData> projectReportData) {
@@ -151,7 +179,7 @@ public class DailyULBWiseFragment extends Fragment {
         MenuItem menuItem = mMenu.findItem(R.id.action_search);
         searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
 
-        searchView.setQueryHint("Search by District");
+        searchView.setQueryHint("Search by ULB");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

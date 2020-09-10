@@ -397,4 +397,11 @@
     <string name="no_data_found">No data found</string>
     <string name="daily_report">Daily Report</string>
     <string name="search_by_dist">Search by District</string>
+    
+    <string name="total_urban">Total Urban Pop. as per Census</string>
+    <string name="target_urban">Target No. of Street Vendors (3.5% of Pop)</string>
+    <string name="no_of_svs_prev_day">Total No. of SVs identified up to previous day\nDate :</string>
+    <string name="no_of_svs_today">Total No. of SVs identified up to Today\nDate :</string>
+    <string name="cum_no_svs">Total Cumulative No. of SVs identified</string>
+    <string name="balance_to_identify">Balance to be identified</string>
 </resources>

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-
-        <variable
-            name="daily_report_data"
-            type="com.cgg.streetvendor.source.reposnse.reports.DailyReportData" />
-    </data>
-
     <LinearLayout
         android:id="@+id/data_ll"
         android:layout_width="match_parent"
@@ -30,7 +23,6 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:padding="@dimen/dimen_4dp"
-                android:text="@{daily_report_data.districtName}"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
@@ -82,7 +74,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.svMobileRevisedTarget}"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -114,7 +105,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.svMobileRevisedTargetPercent}"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -148,7 +138,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.prevdayTotal}"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -181,7 +170,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.total}"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -213,7 +201,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.cummTotal}"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -245,7 +232,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:text="@{daily_report_data.totalBalance}"
                         android:textColor="@color/colorPrimary" />
 
 

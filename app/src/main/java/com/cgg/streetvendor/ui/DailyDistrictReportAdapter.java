@@ -2,23 +2,20 @@ package com.cgg.streetvendor.ui;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.databinding.DailyDistrictReportItemBinding;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
+import com.cgg.streetvendor.util.Utils;
 
 import java.util.ArrayList;
 
@@ -51,20 +48,22 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
     @Override
     public void onBindViewHolder(@NonNull final ItemViewHolder itemViewHolder, final int position) {
         try {
-            itemViewHolder.listItemBinding.title.setText(mFilteredList.get(position).getDistrictName());
-            itemViewHolder.listItemBinding.totalCount.setText
-                    (String.valueOf(mFilteredList.get(position).getSvMobileRevisedTarget()));
-            itemViewHolder.listItemBinding.popperCount.setText
-                    (String.valueOf(mFilteredList.get(position).getSvMobileRevisedTargetPercent()));
 
-            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-//                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-//                    Utilities.takeSCImage(activity, abstractView ,
-//                            mFilteredList.get(position).getProjectName() + "_Project Data");
-                }
-            });
+            DailyReportData dailyReportData = mFilteredList.get(position);
+            itemViewHolder.listItemBinding.preDayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
+            itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
+
+            itemViewHolder.bind(dailyReportData);
+
+//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
+////                    Utilities.takeSCImage(activity, abstractView ,
+////                            mFilteredList.get(position).getProjectName() + "_Project Data");
+//                }
+//            });
 
 
             itemViewHolder.listItemBinding.dataLl.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +72,6 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
                     // new Activity by passing DistName
                 }
             });
-
 
 
         } catch (Exception e) {
@@ -130,6 +128,10 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
         ItemViewHolder(DailyDistrictReportItemBinding listItemBinding) {
             super(listItemBinding.getRoot());
             this.listItemBinding = listItemBinding;
+        }
+
+        void bind(Object obj) {
+            listItemBinding.executePendingBindings();
         }
     }
 }

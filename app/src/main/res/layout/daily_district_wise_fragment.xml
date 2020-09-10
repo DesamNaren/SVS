@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
         android:id="@+id/rlView"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <include
             android:id="@+id/included_layout"
-            layout="@layout/daily_district_report_item" />
+            layout="@layout/daily_district_report_base_item" />
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@+id/included_layout"
             android:id="@+id/projectRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/included_layout"
             android:visibility="visible"
-            tools:listitem="@layout/daily_report_abstract" />
+            tools:listitem="@layout/daily_district_report_item" />
 
         <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 

@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
@@ -31,7 +30,6 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.cgg.streetvendor.BuildConfig;
@@ -48,11 +46,12 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import okhttp3.ResponseBody;
@@ -308,6 +307,23 @@ public class Utils {
             ex.printStackTrace();
         }
         return null;
+    }
+
+    public static String getPreviousDate() {
+        String result = "";
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+            SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            result = s.format(new Date(cal.getTimeInMillis()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static String getCurrentDate() {
+        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     }
 
     public static String getDeviceID(Context context) {
@@ -923,7 +939,7 @@ public class Utils {
                         .asBitmap()
                         .error(R.drawable.male_user)
                         .placeholder(R.drawable.loader_black1)
-                .into(imageView);
+                        .into(imageView);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override

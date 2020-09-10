@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.databinding.DailyDistrictReportItemBinding;
+import com.cgg.streetvendor.databinding.DailyUlbReportItemBinding;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
+import com.cgg.streetvendor.util.Utils;
 
 import java.util.ArrayList;
 
@@ -36,9 +38,9 @@ public class DailyULBReportAdapter extends RecyclerView.Adapter<DailyULBReportAd
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        DailyDistrictReportItemBinding listItemBinding = DataBindingUtil.inflate(
+        DailyUlbReportItemBinding listItemBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(viewGroup.getContext()),
-                R.layout.daily_district_report_item, viewGroup, false);
+                R.layout.daily_ulb_report_item, viewGroup, false);
 
         return new ItemViewHolder(listItemBinding);
 
@@ -47,20 +49,21 @@ public class DailyULBReportAdapter extends RecyclerView.Adapter<DailyULBReportAd
     @Override
     public void onBindViewHolder(@NonNull final ItemViewHolder itemViewHolder, final int position) {
         try {
-            itemViewHolder.listItemBinding.title.setText(mFilteredList.get(position).getCityName());
-            itemViewHolder.listItemBinding.totalCount.setText
-                    (String.valueOf(mFilteredList.get(position).getSvMobileRevisedTarget()));
-            itemViewHolder.listItemBinding.popperCount.setText
-                    (String.valueOf(mFilteredList.get(position).getSvMobileRevisedTargetPercent()));
+            DailyReportData dailyReportData = mFilteredList.get(position);
+            itemViewHolder.listItemBinding.preDayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
+            itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
 
-            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-//                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-//                    Utilities.takeSCImage(activity, abstractView ,
-//                            mFilteredList.get(position).getProjectName() + "_Project Data");
-                }
-            });
+            itemViewHolder.bind(dailyReportData);
+//
+//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
+////                    Utilities.takeSCImage(activity, abstractView ,
+////                            mFilteredList.get(position).getProjectName() + "_Project Data");
+//                }
+//            });
 
 
             itemViewHolder.listItemBinding.dataLl.setOnClickListener(new View.OnClickListener() {
@@ -121,11 +124,15 @@ public class DailyULBReportAdapter extends RecyclerView.Adapter<DailyULBReportAd
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        DailyDistrictReportItemBinding listItemBinding;
+        DailyUlbReportItemBinding listItemBinding;
 
-        ItemViewHolder(DailyDistrictReportItemBinding listItemBinding) {
+        ItemViewHolder(DailyUlbReportItemBinding listItemBinding) {
             super(listItemBinding.getRoot());
             this.listItemBinding = listItemBinding;
+        }
+
+        void bind(Object obj) {
+            listItemBinding.executePendingBindings();
         }
     }
 }
