@@ -238,7 +238,6 @@
     <string name="continue_str">Continue</string>
 
 
-
     <string name="state_message">Data not available for STATES, would you like to continue or download the data</string>
     <string name="dist_message">Data not available for DISTRICTS, would you like to continue or download the data</string>
     <string name="mandal_message">Data not available for MANDALS, would you like to continue or download the data</string>
@@ -397,11 +396,31 @@
     <string name="no_data_found">No data found</string>
     <string name="daily_report">Daily Report</string>
     <string name="search_by_dist">Search by District</string>
-    
+
     <string name="total_urban">Total Urban Pop. as per Census</string>
     <string name="target_urban">Target No. of Street Vendors (3.5% of Pop)</string>
     <string name="no_of_svs_prev_day">Total No. of SVs identified up to previous day\nDate :</string>
     <string name="no_of_svs_today">Total No. of SVs identified up to Today\nDate :</string>
     <string name="cum_no_svs">Total Cumulative No. of SVs identified</string>
     <string name="balance_to_identify">Balance to be identified</string>
+    <string name="total">Total</string>
+    <string name="daily_report_details">Daily Report Details</string>
+    <string name="district">District:</string>
+    <string name="search_by_ulb">Search by ULB</string>
+    <string name="all_field_report">All Field Report</string>
+    <string name="no_of_svs_surveyed">No. of Street Vendors Surveyed</string>
+    <string name="no_of_svs_id_card">No. of Street Vendors Issued ID Cards</string>
+    <string name="no_of_svs_ven_cer">No. of Street Vendors issued Vending Certificates</string>
+    <string name="no_of_svs_aad_cards">No. of Street Vendors with AADHAR cards</string>
+    <string name="no_of_svs_bank_acc">No. of SVs with Bank Accounts</string>
+    <string name="balance">Balance</string>
+    <string name="daily_progress_report">Daily Progress Report</string>
+    <string name="all_fields_report">All Fields Report</string>
+
+
+    <string name="tot_no_of_svs_surveyed">Total No. of Street Vendors Surveyed</string>
+    <string name="tot_no_of_svs_id_card">Total No. of Street Vendors Issued ID Cards</string>
+    <string name="tot_no_of_svs_ven_cer">Total No. of Street Vendors issued Vending Certificates</string>
+    <string name="tot_no_of_svs_aad_cards">Total No. of Street Vendors with AADHAR cards</string>
+    <string name="tot_no_of_svs_bank_acc">Total No. of SVs with Bank Accounts</string>
 </resources>

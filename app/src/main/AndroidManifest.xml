@@ -17,22 +17,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:windowSoftInputMode="adjustPan"
-
             android:name=".ui.AddMemberActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.MemberActivity"
             android:label="@string/title_activity_member"
@@ -69,6 +68,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/Light_AppTheme"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.DailyReportDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Light_AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.AllFieldReportDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Light_AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.AllFieldReportActivity"
+            />
     </application>
 
 </manifest>

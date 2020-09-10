@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="all_report_data"
+            type="com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/data_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_8dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginRight="@dimen/dimen_8dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/dimen_8dp"
+                android:text="@{all_report_data.cityName}"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/content_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/absrtract_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_2dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/total_urban"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/dimen_16sp" />
+
+                        <TextView
+                            android:id="@+id/totalPopTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_bold"
+                            android:text="@{all_report_data.svMobileRevisedTarget}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/dimen_16sp" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@color/colorPrimary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/target_urban"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/dimen_16sp" />
+
+                        <TextView
+                            android:id="@+id/popPerTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_bold"
+                            android:text="@{all_report_data.svMobileRevisedTargetPercent}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/dimen_16sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/pre_day_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:text="@string/no_of_svs_surveyed"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/surMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.male}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/surFeMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.female}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/transgender"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/surTransTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.transgender}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginRight="@dimen/dimen_4dp"
+                        android:background="@color/dark_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/total"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/dimen_16sp" />
+
+                        <TextView
+                            android:id="@+id/surTotalTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/muli_bold"
+                            android:text="@{all_report_data.total}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/dimen_16sp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/today_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:text="@string/no_of_svs_id_card"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/idMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.maleIssuedIdcards}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/idFeMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.femaleIssuedIdcards}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/transgender"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/idTranTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.transgenderIssuedIdcards}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginRight="@dimen/dimen_4dp"
+                        android:background="@color/dark_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/total"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/idTotalTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.totalIssuedIdcards}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/balance"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/idBalanceTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.balanceIdcards}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:text="@string/no_of_svs_ven_cer"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/cerMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.maleVendingCertIssued}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/cerFemaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.femaleVendingCertIssued}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/transgender"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/cerTransTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.transgenderVendingCertIssued}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginRight="@dimen/dimen_4dp"
+                        android:background="@color/dark_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/total"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/cerTotalTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.totalVendingCertIssued}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/balance"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/cerBalanceTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.balanceVendingCertIssued}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:text="@string/no_of_svs_aad_cards"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/aadMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.maleAdhar}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/aadFemaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.femaleAdhar}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/transgender"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/aadTransTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.transgenderAdhar}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginRight="@dimen/dimen_4dp"
+                        android:background="@color/dark_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/total"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/aadTotalTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.totalAdharHaving}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/balance"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/aadBalanceTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.balanceAdhar}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:text="@string/no_of_svs_bank_acc"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_marginRight="@dimen/dimen_8dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp"
+                    android:background="@drawable/card_item_bg"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/male"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/banMaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.maleNoAccounts}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/female"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/banFemaleTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.femaleNoAccounts}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/transgender"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/banTransTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@{all_report_data.transgenderNoAccounts}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        android:layout_marginRight="@dimen/dimen_4dp"
+                        android:background="@color/dark_gray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/total"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/banTotalTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.totalNoAccounts}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dimen_4dp"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:layout_marginRight="@dimen/dimen_4dp"
+                            android:background="@color/dark_gray" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/balance"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                            <TextView
+                                android:id="@+id/banBalanceTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/muli_bold"
+                                android:text="@{all_report_data.balanceNoAccounts}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/dimen_16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

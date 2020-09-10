@@ -1,6 +1,7 @@
 package com.cgg.streetvendor.network;
 
 
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportResponse;
 import com.cgg.streetvendor.source.reposnse.submit.SubmitResponse;
 import com.cgg.streetvendor.source.reposnse.submit.ValidateAadharResponse;
 import com.cgg.streetvendor.source.reposnse.bankbranch.BankResponse;
@@ -123,7 +124,7 @@ public interface SVSService {
     Call<DailyReportResponse> getDailyReportResponse();
 
     @GET("services/getSVAllFieldsReport")
-    Call<AllFieldReportData> getAllFieldReportDataCall();
+    Call<AllFieldReportResponse> getAllFieldReportDataCall();
 }
 
 

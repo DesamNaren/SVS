@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.core.view.MenuItemCompat;
 import androidx.databinding.DataBindingUtil;
@@ -18,7 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.application.SVSApplication;
+import com.cgg.streetvendor.databinding.AllFieldDistWiseFragmentBinding;
 import com.cgg.streetvendor.databinding.DailyDistrictWiseFragmentBinding;
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportResponse;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportResponse;
 import com.cgg.streetvendor.util.Utils;
@@ -34,25 +38,25 @@ import java.util.Objects;
  * Created by lenovo on 03-06-2019.
  */
 
-public class DailyULBWiseFragment extends Fragment {
+public class AllFieldULBWiseFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
-    private DailyReportResponse dailyReportResponse;
-    private DailyDistrictWiseFragmentBinding binding;
+    private AllFieldReportResponse dailyReportResponse;
+    private AllFieldDistWiseFragmentBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,
-                R.layout.daily_district_wise_fragment, container, false);
+                R.layout.all_field_dist_wise_fragment, container, false);
         View view = binding.getRoot();
         setHasOptionsMenu(true);
 
         try {
             Gson gson = new Gson();
             sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
-            String string = sharedPreferences.getString("REPORT_DATA", "");
-            dailyReportResponse = gson.fromJson(string, DailyReportResponse.class);
+            String string = sharedPreferences.getString("ALL_REPORT_DATA", "");
+            dailyReportResponse = gson.fromJson(string, AllFieldReportResponse.class);
             setProjectData(dailyReportResponse);
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,30 +76,28 @@ public class DailyULBWiseFragment extends Fragment {
         return view;
     }
 
-    private void setProjectData(DailyReportResponse reportResponse) {
+    private void setProjectData(AllFieldReportResponse reportResponse) {
         try {
-            long total_pop = 0, popPer = 0, svs_prev_day_total = 0, today_svs_total = 0, cum_total = 0, balance_svs = 0;
+            long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt =0, ban_cnt = 0;
 
-            for (int x = 0; x < reportResponse.getDailyReportData().size(); x++) {
-                total_pop = total_pop + Long.valueOf(reportResponse.getDailyReportData().get(x).getSvMobileRevisedTarget());
-                popPer = popPer + Long.valueOf(reportResponse.getDailyReportData().get(x).getSvMobileRevisedTargetPercent());
-                svs_prev_day_total = svs_prev_day_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getPrevdayTotal());
-                today_svs_total = today_svs_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getTotal());
-                cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(x).getCummTotal());
-                balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(x).getTotalBalance());
+            for (int x = 0; x < reportResponse.getAllFieldReportData().size(); x++) {
+                total_pop = total_pop + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTarget());
+                popPer = popPer + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTargetPercent());
+                sur_cnt = sur_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotal());
+                ids_cnt = ids_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalIssuedIdcards());
+                cer_cnt = cer_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalVendingCertIssued());
+                aad_cnt = aad_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalAdharHaving());
+                ban_cnt = ban_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalNoAccounts());
             }
 
 
             binding.includedLayout.totalPopTv.setText(String.valueOf(total_pop));
             binding.includedLayout.popPerTv.setText(String.valueOf(popPer));
-            binding.includedLayout.pervDaySvsTv.setText(String.valueOf(svs_prev_day_total));
-            binding.includedLayout.todaySvs.setText(String.valueOf(today_svs_total));
-            binding.includedLayout.cuumSvsTv.setText(String.valueOf(cum_total));
-            binding.includedLayout.balanceSvsTv.setText(String.valueOf(balance_svs));
-            binding.includedLayout.balanceSvsTv.setText(String.valueOf(balance_svs));
-
-            binding.includedLayout.preDayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
-            binding.includedLayout.todayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            binding.includedLayout.totSurTv.setText(String.valueOf(sur_cnt));
+            binding.includedLayout.totIdTv.setText(String.valueOf(ids_cnt));
+            binding.includedLayout.totCerTv.setText(String.valueOf(cer_cnt));
+            binding.includedLayout.totAadTv.setText(String.valueOf(aad_cnt));
+            binding.includedLayout.totBankTv.setText(String.valueOf(ban_cnt));
 
             binding.includedLayout.title.setText(getString(R.string.abstract_total));
 
@@ -107,36 +109,38 @@ public class DailyULBWiseFragment extends Fragment {
     }
 
 
-    private DailyULBReportAdapter OTProjectReportAdapter;
+    private AllFieldULBReportAdapter OTProjectReportAdapter;
 
-    private void prepareAdapter(DailyReportResponse reportResponse) {
+    private void prepareAdapter(AllFieldReportResponse reportResponse) {
 
         try {
-            if (reportResponse.getDailyReportData().size() > 0) {
-                ArrayList<DailyReportData> projectReportData = new ArrayList<>();
-                DailyReportData reportData = null;
+            if (reportResponse.getAllFieldReportData().size() > 0) {
+                ArrayList<AllFieldReportData> projectReportData = new ArrayList<>();
+                AllFieldReportData reportData = null;
 
 
-                for (int z = 0; z < reportResponse.getDailyReportData().size(); z++) {
-                    long total_pop = 0, popPer = 0, svs_prev_day_total = 0, today_svs_total = 0, cum_total = 0, balance_svs = 0;
+                for (int x = 0; x < reportResponse.getAllFieldReportData().size(); x++) {
+                    long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt =0, ban_cnt = 0;
 
-                    reportData = new DailyReportData();
-                    total_pop = total_pop + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTarget());
-                    popPer = popPer + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTargetPercent());
-                    svs_prev_day_total = svs_prev_day_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getPrevdayTotal());
-                    today_svs_total = today_svs_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotal());
-                    cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getCummTotal());
-                    balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotalBalance());
-                    reportData.setCityName(reportResponse.getDailyReportData().get(z).getCityName());
-                    reportData.setDistrictName(reportResponse.getDailyReportData().get(z).getDistrictName());
+                    reportData = new AllFieldReportData();
+                    total_pop = total_pop + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTarget());
+                    popPer = popPer + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTargetPercent());
+                    sur_cnt = sur_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotal());
+                    ids_cnt = ids_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalIssuedIdcards());
+                    cer_cnt = cer_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalVendingCertIssued());
+                    aad_cnt = aad_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalAdharHaving());
+                    ban_cnt = ban_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalNoAccounts());
+                    reportData.setCityName(reportResponse.getAllFieldReportData().get(x).getCityName());
+                    reportData.setDistrictName(reportResponse.getAllFieldReportData().get(x).getDistrictName());
 
 
                     reportData.setSvMobileRevisedTarget(String.valueOf(total_pop));
                     reportData.setSvMobileRevisedTargetPercent(String.valueOf(popPer));
-                    reportData.setPrevdayTotal(String.valueOf(svs_prev_day_total));
-                    reportData.setTotal(String.valueOf(today_svs_total));
-                    reportData.setCummTotal(String.valueOf(cum_total));
-                    reportData.setTotalBalance(String.valueOf(balance_svs));
+                    reportData.setTotal(String.valueOf(sur_cnt));
+                    reportData.setTotalIssuedIdcards(String.valueOf(ids_cnt));
+                    reportData.setTotalVendingCertIssued(String.valueOf(cer_cnt));
+                    reportData.setTotalAdharHaving(String.valueOf(aad_cnt));
+                    reportData.setTotalNoAccounts(String.valueOf(ban_cnt));
 
                     projectReportData.add(reportData);
                 }
@@ -146,7 +150,7 @@ public class DailyULBWiseFragment extends Fragment {
 
                     sortData(projectReportData);
 
-                    OTProjectReportAdapter = new DailyULBReportAdapter(projectReportData, getActivity());
+                    OTProjectReportAdapter = new AllFieldULBReportAdapter(projectReportData, getActivity());
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     binding.projectRV.setLayoutManager(mLayoutManager);
                     binding.projectRV.setAdapter(OTProjectReportAdapter);
@@ -158,9 +162,9 @@ public class DailyULBWiseFragment extends Fragment {
         }
     }
 
-    private void sortData(ArrayList<DailyReportData> projectReportData) {
-        Collections.sort(projectReportData, new Comparator<DailyReportData>() {
-            public int compare(DailyReportData lhs, DailyReportData rhs) {
+    private void sortData(ArrayList<AllFieldReportData> projectReportData) {
+        Collections.sort(projectReportData, new Comparator<AllFieldReportData>() {
+            public int compare(AllFieldReportData lhs, AllFieldReportData rhs) {
                 return (lhs.getCityName().compareTo(rhs.getCityName()));
             }
         });

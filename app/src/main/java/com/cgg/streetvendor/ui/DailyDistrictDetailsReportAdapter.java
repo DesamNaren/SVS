@@ -1,10 +1,13 @@
 package com.cgg.streetvendor.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 
@@ -13,31 +16,36 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
-import com.cgg.streetvendor.databinding.DailyDistrictReportItemBinding;
+import com.cgg.streetvendor.databinding.DailyDistrictReportDetailsItemBinding;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
 import com.cgg.streetvendor.util.Utils;
 
 import java.util.ArrayList;
 
-public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistrictReportAdapter.ItemViewHolder> implements Filterable {
+public class DailyDistrictDetailsReportAdapter extends RecyclerView.Adapter<DailyDistrictDetailsReportAdapter.ItemViewHolder> implements Filterable {
 
 
     private ArrayList<DailyReportData> projectReportData;
     private ArrayList<DailyReportData> mFilteredList;
     private Context context;
+    private Activity activity;
+    private static int currentPosition;
 
-    public DailyDistrictReportAdapter(ArrayList<DailyReportData> projectReportData, Context context) {
+
+    public DailyDistrictDetailsReportAdapter(ArrayList<DailyReportData> projectReportData, Context context, Activity activity) {
         this.projectReportData = projectReportData;
         mFilteredList = projectReportData;
         this.context = context;
+        this.activity = activity;
+        currentPosition = 0;
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        DailyDistrictReportItemBinding listItemBinding = DataBindingUtil.inflate(
+        DailyDistrictReportDetailsItemBinding listItemBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(viewGroup.getContext()),
-                R.layout.daily_district_report_item, viewGroup, false);
+                R.layout.daily_district_report_details_item, viewGroup, false);
 
         return new ItemViewHolder(listItemBinding);
 
@@ -50,22 +58,34 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
             DailyReportData dailyReportData = mFilteredList.get(position);
             itemViewHolder.listItemBinding.preDayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
             itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
-
             itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
 
             itemViewHolder.bind(dailyReportData);
 
-            itemViewHolder.listItemBinding.absrtractLl.setOnClickListener(new View.OnClickListener() {
+            itemViewHolder.listItemBinding.contentLl.setVisibility(View.GONE);
+
+            if (currentPosition == position) {
+                //creating an animation
+                Animation slideDown = AnimationUtils.loadAnimation(context, R.anim.nav_default_enter_anim);
+
+                //toggling visibility
+                itemViewHolder.listItemBinding.contentLl.setVisibility(View.VISIBLE);
+
+                //adding sliding effect
+                itemViewHolder.listItemBinding.contentLl.startAnimation(slideDown);
+            }
+
+            itemViewHolder.listItemBinding.title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, DailyReportDetailsActivity.class);
-                    intent.putExtra("DAILY_REPORT_DISTRICT",
-                            mFilteredList.get(position).getDistrictName());
-                    intent.putExtra("DAILY_REPORT_ULB", "");
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
 
+                    //getting the position of the item to expand it
+                    currentPosition = position;
+
+                    //reloding the list
+                    notifyDataSetChanged();
                 }
+
             });
 
 //            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +115,7 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
                 } else {
                     ArrayList<DailyReportData> filteredList = new ArrayList<>();
                     for (DailyReportData otData : projectReportData) {
-                        if (otData.getDistrictName().toLowerCase().contains(charString.toLowerCase())) {
+                        if (otData.getCityName().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(otData);
                         }
                     }
@@ -127,9 +147,9 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        DailyDistrictReportItemBinding listItemBinding;
+        DailyDistrictReportDetailsItemBinding listItemBinding;
 
-        ItemViewHolder(DailyDistrictReportItemBinding listItemBinding) {
+        ItemViewHolder(DailyDistrictReportDetailsItemBinding listItemBinding) {
             super(listItemBinding.getRoot());
             this.listItemBinding = listItemBinding;
         }

@@ -30,7 +30,7 @@ import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.DailyReportBaseFragmentBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
-import com.cgg.streetvendor.source.reposnse.reports.DailyReportResponse;
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportResponse;
 import com.cgg.streetvendor.util.ErrorHandler;
 import com.cgg.streetvendor.util.Utils;
 import com.cgg.streetvendor.viewmodel.DailyReportViewModel;
@@ -38,7 +38,7 @@ import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
-public class DailyReportActivity extends AppCompatActivity implements ErrorHandlerInterface {
+public class AllFieldReportActivity extends AppCompatActivity implements ErrorHandlerInterface {
 
     DailyReportBaseFragmentBinding binding;
     private TextView tv;
@@ -56,7 +56,7 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
                         RelativeLayout.LayoutParams.MATCH_PARENT, // Width of TextView
                         RelativeLayout.LayoutParams.WRAP_CONTENT); // Height of TextView
                 tv.setLayoutParams(lp);
-                tv.setText(getResources().getString(R.string.daily_progress_report));
+                tv.setText(getResources().getString(R.string.all_fields_report));
                 tv.setGravity(Gravity.CENTER);
                 tv.setTextColor(Color.WHITE);
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
@@ -78,32 +78,32 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
 
         if (Utils.checkInternetConnection(this)) {
             binding.progress.setVisibility(View.VISIBLE);
-            LiveData<DailyReportResponse> dailyReportResponseLiveData = dailyReportViewModel.getDailyReportResponse();
-            dailyReportResponseLiveData.observe(this,
-                    new Observer<DailyReportResponse>() {
+            LiveData<AllFieldReportResponse> allFieldReportResponseLiveData = dailyReportViewModel.getAllFieldReportResponse();
+            allFieldReportResponseLiveData.observe(this,
+                    new Observer<AllFieldReportResponse>() {
                         @Override
-                        public void onChanged(DailyReportResponse dailyReportResponse) {
-                            dailyReportResponseLiveData.removeObservers(DailyReportActivity.this);
+                        public void onChanged(AllFieldReportResponse allFieldReportResponse) {
+                            allFieldReportResponseLiveData.removeObservers(AllFieldReportActivity.this);
                             binding.progress.setVisibility(View.GONE);
-                            if (dailyReportResponse != null) {
-                                if (dailyReportResponse.getStatusCode().equals("200") && dailyReportResponse.getDailyReportData()
-                                        != null && dailyReportResponse.getDailyReportData().size() > 0) {
-                                    SharedPreferences sharedPreferences = SVSApplication.get(DailyReportActivity.this).getPreferences();
+                            if (allFieldReportResponse != null) {
+                                if (allFieldReportResponse.getStatusCode().equals("200") && allFieldReportResponse.getAllFieldReportData()
+                                        != null && allFieldReportResponse.getAllFieldReportData().size() > 0) {
+                                    SharedPreferences sharedPreferences = SVSApplication.get(AllFieldReportActivity.this).getPreferences();
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     Gson gson = new Gson();
-                                    editor.putString("REPORT_DATA", gson.toJson(dailyReportResponse));
+                                    editor.putString("ALL_REPORT_DATA", gson.toJson(allFieldReportResponse));
                                     editor.commit();
                                     binding.viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
                                 } else {
                                     binding.emptyTV.setVisibility(View.VISIBLE);
                                 }
                             } else {
-                                Utils.customErrorAlert(DailyReportActivity.this, getResources().getString(R.string.app_name), getString(R.string.server_not));
+                                Utils.customErrorAlert(AllFieldReportActivity.this, getResources().getString(R.string.app_name), getString(R.string.server_not));
                             }
                         }
                     });
         } else {
-            Utils.customErrorAlert(DailyReportActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
+            Utils.customErrorAlert(AllFieldReportActivity.this, getResources().getString(R.string.app_name), getString(R.string.plz_check_int));
         }
 
     }
@@ -111,12 +111,12 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
     @Override
     public void handleError(Throwable e, Context context) {
         String errMsg = ErrorHandler.handleError(e, context);
-        Utils.customErrorAlert(DailyReportActivity.this, getString(R.string.app_name), errMsg);
+        Utils.customErrorAlert(AllFieldReportActivity.this, getString(R.string.app_name), errMsg);
     }
 
     @Override
     public void onBackPressed() {
-        Intent newIntent = new Intent(DailyReportActivity.this, DashboardActivity.class);
+        Intent newIntent = new Intent(AllFieldReportActivity.this, DashboardActivity.class);
         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(newIntent);
@@ -133,9 +133,9 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new DailyDistrictWiseFragment();
+                    return new AllFieldDistWiseFragment();
                 case 1:
-                    return new DailyULBWiseFragment();
+                    return new AllFieldULBWiseFragment();
             }
             return null;
         }
@@ -188,6 +188,9 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                //                if (viewTaskAdapter != null) {
+//                    viewTaskAdapter.getFilter().filter(newText);
+//                }
                 return true;
             }
         });

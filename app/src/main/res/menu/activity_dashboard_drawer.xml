@@ -17,10 +17,6 @@
             android:icon="@drawable/language"
             android:title="@string/language_selection" />
 
-        <item
-            android:id="@+id/nav_reports"
-            android:icon="@android:drawable/ic_menu_manage"
-            android:title="Daily Report" />
 
         <item
             android:id="@+id/nav_log_out"
@@ -29,6 +25,23 @@
 
     </group>
 
+
+    <group
+        android:id="@+id/report_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_reports"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="@string/daily_progress_report" />
+
+        <item
+            android:id="@+id/nav_reports_all"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="@string/all_fields_report" />
+
+
+    </group>
 
     <group
         android:id="@+id/pri_group"

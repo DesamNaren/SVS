@@ -13,20 +13,19 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
-import com.cgg.streetvendor.databinding.DailyDistrictReportItemBinding;
-import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
-import com.cgg.streetvendor.util.Utils;
+import com.cgg.streetvendor.databinding.AllFieldUlbReportItemBinding;
+import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
 
 import java.util.ArrayList;
 
-public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistrictReportAdapter.ItemViewHolder> implements Filterable {
+public class AllFieldULBReportAdapter extends RecyclerView.Adapter<AllFieldULBReportAdapter.ItemViewHolder> implements Filterable {
 
 
-    private ArrayList<DailyReportData> projectReportData;
-    private ArrayList<DailyReportData> mFilteredList;
+    private ArrayList<AllFieldReportData> projectReportData;
+    private ArrayList<AllFieldReportData> mFilteredList;
     private Context context;
 
-    public DailyDistrictReportAdapter(ArrayList<DailyReportData> projectReportData, Context context) {
+    public AllFieldULBReportAdapter(ArrayList<AllFieldReportData> projectReportData, Context context) {
         this.projectReportData = projectReportData;
         mFilteredList = projectReportData;
         this.context = context;
@@ -35,9 +34,9 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        DailyDistrictReportItemBinding listItemBinding = DataBindingUtil.inflate(
+        AllFieldUlbReportItemBinding listItemBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(viewGroup.getContext()),
-                R.layout.daily_district_report_item, viewGroup, false);
+                R.layout.all_field_ulb_report_item, viewGroup, false);
 
         return new ItemViewHolder(listItemBinding);
 
@@ -46,28 +45,12 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
     @Override
     public void onBindViewHolder(@NonNull final ItemViewHolder itemViewHolder, final int position) {
         try {
+            AllFieldReportData dailyReportData = mFilteredList.get(position);
 
-            DailyReportData dailyReportData = mFilteredList.get(position);
-            itemViewHolder.listItemBinding.preDayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
-            itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
-
-            itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
+            itemViewHolder.listItemBinding.setAllFieldData(dailyReportData);
 
             itemViewHolder.bind(dailyReportData);
-
-            itemViewHolder.listItemBinding.absrtractLl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, DailyReportDetailsActivity.class);
-                    intent.putExtra("DAILY_REPORT_DISTRICT",
-                            mFilteredList.get(position).getDistrictName());
-                    intent.putExtra("DAILY_REPORT_ULB", "");
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-
-                }
-            });
-
+//
 //            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
@@ -76,6 +59,19 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
 ////                            mFilteredList.get(position).getProjectName() + "_Project Data");
 //                }
 //            });
+
+            itemViewHolder.listItemBinding.absrtractLl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, AllFieldReportDetailsActivity.class);
+                    intent.putExtra("DAILY_REPORT_DISTRICT",
+                            mFilteredList.get(position).getDistrictName());
+                    intent.putExtra("DAILY_REPORT_ULB",
+                            mFilteredList.get(position).getCityName());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
 
 
         } catch (Exception e) {
@@ -93,9 +89,9 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
                 if (charString.isEmpty()) {
                     mFilteredList = projectReportData;
                 } else {
-                    ArrayList<DailyReportData> filteredList = new ArrayList<>();
-                    for (DailyReportData otData : projectReportData) {
-                        if (otData.getDistrictName().toLowerCase().contains(charString.toLowerCase())) {
+                    ArrayList<AllFieldReportData> filteredList = new ArrayList<>();
+                    for (AllFieldReportData otData : projectReportData) {
+                        if (otData.getCityName().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(otData);
                         }
                     }
@@ -108,14 +104,14 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                mFilteredList = (ArrayList<DailyReportData>) filterResults.values;
+                mFilteredList = (ArrayList<AllFieldReportData>) filterResults.values;
                 notifyDataSetChanged();
                 getFilteredData();
             }
         };
     }
 
-    public ArrayList<DailyReportData> getFilteredData() {
+    public ArrayList<AllFieldReportData> getFilteredData() {
         return mFilteredList;
     }
 
@@ -127,9 +123,9 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        DailyDistrictReportItemBinding listItemBinding;
+        AllFieldUlbReportItemBinding listItemBinding;
 
-        ItemViewHolder(DailyDistrictReportItemBinding listItemBinding) {
+        ItemViewHolder(AllFieldUlbReportItemBinding listItemBinding) {
             super(listItemBinding.getRoot());
             this.listItemBinding = listItemBinding;
         }

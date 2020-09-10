@@ -72,6 +72,23 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        MenuItem navReportAll = navigationView.getMenu().findItem(R.id.nav_reports_all);
+        navReportAll.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent newIntent = new Intent(DashboardActivity.this, AllFieldReportActivity.class);
+                newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(newIntent);
+                //do as you want with the button click
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+
+                return true;
+            }
+        });
+
 
         MenuItem navHome = navigationView.getMenu().findItem(R.id.nav_start_survey);
         navHome.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
