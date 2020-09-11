@@ -36,7 +36,6 @@ import com.cgg.streetvendor.util.Utils;
 import com.cgg.streetvendor.viewmodel.DailyReportViewModel;
 import com.google.gson.Gson;
 
-import org.jetbrains.annotations.NotNull;
 
 public class DailyReportActivity extends AppCompatActivity implements ErrorHandlerInterface {
 
@@ -128,7 +127,7 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
             super(fm);
         }
 
-        @NotNull
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             switch (position) {

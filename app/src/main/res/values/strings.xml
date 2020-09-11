@@ -393,6 +393,8 @@
     <string name="abstract_total">Abstract</string>
     <string name="total_pop">Total Pop</string>
     <string name="_3_5_of_pop">3.5% of Pop</string>
+
+
     <string name="no_data_found">No data found</string>
     <string name="daily_report">Daily Report</string>
     <string name="search_by_dist">Search by District</string>
@@ -425,4 +427,5 @@
     <string name="tot_no_of_svs_bank_acc">Total No. of SVs with Bank Accounts</string>
     <string name="report">Reports</string>
     <string name="search">Search</string>
+    <string name="female_report">Female</string>
 </resources>

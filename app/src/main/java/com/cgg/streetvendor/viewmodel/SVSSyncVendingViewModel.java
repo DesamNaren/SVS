@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -25,7 +26,6 @@ import com.cgg.streetvendor.source.reposnse.kyc.VendingAddressResponse;
 import com.cgg.streetvendor.source.reposnse.kyc.VendingTypeEntity;
 import com.cgg.streetvendor.source.reposnse.kyc.VendingTypeResponse;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -101,14 +101,14 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getBusinessResponse().enqueue(new Callback<BusinessResponse>() {
             @Override
-            public void onResponse(@NotNull Call<BusinessResponse> call, @NotNull Response<BusinessResponse> response) {
+            public void onResponse(@NonNull Call<BusinessResponse> call, @NonNull Response<BusinessResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     businessResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<BusinessResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<BusinessResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -125,14 +125,14 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getVenTypeResponse().enqueue(new Callback<VendingTypeResponse>() {
             @Override
-            public void onResponse(@NotNull Call<VendingTypeResponse> call, @NotNull Response<VendingTypeResponse> response) {
+            public void onResponse(@NonNull Call<VendingTypeResponse> call, @NonNull Response<VendingTypeResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     vendingTypeResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<VendingTypeResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<VendingTypeResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -149,14 +149,14 @@ public class SVSSyncVendingViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getVenAddressResponse(distULB).enqueue(new Callback<VendingAddressResponse>() {
             @Override
-            public void onResponse(@NotNull Call<VendingAddressResponse> call, @NotNull Response<VendingAddressResponse> response) {
+            public void onResponse(@NonNull Call<VendingAddressResponse> call, @NonNull Response<VendingAddressResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     vendingAddressResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<VendingAddressResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<VendingAddressResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });

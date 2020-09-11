@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -25,7 +26,6 @@ import com.cgg.streetvendor.source.reposnse.places.VillageEntity;
 import com.cgg.streetvendor.source.reposnse.places.VillageResponse;
 import com.cgg.streetvendor.source.reposnse.ulb.WardEntity;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -93,14 +93,14 @@ public class SVSSyncBBViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getBankResponse().enqueue(new Callback<BankResponse>() {
             @Override
-            public void onResponse(@NotNull Call<BankResponse> call, @NotNull Response<BankResponse> response) {
+            public void onResponse(@NonNull Call<BankResponse> call, @NonNull Response<BankResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     bankEntityMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<BankResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<BankResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -117,14 +117,14 @@ public class SVSSyncBBViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getBranchResponse().enqueue(new Callback<BranchResponse>() {
             @Override
-            public void onResponse(@NotNull Call<BranchResponse> call, @NotNull Response<BranchResponse> response) {
+            public void onResponse(@NonNull Call<BranchResponse> call, @NonNull Response<BranchResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     branchResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<BranchResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<BranchResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });

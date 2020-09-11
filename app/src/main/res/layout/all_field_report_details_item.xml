@@ -213,7 +213,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="@string/female"
+                                android:text="@string/female_report"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/dimen_16sp" />
 
@@ -380,7 +380,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="@string/female"
+                                android:text="@string/female_report"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/dimen_16sp" />
 
@@ -585,7 +585,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="@string/female"
+                                android:text="@string/female_report"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/dimen_16sp" />
 
@@ -792,7 +792,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="@string/female"
+                                android:text="@string/female_report"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/dimen_16sp" />
 
@@ -1000,7 +1000,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="@string/female"
+                                android:text="@string/female_report"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="@dimen/dimen_16sp" />
 

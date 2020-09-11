@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -17,7 +18,6 @@ import com.cgg.streetvendor.source.request.LoginRequest;
 import com.cgg.streetvendor.util.CustomProgressDialog;
 import com.cgg.streetvendor.util.Utils;
 
-import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,14 +79,14 @@ public class LoginViewModel extends ViewModel {
         svsService.getLoginResponse(loginRequest)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
-                    public void onResponse(@NotNull Call<LoginResponse> call, @NotNull Response<LoginResponse> response) {
+                    public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
                         customProgressDialog.dismiss();
                         binding.btnSubmit.setVisibility(View.VISIBLE);
                         responseMutableLiveData.setValue(response.body());
                     }
 
                     @Override
-                    public void onFailure(@NotNull Call<LoginResponse> call, @NotNull Throwable t) {
+                    public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
                         customProgressDialog.dismiss();
                         binding.btnSubmit.setVisibility(View.VISIBLE);
                         errorHandlerInterface.handleError(t, context);

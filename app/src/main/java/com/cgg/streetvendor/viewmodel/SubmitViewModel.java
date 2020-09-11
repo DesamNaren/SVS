@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
@@ -13,7 +14,6 @@ import com.cgg.streetvendor.source.reposnse.submit.ValidateAadharResponse;
 import com.cgg.streetvendor.source.request.SubmitRequest;
 import com.google.gson.Gson;
 
-import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,15 +39,15 @@ public class SubmitViewModel extends AndroidViewModel {
 
         twdService.submitServiceResponse(submitRequest).enqueue(new Callback<SubmitResponse>() {
             @Override
-            public void onResponse(@NotNull Call<SubmitResponse> call,
-                                   @NotNull Response<SubmitResponse> response) {
+            public void onResponse(@NonNull Call<SubmitResponse> call,
+                                   @NonNull Response<SubmitResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     submitInterface.getData(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<SubmitResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<SubmitResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -59,12 +59,12 @@ public class SubmitViewModel extends AndroidViewModel {
         svsService.validateAadhar(aadharNo)
                 .enqueue(new Callback<ValidateAadharResponse>() {
                     @Override
-                    public void onResponse(@NotNull Call<ValidateAadharResponse> call, @NotNull Response<ValidateAadharResponse> response) {
+                    public void onResponse(@NonNull Call<ValidateAadharResponse> call, @NonNull Response<ValidateAadharResponse> response) {
                         submitInterface.getAadharData(response.body());
                     }
 
                     @Override
-                    public void onFailure(@NotNull Call<ValidateAadharResponse> call, @NotNull Throwable t) {
+                    public void onFailure(@NonNull Call<ValidateAadharResponse> call, @NonNull Throwable t) {
                         errorHandlerInterface.handleError(t, context);
                     }
                 });

@@ -623,8 +623,42 @@
     <string name="user_manual">వాడుక సూచిక</string>
 
 
-    <string name="abstract_total">Abstract</string>
+    <string name="abstract_total">సారాంశం</string>
     <string name="total_pop">Total Pop</string>
     <string name="_3_5_of_pop">3.5% of Pop</string>
+
+    <string name="no_data_found">డేటా కనుగొనబడలేదు</string>
+    <string name="daily_report">రోజువారీ నివేదిక</string>
+    <string name="search_by_dist">జిల్లా వారీగా శోధించండి</string>
+
+    <string name="total_urban">మొత్తం అర్బన్ పాప్. జనాభా లెక్కల ప్రకారం</string>
+    <string name="target_urban">వీధి విక్రేతల లక్ష్యం (3.5% of Pop)</string>
+    <string name="no_of_svs_prev_day">మునుపటి రోజు వరకు గుర్తించిన వీధి విక్రేతల మొత్తం సంఖ్య\nతేదీ:</string>
+    <string name="no_of_svs_today">ఈ రోజు వరకు గుర్తించబడిన వీధి విక్రేతల మొత్తం సంఖ్య\nతేదీ:</string>
+    <string name="cum_no_svs">క్రమ వాయిదాలలో గుర్తించదగిన వీధి విక్రేతల మొత్తం సంఖ్య</string>
+    <string name="balance_to_identify">గుర్తించాల్సిన బ్యాలెన్స్</string>
+    <string name="total">మొత్తం</string>
+    <string name="daily_report_details">రోజువారీ నివేదిక వివరాలు</string>
+    <string name="district">జిల్లా:</string>
+    <string name="search_by_ulb">ULB ద్వారా శోధించండి</string>
+    <string name="all_field_report">అన్ని ఫీల్డ్ రిపోర్ట్</string>
+    <string name="no_of_svs_surveyed">సర్వే చేసిన వీధి విక్రేతల సంఖ్య</string>
+    <string name="no_of_svs_id_card">జారీ చేసిన ID కార్డుల వీధి విక్రేతల సంఖ్య </string>
+    <string name="no_of_svs_ven_cer">జారీ చేసిన వెండింగ్ సర్టిఫికెట్ల వీధి విక్రేతల సంఖ్య </string>
+    <string name="no_of_svs_aad_cards">ఆధార్ కార్డులతో వీధి విక్రేతల సంఖ్య</string>
+    <string name="no_of_svs_bank_acc">బ్యాంక్ ఖాతాలతో వీధి విక్రేతల సంఖ్య</string>
+    <string name="balance">బ్యాలెన్స్</string>
+    <string name="daily_progress_report">డైలీ ప్రోగ్రెస్ రిపోర్ట్</string>
+    <string name="all_fields_report">ఆల్ ఫీల్డ్స్ రిపోర్ట్</string>
+
+
+    <string name="tot_no_of_svs_surveyed">మొత్తం సర్వే చేసిన వీధి విక్రేతల సంఖ్య</string>
+    <string name="tot_no_of_svs_id_card">మొత్తం జారీ చేసిన ID కార్డుల వీధి విక్రేతల సంఖ్య </string>
+    <string name="tot_no_of_svs_ven_cer">మొత్తం జారీ చేసిన వెండింగ్ సర్టిఫికెట్ల వీధి విక్రేతల సంఖ్య </string>
+    <string name="tot_no_of_svs_aad_cards">మొత్తం ఆధార్ కార్డులతో వీధి విక్రేతల సంఖ్య</string>
+    <string name="tot_no_of_svs_bank_acc">మొత్తం బ్యాంక్ ఖాతాలతో వీధి విక్రేతల సంఖ్య</string>
+    <string name="report">నివేదికలు</string>
+    <string name="search">వెతకండి</string>
+    <string name="female_report">స్త్రీ</string>
 
 </resources>

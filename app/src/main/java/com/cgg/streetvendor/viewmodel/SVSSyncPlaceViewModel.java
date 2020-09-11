@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -19,7 +20,6 @@ import com.cgg.streetvendor.source.reposnse.places.StateResponse;
 import com.cgg.streetvendor.source.reposnse.places.VillageEntity;
 import com.cgg.streetvendor.source.reposnse.places.VillageResponse;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -119,14 +119,14 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getStateResponse().enqueue(new Callback<StateResponse>() {
             @Override
-            public void onResponse(@NotNull Call<StateResponse> call, @NotNull Response<StateResponse> response) {
+            public void onResponse(@NonNull Call<StateResponse> call, @NonNull Response<StateResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     stateResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<StateResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<StateResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -143,14 +143,14 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getDistrictResponse(stateID).enqueue(new Callback<DistrictResponse>() {
             @Override
-            public void onResponse(@NotNull Call<DistrictResponse> call, @NotNull Response<DistrictResponse> response) {
+            public void onResponse(@NonNull Call<DistrictResponse> call, @NonNull Response<DistrictResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     districtResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<DistrictResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<DistrictResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -167,14 +167,14 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getMandalResponse().enqueue(new Callback<MandalResponse>() {
             @Override
-            public void onResponse(@NotNull Call<MandalResponse> call, @NotNull Response<MandalResponse> response) {
+            public void onResponse(@NonNull Call<MandalResponse> call, @NonNull Response<MandalResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     mandalResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<MandalResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<MandalResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -191,14 +191,14 @@ public class SVSSyncPlaceViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getVillageResponse().enqueue(new Callback<VillageResponse>() {
             @Override
-            public void onResponse(@NotNull Call<VillageResponse> call, @NotNull Response<VillageResponse> response) {
+            public void onResponse(@NonNull Call<VillageResponse> call, @NonNull Response<VillageResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     villageResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<VillageResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<VillageResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });

@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -15,7 +16,6 @@ import com.cgg.streetvendor.source.reposnse.ulb.UlbEntity;
 import com.cgg.streetvendor.source.reposnse.ulb.WardEntity;
 import com.cgg.streetvendor.source.reposnse.ulb.WardResponse;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -87,14 +87,14 @@ public class SVSSyncULBViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getULBResponse().enqueue(new Callback<ULBResponse>() {
             @Override
-            public void onResponse(@NotNull Call<ULBResponse> call, @NotNull Response<ULBResponse> response) {
+            public void onResponse(@NonNull Call<ULBResponse> call, @NonNull Response<ULBResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     ulbResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<ULBResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<ULBResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -111,14 +111,14 @@ public class SVSSyncULBViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getWardResponse().enqueue(new Callback<WardResponse>() {
             @Override
-            public void onResponse(@NotNull Call<WardResponse> call, @NotNull Response<WardResponse> response) {
+            public void onResponse(@NonNull Call<WardResponse> call, @NonNull Response<WardResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     wardResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<WardResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<WardResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });

@@ -95,7 +95,7 @@ public class DailyULBWiseFragment extends Fragment {
             binding.includedLayout.balanceSvsTv.setText(String.valueOf(balance_svs));
 
             binding.includedLayout.preDayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
-            binding.includedLayout.todayTv.setText(getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            binding.includedLayout.todayTv.setText(getString(R.string.no_of_svs_today) + Utils.getCurrentDate());
 
             binding.includedLayout.title.setText(getString(R.string.abstract_total));
 

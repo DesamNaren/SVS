@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -39,7 +40,6 @@ import com.cgg.streetvendor.util.Utils;
 import com.cgg.streetvendor.viewmodel.SplashViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-import org.jetbrains.annotations.NotNull;
 
 public class SplashActivity extends AppCompatActivity implements ErrorHandlerInterface {
 
@@ -167,7 +167,7 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
     };
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NotNull String permissions[], @NotNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         try {
             switch (requestCode) {
                 case REQUEST_PERMISSION_CODE:

@@ -49,7 +49,7 @@ public class DailyULBReportAdapter extends RecyclerView.Adapter<DailyULBReportAd
         try {
             DailyReportData dailyReportData = mFilteredList.get(position);
             itemViewHolder.listItemBinding.preDayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getPreviousDate());
-            itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_prev_day) + Utils.getCurrentDate());
+            itemViewHolder.listItemBinding.todayTv.setText(context.getString(R.string.no_of_svs_today) + Utils.getCurrentDate());
 
             itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
 

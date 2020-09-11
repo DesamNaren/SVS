@@ -3,6 +3,7 @@ package com.cgg.streetvendor.viewmodel;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -23,7 +24,6 @@ import com.cgg.streetvendor.source.reposnse.kyc.RelationResponse;
 import com.cgg.streetvendor.source.reposnse.kyc.ReligionEntity;
 import com.cgg.streetvendor.source.reposnse.kyc.ReligionResponse;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -123,14 +123,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getGenderResponse().enqueue(new Callback<GenderResponse>() {
             @Override
-            public void onResponse(@NotNull Call<GenderResponse> call, @NotNull Response<GenderResponse> response) {
+            public void onResponse(@NonNull Call<GenderResponse> call, @NonNull Response<GenderResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     genderResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<GenderResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<GenderResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -147,14 +147,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getCasteResponse().enqueue(new Callback<CasteResponse>() {
             @Override
-            public void onResponse(@NotNull Call<CasteResponse> call, @NotNull Response<CasteResponse> response) {
+            public void onResponse(@NonNull Call<CasteResponse> call, @NonNull Response<CasteResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     casteResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<CasteResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<CasteResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -171,14 +171,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getPWDResponse().enqueue(new Callback<PWDResponse>() {
             @Override
-            public void onResponse(@NotNull Call<PWDResponse> call, @NotNull Response<PWDResponse> response) {
+            public void onResponse(@NonNull Call<PWDResponse> call, @NonNull Response<PWDResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     pwdResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<PWDResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<PWDResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -195,14 +195,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getQualificationResponse().enqueue(new Callback<QualificationResponse>() {
             @Override
-            public void onResponse(@NotNull Call<QualificationResponse> call, @NotNull Response<QualificationResponse> response) {
+            public void onResponse(@NonNull Call<QualificationResponse> call, @NonNull Response<QualificationResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     qualificationResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<QualificationResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<QualificationResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -226,14 +226,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getRelationResponse().enqueue(new Callback<RelationResponse>() {
             @Override
-            public void onResponse(@NotNull Call<RelationResponse> call, @NotNull Response<RelationResponse> response) {
+            public void onResponse(@NonNull Call<RelationResponse> call, @NonNull Response<RelationResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     relationResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<RelationResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<RelationResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });
@@ -243,14 +243,14 @@ public class SVSSyncKYCViewModel extends AndroidViewModel {
         SVSService twdService = SVSService.Factory.create();
         twdService.getReligionResponse().enqueue(new Callback<ReligionResponse>() {
             @Override
-            public void onResponse(@NotNull Call<ReligionResponse> call, @NotNull Response<ReligionResponse> response) {
+            public void onResponse(@NonNull Call<ReligionResponse> call, @NonNull Response<ReligionResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     religionResponseMutableLiveData.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<ReligionResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NonNull Call<ReligionResponse> call, @NonNull Throwable t) {
                 errorHandlerInterface.handleError(t, context);
             }
         });

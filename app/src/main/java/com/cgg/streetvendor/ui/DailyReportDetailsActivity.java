@@ -53,7 +53,7 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
                         RelativeLayout.LayoutParams.MATCH_PARENT, // Width of TextView
                         RelativeLayout.LayoutParams.WRAP_CONTENT); // Height of TextView
                 tv.setLayoutParams(lp);
-                tv.setText(getResources().getString(R.string.daily_report_details));
+                tv.setText(getResources().getString(R.string.daily_progress_report));
                 tv.setGravity(Gravity.CENTER);
                 tv.setTextColor(Color.WHITE);
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
