@@ -26,22 +26,22 @@
     </group>
 
 
-    <group
-        android:id="@+id/report_group"
-        android:checkableBehavior="single">
+    <item
+        android:id="@+id/report_item"
+        android:title="@string/report">
+        <menu>
+            <item
+                android:id="@+id/nav_reports"
+                android:icon="@drawable/daily_report"
+                android:title="@string/daily_progress_report" />
 
-        <item
-            android:id="@+id/nav_reports"
-            android:icon="@android:drawable/ic_menu_manage"
-            android:title="@string/daily_progress_report" />
+            <item
+                android:id="@+id/nav_reports_all"
+                android:icon="@drawable/all_field_report"
+                android:title="@string/all_fields_report" />
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/nav_reports_all"
-            android:icon="@android:drawable/ic_menu_manage"
-            android:title="@string/all_fields_report" />
-
-
-    </group>
 
     <group
         android:id="@+id/pri_group"
@@ -52,10 +52,10 @@
             android:icon="@drawable/privacy"
             android:title="@string/privacy_policy" />
         <item
-            android:visible="false"
             android:id="@+id/nav_user_manual"
             android:icon="@drawable/manual"
-            android:title="@string/user_manual" />
+            android:title="@string/user_manual"
+            android:visible="false" />
 
 
     </group>

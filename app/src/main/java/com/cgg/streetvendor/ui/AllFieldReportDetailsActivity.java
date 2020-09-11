@@ -38,6 +38,7 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
     private AllFieldReportResponse allFieldReportResponse;
     private TextView tv;
     private AllFieldDetailsReportAdapter adapter;
+    private String ulb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
 
         try {
             String dist = getIntent().getStringExtra("DAILY_REPORT_DISTRICT");
-            String ulb = getIntent().getStringExtra("DAILY_REPORT_ULB");
+            ulb = getIntent().getStringExtra("DAILY_REPORT_ULB");
             if (!TextUtils.isEmpty(dist)) {
                 binding.distNameTv.setText(dist);
                 sharedPreferences = SVSApplication.get(this).getPreferences();
@@ -118,6 +119,11 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search_menu, menu);
         mMenu = menu;
         MenuItem mSearch = mMenu.findItem(R.id.action_search);
+        if (!TextUtils.isEmpty(ulb)) {
+            mSearch.setVisible(false);
+        } else {
+            mSearch.setVisible(true);
+        }
         mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" +
                 getResources().getString(R.string.search_by_ulb) + "</font>"));

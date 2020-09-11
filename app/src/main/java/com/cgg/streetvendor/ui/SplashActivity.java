@@ -93,16 +93,16 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
 //                                                        SplashActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
                                                 int permissionCheck2 = ContextCompat.checkSelfPermission(
                                                         SplashActivity.this, Manifest.permission.CAMERA);
-//                                                int permissionCheck3 = ContextCompat.checkSelfPermission(
-//                                                        SplashActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                                                int permissionCheck3 = ContextCompat.checkSelfPermission(
+                                                        SplashActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
                                                 int permissionCheck4 = ContextCompat.checkSelfPermission(
                                                         SplashActivity.this, Manifest.permission.READ_PHONE_STATE);
 
 
                                                 if ((permissionCheck2 != PackageManager.PERMISSION_GRANTED)
                                                         && (permissionCheck4 != PackageManager.PERMISSION_GRANTED)
-                                                       /* && (permissionCheck3 != PackageManager.PERMISSION_GRANTED)
-                                                        && (permissionCheck4 != PackageManager.PERMISSION_GRANTED)*/) {
+                                                        && (permissionCheck3 != PackageManager.PERMISSION_GRANTED)
+                                                    /* && (permissionCheck4 != PackageManager.PERMISSION_GRANTED)*/) {
 
                                                     customBinding = DataBindingUtil.setContentView(SplashActivity.this,
                                                             R.layout.custom_layout_for_permissions);
@@ -155,7 +155,7 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
                         ActivityCompat.requestPermissions(SplashActivity.this,
                                 new String[]{/*Manifest.permission.ACCESS_FINE_LOCATION*/
                                         Manifest.permission.CAMERA,
-                                        /*Manifest.permission.WRITE_EXTERNAL_STORAGE,*/
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                         Manifest.permission.READ_PHONE_STATE},
                                 REQUEST_PERMISSION_CODE);
                         break;
@@ -174,8 +174,8 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
 
                     if ((grantResults[0] == PackageManager.PERMISSION_GRANTED)
                             && (grantResults[1] == PackageManager.PERMISSION_GRANTED)
-                           /* && (grantResults[2] == PackageManager.PERMISSION_GRANTED)
-                            && (grantResults[3] == PackageManager.PERMISSION_GRANTED)*/) {
+                            && (grantResults[2] == PackageManager.PERMISSION_GRANTED)
+                        /*   && (grantResults[3] == PackageManager.PERMISSION_GRANTED)*/) {
                         //TODO
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -221,7 +221,7 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
                                 new String[]{
                                         /*Manifest.permission.ACCESS_FINE_LOCATION*/
                                         Manifest.permission.CAMERA
-                                        /*, Manifest.permission.WRITE_EXTERNAL_STORAGE*/
+                                        , Manifest.permission.WRITE_EXTERNAL_STORAGE
                                         , Manifest.permission.READ_PHONE_STATE},
                                 REQUEST_PERMISSION_CODE);
                     }

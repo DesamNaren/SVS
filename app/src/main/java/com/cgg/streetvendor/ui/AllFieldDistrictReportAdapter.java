@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -68,14 +69,14 @@ public class AllFieldDistrictReportAdapter extends RecyclerView.Adapter<AllField
                 }
             });
 
-//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-////                    Utilities.takeSCImage(activity, abstractView ,
-////                            mFilteredList.get(position).getProjectName() + "_Project Data");
-//                }
-//            });
+            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
+                    Utils.takeSCImage(context, abstractView ,
+                            mFilteredList.get(position).getDistrictName() + "_All Fields Report District Data");
+                }
+            });
 
 
         } catch (Exception e) {

@@ -423,4 +423,6 @@
     <string name="tot_no_of_svs_ven_cer">Total No. of Street Vendors issued Vending Certificates</string>
     <string name="tot_no_of_svs_aad_cards">Total No. of Street Vendors with AADHAR cards</string>
     <string name="tot_no_of_svs_bank_acc">Total No. of SVs with Bank Accounts</string>
+    <string name="report">Reports</string>
+    <string name="search">Search</string>
 </resources>

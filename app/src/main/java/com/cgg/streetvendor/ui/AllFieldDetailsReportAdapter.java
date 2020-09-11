@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -71,6 +72,18 @@ public class AllFieldDetailsReportAdapter extends RecyclerView.Adapter<AllFieldD
                 }
             });
 
+            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout abstractView = itemViewHolder.listItemBinding.dataLl;
+                    Utils.takeSCImage(activity, abstractView,
+                            mFilteredList.get(position).getDistrictName()
+                                    +"_"
+                                    + mFilteredList.get(position).getCityName()
+                                    + "_All Field Report Complete Data");
+                }
+            });
+
             itemViewHolder.listItemBinding.contentLl.setVisibility(View.GONE);
 
             if (currentPosition == position) {
@@ -96,16 +109,6 @@ public class AllFieldDetailsReportAdapter extends RecyclerView.Adapter<AllFieldD
                 }
 
             });
-
-//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-////                    Utilities.takeSCImage(activity, abstractView ,
-////                            mFilteredList.get(position).getProjectName() + "_Project Data");
-//                }
-//            });
-
 
             itemViewHolder.listItemBinding.dataLl.setOnClickListener(new View.OnClickListener() {
                 @Override

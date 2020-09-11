@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.databinding.AllFieldUlbReportItemBinding;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
+import com.cgg.streetvendor.util.Utils;
 
 import java.util.ArrayList;
 
@@ -50,15 +52,15 @@ public class AllFieldULBReportAdapter extends RecyclerView.Adapter<AllFieldULBRe
             itemViewHolder.listItemBinding.setAllFieldData(dailyReportData);
 
             itemViewHolder.bind(dailyReportData);
-//
-//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-////                    Utilities.takeSCImage(activity, abstractView ,
-////                            mFilteredList.get(position).getProjectName() + "_Project Data");
-//                }
-//            });
+
+            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
+                    Utils.takeSCImage(context, abstractView ,
+                            mFilteredList.get(position).getDistrictName() + "_ All Field Report ULB Data");
+                }
+            });
 
             itemViewHolder.listItemBinding.absrtractLl.setOnClickListener(new View.OnClickListener() {
                 @Override

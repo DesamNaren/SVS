@@ -174,52 +174,53 @@
 
                     </LinearLayout>
 
+
                 </RelativeLayout>
 
-                <!--                <RelativeLayout-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="@dimen/dimen_4dp">-->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_4dp">
 
-                <!--                    <LinearLayout-->
-                <!--                        android:visibility="gone"-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:orientation="horizontal">-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
 
-                <!--                        <ImageView-->
-                <!--                            android:layout_width="25dp"-->
-                <!--                            android:layout_height="25dp"-->
-                <!--                            android:layout_gravity="center"-->
-                <!--                            app:srcCompat="@drawable/storage_per" />-->
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/storage_per" />
 
-                <!--                        <LinearLayout-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_gravity="center_vertical"-->
-                <!--                            android:layout_marginStart="10dp"-->
-                <!--                            android:layout_marginLeft="10dp"-->
-                <!--                            android:orientation="vertical"-->
-                <!--                            android:padding="@dimen/dimen_4dp">-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_4dp">
 
-                <!--                            <TextView-->
-                <!--                                android:textColor="@color/white"-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:text="@string/storage"-->
-                <!--                                android:textSize="16sp"-->
-                <!--                                android:textStyle="bold" />-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/storage"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-                <!--                            <TextView-->
-                <!--                                android:textColor="@color/white"-->
-                <!--                                android:layout_width="wrap_content"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:layout_gravity="center_horizontal"-->
-                <!--                                android:text="@string/storagetxt" />-->
-                <!--                        </LinearLayout>-->
-                <!--                    </LinearLayout>-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/storagetxt"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+                    </LinearLayout>
 
-                <!--                </RelativeLayout>-->
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -285,7 +286,8 @@
                     android:text="Accept"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:layout_marginEnd="@dimen/dimen_30dp" />
 
             </LinearLayout>
         </ScrollView>

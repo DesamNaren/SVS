@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import androidx.core.view.MenuItemCompat;
@@ -59,15 +60,14 @@ public class DailyULBWiseFragment extends Fragment {
         }
 
 
-//        shareIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                LinearLayout abstractView = getActivity().getWindow().getDecorView().findViewById(R.id.data_ll);
-//                Utilities.takeSCImage(getActivity(), abstractView ,
-//                        employeeDetailss.getEmployeeDetail().get(defSelection).getEmpName()
-//                                + "( " + employeeDetailss.getEmployeeDetail().get(defSelection).getDesignation() + " )" + "_Project Data");
-//            }
-//        });
+        binding.includedLayout.shareIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout abstractView = binding.includedLayout.dataLl;
+                Utils.takeSCImage(getActivity(), abstractView,
+                        "Daily Report-ULB Abstract Data");
+            }
+        });
 
         return view;
     }

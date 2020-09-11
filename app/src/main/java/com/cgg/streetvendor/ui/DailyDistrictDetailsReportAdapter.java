@@ -2,7 +2,6 @@ package com.cgg.streetvendor.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -88,14 +88,17 @@ public class DailyDistrictDetailsReportAdapter extends RecyclerView.Adapter<Dail
 
             });
 
-//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-////                    Utilities.takeSCImage(activity, abstractView ,
-////                            mFilteredList.get(position).getProjectName() + "_Project Data");
-//                }
-//            });
+            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout abstractView = itemViewHolder.listItemBinding.dataLl;
+                    Utils.takeSCImage(activity, abstractView,
+                            mFilteredList.get(position).getDistrictName()
+                                    +"_"
+                                    +mFilteredList.get(position).getCityName()
+                                    + "_Daily Report Complete Data");
+                }
+            });
 
 
         } catch (Exception e) {

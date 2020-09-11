@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -53,15 +54,16 @@ public class DailyULBReportAdapter extends RecyclerView.Adapter<DailyULBReportAd
             itemViewHolder.listItemBinding.setDailyReportData(dailyReportData);
 
             itemViewHolder.bind(dailyReportData);
-//
-//            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-////                    LinearLayout abstractView =itemViewHolder.listItemBinding.dataLl;
-////                    Utilities.takeSCImage(activity, abstractView ,
-////                            mFilteredList.get(position).getProjectName() + "_Project Data");
-//                }
-//            });
+
+            itemViewHolder.listItemBinding.shareIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout abstractView = itemViewHolder.listItemBinding.dataLl;
+                    Utils.takeSCImage(context, abstractView,
+                            mFilteredList.get(position).getDistrictName() + "_" +
+                                    mFilteredList.get(position).getCityName() + "_Daily Report ULB Data");
+                }
+            });
 
             itemViewHolder.listItemBinding.absrtractLl.setOnClickListener(new View.OnClickListener() {
                 @Override

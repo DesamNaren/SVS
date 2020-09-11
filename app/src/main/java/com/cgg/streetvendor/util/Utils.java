@@ -2,6 +2,7 @@ package com.cgg.streetvendor.util;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -28,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
@@ -42,6 +45,8 @@ import com.cgg.streetvendor.ui.MainActivity;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -61,6 +66,11 @@ import static android.Manifest.permission.READ_PHONE_STATE;
 
 public class Utils {
 
+    private static final int MEDIA_TYPE_IMAGE = 1;
+    private static Uri fileUri;
+    private static Uri imageUri;
+    private static String dirPath;
+    private static File mediaFile;
 
     public static void loadSpinnerData(Context context, ArrayList<String> arrayList, Spinner spinner) {
         try {
@@ -445,6 +455,85 @@ public class Utils {
         } else {
             return Settings.System.getInt(c.getContentResolver(), Settings.System.AUTO_TIME, 0) == 1;
         }
+    }
+
+    public static void takeSCImage(Context activity, View view, String typeData) {
+        try {
+            dirPath = new File(activity.getExternalFilesDir(null), "SVS").getPath();
+            fileUri = getOutputMediaFileUri(activity, typeData);
+            Bitmap bitmap = getScreenShot(view);
+            if (bitmap != null) {
+                store(bitmap, activity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Bitmap getScreenShot(View ll) {
+        ll.setDrawingCacheEnabled(true);
+        ll.buildDrawingCache(true);
+        return Bitmap.createBitmap(ll.getDrawingCache());
+    }
+
+    private static void store(Bitmap bm, Context activity) {
+        try {
+            FileOutputStream fOut = new FileOutputStream(mediaFile);
+            bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+            fOut.flush();
+            fOut.close();
+
+            shareImage(activity, fileUri);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void shareImage(Context activity, Uri fileUri) {
+        try {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("image/*");
+
+            intent.putExtra(Intent.EXTRA_SUBJECT, activity.getResources().getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_STREAM, fileUri);
+            try {
+                activity.startActivity(Intent.createChooser(intent, "Project Data"));
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(activity, "No App Available", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Uri getOutputMediaFileUri(Context activity, String typeData) {
+        File imageFile = getOutputMediaFile(typeData);
+        if (imageFile != null) {
+            imageUri = FileProvider.getUriForFile(
+                    activity,
+                    activity.getPackageName() + ".provider", //(use your app signature + ".provider" )
+                    imageFile);
+        }
+        return imageUri;
+    }
+
+    private static File getOutputMediaFile(String typeData) {
+        File mediaStorageDir = new File(dirPath);
+        if (!mediaStorageDir.exists()) {
+            mediaStorageDir.mkdirs();
+        }
+
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator
+                + typeData + getTimeStamp() + ".jpg");
+
+        return mediaFile;
+    }
+
+    private static String getTimeStamp() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+        return simpleDateFormat.format(new Date());
     }
 
     //    public static void customSectionSaveAlert(final Activity activity, String msg, String title) {

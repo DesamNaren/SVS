@@ -8,8 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.core.view.MenuItemCompat;
 import androidx.databinding.DataBindingUtil;
@@ -20,11 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cgg.streetvendor.R;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.AllFieldDistWiseFragmentBinding;
-import com.cgg.streetvendor.databinding.DailyDistrictWiseFragmentBinding;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportResponse;
-import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
-import com.cgg.streetvendor.source.reposnse.reports.DailyReportResponse;
 import com.cgg.streetvendor.util.Utils;
 import com.google.gson.Gson;
 
@@ -63,22 +60,21 @@ public class AllFieldULBWiseFragment extends Fragment {
         }
 
 
-//        shareIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                LinearLayout abstractView = getActivity().getWindow().getDecorView().findViewById(R.id.data_ll);
-//                Utilities.takeSCImage(getActivity(), abstractView ,
-//                        employeeDetailss.getEmployeeDetail().get(defSelection).getEmpName()
-//                                + "( " + employeeDetailss.getEmployeeDetail().get(defSelection).getDesignation() + " )" + "_Project Data");
-//            }
-//        });
+        binding.includedLayout.shareIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout abstractView = getActivity().getWindow().getDecorView().findViewById(R.id.data_ll);
+                Utils.takeSCImage(getActivity(), abstractView,
+                        "All Field Report ULB Abstract Data");
+            }
+        });
 
         return view;
     }
 
     private void setProjectData(AllFieldReportResponse reportResponse) {
         try {
-            long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt =0, ban_cnt = 0;
+            long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt = 0, ban_cnt = 0;
 
             for (int x = 0; x < reportResponse.getAllFieldReportData().size(); x++) {
                 total_pop = total_pop + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTarget());
@@ -120,7 +116,7 @@ public class AllFieldULBWiseFragment extends Fragment {
 
 
                 for (int x = 0; x < reportResponse.getAllFieldReportData().size(); x++) {
-                    long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt =0, ban_cnt = 0;
+                    long total_pop = 0, popPer = 0, sur_cnt = 0, ids_cnt = 0, cer_cnt = 0, aad_cnt = 0, ban_cnt = 0;
 
                     reportData = new AllFieldReportData();
                     total_pop = total_pop + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getSvMobileRevisedTarget());

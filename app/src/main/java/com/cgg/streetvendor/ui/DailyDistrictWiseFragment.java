@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import androidx.core.view.MenuItemCompat;
@@ -61,16 +62,14 @@ public class DailyDistrictWiseFragment extends Fragment {
             e.printStackTrace();
         }
 
-
-//        shareIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                LinearLayout abstractView = getActivity().getWindow().getDecorView().findViewById(R.id.data_ll);
-//                Utilities.takeSCImage(getActivity(), abstractView ,
-//                        employeeDetailss.getEmployeeDetail().get(defSelection).getEmpName()
-//                                + "( " + employeeDetailss.getEmployeeDetail().get(defSelection).getDesignation() + " )" + "_Project Data");
-//            }
-//        });
+        binding.includedLayout.shareIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout abstractView = binding.includedLayout.dataLl;
+                Utils.takeSCImage(getActivity(), abstractView,
+                        "Daily Report-District Abstract Data");
+            }
+        });
 
         return view;
     }
@@ -132,8 +131,15 @@ public class DailyDistrictWiseFragment extends Fragment {
 
                     for (int z = 0; z < reportResponse.getDailyReportData().size(); z++) {
 
+                        //if role is SMC or CDMA -- Show all Dist Data
+
+                        // if role is ULB -- Show Specific ULB Data Only
+
+
                         if (projectName.equalsIgnoreCase(reportResponse.getDailyReportData().get(z).getDistrictName())) {
 
+                            //if loginRole is ULB then if(ulb_id.equals(reportResponse.getDailyReportData().get(z).getUlbID))
+                            //if loginRole is Dist then if(dist_id.equals(reportResponse.getDailyReportData().get(z).getDistID))
                             total_pop = total_pop + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTarget());
                             popPer = popPer + Long.valueOf(reportResponse.getDailyReportData().get(z).getSvMobileRevisedTargetPercent());
                             svs_prev_day_total = svs_prev_day_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getPrevdayTotal());
@@ -169,6 +175,8 @@ public class DailyDistrictWiseFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     private void sortData(ArrayList<DailyReportData> projectReportData) {
