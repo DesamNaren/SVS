@@ -24,7 +24,6 @@ android {
 
     buildTypes {
         release {
-            debuggable true
             buildConfigField("String", "SERVER_URL", "\"http://tsmepmasvws.cgg.gov.in:8080/sv/\"")
             buildConfigField("String", "USER_MANUAL_URL", "\"https://tmepma.cgg.gov.in//pdffiles/Pattana Pragathi_User Manual-V1.0.pdf\"")
             signingConfig signingConfigs.release
@@ -61,32 +60,18 @@ dependencies {
     implementation dependencies.recyclerView
     implementation dependencies.retrofit
     implementation dependencies.retrofitConverterGson
-//    implementation dependencies.rxAndroid
-//    implementation dependencies.rxJava2
     implementation dependencies.constraint
-//    implementation dependencies.location
-//    implementation dependencies.dexter
     implementation dependencies.multidex
-//    implementation dependencies.inetrceptor
     implementation dependencies.glide
     implementation dependencies.room
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation dependencies.material
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.navigation:navigation-fragment:2.0.0'
     implementation 'androidx.navigation:navigation-ui:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     annotationProcessor dependencies.roomCompiler
-//    implementation dependencies.roomCompiler
-//    implementation dependencies.roomRxJava2
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation dependencies.lifecycle_version
     implementation dependencies.rxBinding
-//    implementation 'de.hdodenhof:circleimageview:2.2.0'
-    // Itext pdf library
-//    implementation 'com.itextpdf:itextg:5.5.10'
-//    implementation 'com.madgag.spongycastle:core:1.58.0.0'
-//`
 }
