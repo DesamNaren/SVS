@@ -59,6 +59,28 @@ public class DailyReportData {
     @SerializedName("cumm_total")
     @Expose
     private String cummTotal;
+    @SerializedName("district_id")
+    @Expose
+    private String districtId;
+    @SerializedName("city_id")
+    @Expose
+    private String cityId;
+
+    public String getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(String districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
 
     public String getPrevdayTransgender() {
         return prevdayTransgender;

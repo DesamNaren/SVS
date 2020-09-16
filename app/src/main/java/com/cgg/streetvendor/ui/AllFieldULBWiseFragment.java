@@ -1,5 +1,6 @@
 package com.cgg.streetvendor.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.AllFieldDistWiseFragmentBinding;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
@@ -38,7 +40,7 @@ import java.util.Objects;
 public class AllFieldULBWiseFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
-    private AllFieldReportResponse dailyReportResponse;
+    private AllFieldReportResponse allFieldReportResponse;
     private AllFieldDistWiseFragmentBinding binding;
 
     @Override
@@ -53,8 +55,34 @@ public class AllFieldULBWiseFragment extends Fragment {
             Gson gson = new Gson();
             sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
             String string = sharedPreferences.getString("ALL_REPORT_DATA", "");
-            dailyReportResponse = gson.fromJson(string, AllFieldReportResponse.class);
-            setProjectData(dailyReportResponse);
+            allFieldReportResponse = gson.fromJson(string, AllFieldReportResponse.class);
+            if (AppConstants.SMC_ROLL_ID == 15 || AppConstants.CDMA_ROLL_ID == 19) {
+                setProjectData(allFieldReportResponse);
+            } else if (AppConstants.MC_ROLL_ID == 14){
+                Intent intent = new Intent(getActivity(), AllFieldReportDetailsActivity.class);
+                intent.putExtra("DAILY_REPORT_DISTRICT",
+                        "");// pass dist name
+                intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                        ""); // pass dist id
+                intent.putExtra("DAILY_REPORT_ULB",
+                        ""); // [ass city name
+                intent.putExtra("DAILY_REPORT_ULB_ID",
+                        ""); // pass city id
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }else if (AppConstants.ULB_ROLL_ID == 5){
+                Intent intent = new Intent(getActivity(), AllFieldReportDetailsActivity.class);
+                intent.putExtra("DAILY_REPORT_DISTRICT",
+                        "");// pass dist name
+                intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                        ""); // pass dist id
+                intent.putExtra("DAILY_REPORT_ULB",
+                        ""); // [ass city name
+                intent.putExtra("DAILY_REPORT_ULB_ID",
+                        ""); // pass city id
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,7 +156,8 @@ public class AllFieldULBWiseFragment extends Fragment {
                     ban_cnt = ban_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalNoAccounts());
                     reportData.setCityName(reportResponse.getAllFieldReportData().get(x).getCityName());
                     reportData.setDistrictName(reportResponse.getAllFieldReportData().get(x).getDistrictName());
-
+                    reportData.setCityId(reportResponse.getAllFieldReportData().get(x).getCityId());
+                    reportData.setDistrictId(reportResponse.getAllFieldReportData().get(x).getDistrictId());
 
                     reportData.setSvMobileRevisedTarget(String.valueOf(total_pop));
                     reportData.setSvMobileRevisedTargetPercent(String.valueOf(popPer));

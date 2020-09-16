@@ -2,6 +2,7 @@ package com.cgg.streetvendor.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,19 +45,24 @@ public class DailyDistrictWiseFragment extends Fragment {
     private DailyReportResponse dailyReportResponse;
     private DailyDistrictWiseFragmentBinding binding;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Gson gson = new Gson();
+        sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
+
+
+        String string = sharedPreferences.getString("REPORT_DATA", "");
+        dailyReportResponse = gson.fromJson(string, DailyReportResponse.class);
+
+
         binding = DataBindingUtil.inflate(inflater,
                 R.layout.daily_district_wise_fragment, container, false);
         View view = binding.getRoot();
         setHasOptionsMenu(true);
 
         try {
-            Gson gson = new Gson();
-            sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
-            String string = sharedPreferences.getString("REPORT_DATA", "");
-            dailyReportResponse = gson.fromJson(string, DailyReportResponse.class);
             setProjectData(dailyReportResponse);
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,6 +76,7 @@ public class DailyDistrictWiseFragment extends Fragment {
                         "Daily Report-District Abstract Data");
             }
         });
+
 
         return view;
     }
@@ -135,6 +142,8 @@ public class DailyDistrictWiseFragment extends Fragment {
 
                         // if role is ULB -- Show Specific ULB Data Only
 
+                        // if role is Dist -- Show Specific Dist and its ULB Data Only
+
 
                         if (projectName.equalsIgnoreCase(reportResponse.getDailyReportData().get(z).getDistrictName())) {
 
@@ -147,6 +156,7 @@ public class DailyDistrictWiseFragment extends Fragment {
                             cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getCummTotal());
                             balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotalBalance());
                             reportData.setDistrictName(reportResponse.getDailyReportData().get(z).getDistrictName());
+                            reportData.setDistrictId(reportResponse.getDailyReportData().get(z).getDistrictId());
 
                         }
 
@@ -169,6 +179,7 @@ public class DailyDistrictWiseFragment extends Fragment {
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                     binding.projectRV.setLayoutManager(mLayoutManager);
                     binding.projectRV.setAdapter(OTProjectReportAdapter);
+
                 }
 
             }

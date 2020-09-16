@@ -62,7 +62,10 @@ public class DailyDistrictReportAdapter extends RecyclerView.Adapter<DailyDistri
                     Intent intent = new Intent(context, DailyReportDetailsActivity.class);
                     intent.putExtra("DAILY_REPORT_DISTRICT",
                             mFilteredList.get(position).getDistrictName());
+                    intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                            mFilteredList.get(position).getDistrictId());
                     intent.putExtra("DAILY_REPORT_ULB", "");
+                    intent.putExtra("DAILY_REPORT_ULB_ID", "");
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 

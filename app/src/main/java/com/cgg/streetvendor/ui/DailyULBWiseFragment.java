@@ -44,28 +44,30 @@ public class DailyULBWiseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Gson gson = new Gson();
+        sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
+
+        String string = sharedPreferences.getString("REPORT_DATA", "");
+        dailyReportResponse = gson.fromJson(string, DailyReportResponse.class);
+
+
         binding = DataBindingUtil.inflate(inflater,
                 R.layout.daily_district_wise_fragment, container, false);
         View view = binding.getRoot();
         setHasOptionsMenu(true);
 
         try {
-            Gson gson = new Gson();
-            sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
-            String string = sharedPreferences.getString("REPORT_DATA", "");
-            dailyReportResponse = gson.fromJson(string, DailyReportResponse.class);
             setProjectData(dailyReportResponse);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         binding.includedLayout.shareIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LinearLayout abstractView = binding.includedLayout.dataLl;
                 Utils.takeSCImage(getActivity(), abstractView,
-                        "Daily Report-ULB Abstract Data");
+                        "Daily Report-District Abstract Data");
             }
         });
 
@@ -128,7 +130,9 @@ public class DailyULBWiseFragment extends Fragment {
                     cum_total = cum_total + Long.valueOf(reportResponse.getDailyReportData().get(z).getCummTotal());
                     balance_svs = balance_svs + Long.valueOf(reportResponse.getDailyReportData().get(z).getTotalBalance());
                     reportData.setCityName(reportResponse.getDailyReportData().get(z).getCityName());
+                    reportData.setCityId(reportResponse.getDailyReportData().get(z).getCityId());
                     reportData.setDistrictName(reportResponse.getDailyReportData().get(z).getDistrictName());
+                    reportData.setDistrictId(reportResponse.getDailyReportData().get(z).getDistrictId());
 
 
                     reportData.setSvMobileRevisedTarget(String.valueOf(total_pop));

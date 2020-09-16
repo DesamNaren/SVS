@@ -1,5 +1,6 @@
 package com.cgg.streetvendor.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.AllFieldDistWiseFragmentBinding;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
@@ -57,7 +59,33 @@ public class AllFieldDistWiseFragment extends Fragment {
             sharedPreferences = SVSApplication.get(Objects.requireNonNull(getActivity())).getPreferences();
             String string = sharedPreferences.getString("ALL_REPORT_DATA", "");
             allFieldReportResponse = gson.fromJson(string, AllFieldReportResponse.class);
-            setProjectData(allFieldReportResponse);
+            if (AppConstants.SMC_ROLL_ID == 15 || AppConstants.CDMA_ROLL_ID == 19) {
+                setProjectData(allFieldReportResponse);
+            } else if (AppConstants.MC_ROLL_ID == 14){
+                Intent intent = new Intent(getActivity(), AllFieldReportDetailsActivity.class);
+                intent.putExtra("DAILY_REPORT_DISTRICT",
+                        "");// pass dist name
+                intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                        ""); // pass dist id
+                intent.putExtra("DAILY_REPORT_ULB",
+                        ""); // [ass city name
+                intent.putExtra("DAILY_REPORT_ULB_ID",
+                        ""); // pass city id
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }else if (AppConstants.ULB_ROLL_ID == 5){
+                Intent intent = new Intent(getActivity(), AllFieldReportDetailsActivity.class);
+                intent.putExtra("DAILY_REPORT_DISTRICT",
+                        "");// pass dist name
+                intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                        ""); // pass dist id
+                intent.putExtra("DAILY_REPORT_ULB",
+                        ""); // [ass city name
+                intent.putExtra("DAILY_REPORT_ULB_ID",
+                        ""); // pass city id
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,6 +168,7 @@ public class AllFieldDistWiseFragment extends Fragment {
                             aad_cnt = aad_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalAdharHaving());
                             ban_cnt = ban_cnt + Long.valueOf(reportResponse.getAllFieldReportData().get(x).getTotalNoAccounts());
                             reportData.setDistrictName(reportResponse.getAllFieldReportData().get(x).getDistrictName());
+                            reportData.setDistrictId(reportResponse.getAllFieldReportData().get(x).getDistrictId());
 
                         }
 

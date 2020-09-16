@@ -63,6 +63,9 @@ public class AllFieldDistrictReportAdapter extends RecyclerView.Adapter<AllField
                     intent.putExtra("DAILY_REPORT_DISTRICT",
                             mFilteredList.get(position).getDistrictName());
                     intent.putExtra("DAILY_REPORT_ULB", "");
+                    intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                            mFilteredList.get(position).getDistrictId());
+                    intent.putExtra("DAILY_REPORT_ULB_ID", "");
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 

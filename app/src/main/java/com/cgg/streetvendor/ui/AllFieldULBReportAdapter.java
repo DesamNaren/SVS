@@ -70,6 +70,10 @@ public class AllFieldULBReportAdapter extends RecyclerView.Adapter<AllFieldULBRe
                             mFilteredList.get(position).getDistrictName());
                     intent.putExtra("DAILY_REPORT_ULB",
                             mFilteredList.get(position).getCityName());
+                    intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                            mFilteredList.get(position).getDistrictId());
+                    intent.putExtra("DAILY_REPORT_ULB_ID",
+                            mFilteredList.get(position).getCityId());
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

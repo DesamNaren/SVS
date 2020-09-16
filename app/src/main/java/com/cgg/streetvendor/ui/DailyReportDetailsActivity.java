@@ -1,5 +1,6 @@
 package com.cgg.streetvendor.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivityDailyReportDetailsBinding;
 import com.cgg.streetvendor.source.reposnse.reports.DailyReportData;
@@ -38,7 +40,7 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
     private DailyReportResponse dailyReportResponse;
     private TextView tv;
     private DailyDistrictDetailsReportAdapter adapter;
-    private String ulb;
+    private String ulb, ulb_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +70,10 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
 
         try {
             String dist = getIntent().getStringExtra("DAILY_REPORT_DISTRICT");
+            String distId = getIntent().getStringExtra("DAILY_REPORT_DISTRICT_ID");
             ulb = getIntent().getStringExtra("DAILY_REPORT_ULB");
-            if (!TextUtils.isEmpty(dist)) {
+            ulb_id = getIntent().getStringExtra("DAILY_REPORT_ULB_ID");
+            if (!TextUtils.isEmpty(dist) && !TextUtils.isEmpty(distId)) {
 
                 binding.distNameTv.setText(dist);
 
@@ -80,16 +84,16 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
                 if (dailyReportResponse != null && dailyReportResponse.getDailyReportData() != null
                         && dailyReportResponse.getDailyReportData().size() > 0) {
                     ArrayList<DailyReportData> dailyReportDataList = new ArrayList<>();
-                    if (TextUtils.isEmpty(ulb)) {
+                    if (TextUtils.isEmpty(ulb) && TextUtils.isEmpty(ulb_id)) {
                         for (DailyReportData dailyReportData : dailyReportResponse.getDailyReportData()) {
-                            if (dist.equalsIgnoreCase(dailyReportData.getDistrictName())) {
+                            if (distId.equalsIgnoreCase(dailyReportData.getDistrictId())) {
                                 dailyReportDataList.add(dailyReportData);
                             }
                         }
                     } else {
                         for (DailyReportData dailyReportData : dailyReportResponse.getDailyReportData()) {
-                            if (dist.equalsIgnoreCase(dailyReportData.getDistrictName())
-                                    && ulb.equalsIgnoreCase(dailyReportData.getCityName())) {
+                            if (distId.equalsIgnoreCase(dailyReportData.getDistrictId())
+                                    && ulb_id.equalsIgnoreCase(dailyReportData.getCityId())) {
                                 dailyReportDataList.add(dailyReportData);
                             }
                         }
@@ -123,7 +127,7 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
         MenuItem mSearch = mMenu.findItem(R.id.action_search);
         if (!TextUtils.isEmpty(ulb)) {
             mSearch.setVisible(false);
-        }else {
+        } else {
             mSearch.setVisible(true);
         }
         mSearchView = (SearchView) mSearch.getActionView();
@@ -170,8 +174,19 @@ public class DailyReportDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            onBackPressed();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (AppConstants.MC_ROLL_ID != 14 || AppConstants.ULB_ROLL_ID != 5) { // compare with role id replace with ==
+            Intent intent = new Intent(this, DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

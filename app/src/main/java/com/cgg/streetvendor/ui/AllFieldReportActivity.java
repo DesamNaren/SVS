@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.DailyReportBaseFragmentBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
@@ -41,12 +43,19 @@ public class AllFieldReportActivity extends AppCompatActivity implements ErrorHa
 
     DailyReportBaseFragmentBinding binding;
     private TextView tv;
+    private String loginDistID, loginULBID;
+    private String distName, ulbName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.daily_report_base_fragment);
 
+
+        SharedPreferences sharedPreferences = SVSApplication.get(AllFieldReportActivity.this).getPreferences();
+
+        loginDistID = sharedPreferences.getString("DISTRICT_ID", "");
+        loginULBID = sharedPreferences.getString("ULB_ID", "");
 
         try {
             if (getSupportActionBar() != null) {
@@ -92,7 +101,51 @@ public class AllFieldReportActivity extends AppCompatActivity implements ErrorHa
                                     Gson gson = new Gson();
                                     editor.putString("ALL_REPORT_DATA", gson.toJson(allFieldReportResponse));
                                     editor.commit();
-                                    binding.viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+                                    if (allFieldReportResponse.getAllFieldReportData() != null && allFieldReportResponse.getAllFieldReportData().size() > 0) {
+                                        for (int i = 0; i < allFieldReportResponse.getAllFieldReportData().size(); i++) {
+                                            if (allFieldReportResponse.getAllFieldReportData().get(i).getDistrictId().equalsIgnoreCase(loginDistID)) {
+                                                distName = allFieldReportResponse.getAllFieldReportData().get(i).getDistrictName();
+                                            }
+                                            if (allFieldReportResponse.getAllFieldReportData().get(i).getDistrictId().equalsIgnoreCase(loginDistID)
+                                                    && allFieldReportResponse.getAllFieldReportData().get(i).getCityId().equalsIgnoreCase(loginULBID)) {
+                                                ulbName = allFieldReportResponse.getAllFieldReportData().get(i).getCityName();
+                                            }
+                                            if (!TextUtils.isEmpty(distName) && !TextUtils.isEmpty(ulbName)) {
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    if (AppConstants.MC_ROLL_ID != 14 && !TextUtils.isEmpty(distName)) { // compare with role id replace with ==
+                                        Intent intent = new Intent(AllFieldReportActivity.this, AllFieldReportDetailsActivity.class);
+                                        intent.putExtra("DAILY_REPORT_DISTRICT",
+                                                distName);// pass dist name
+                                        intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                                                loginDistID); // pass dist id
+                                        intent.putExtra("DAILY_REPORT_ULB",
+                                                ""); // [ass city name
+                                        intent.putExtra("DAILY_REPORT_ULB_ID",
+                                                ""); // pass city id
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else if (AppConstants.ULB_ROLL_ID != 5 && !TextUtils.isEmpty(distName)) { // compare with role id replace with ==
+                                        Intent intent = new Intent(AllFieldReportActivity.this, AllFieldReportDetailsActivity.class);
+                                        intent.putExtra("DAILY_REPORT_DISTRICT",
+                                                distName);// pass dist name
+                                        intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                                                loginDistID); // pass dist id
+                                        intent.putExtra("DAILY_REPORT_ULB",
+                                                ulbName); // [ass city name
+                                        intent.putExtra("DAILY_REPORT_ULB_ID",
+                                                loginULBID); // pass city id
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        binding.viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+                                    }
                                 } else {
                                     binding.emptyTV.setVisibility(View.VISIBLE);
                                 }

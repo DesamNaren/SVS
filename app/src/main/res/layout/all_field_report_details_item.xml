@@ -938,6 +938,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <androidx.cardview.widget.CardView
+                android:layout_marginBottom="@dimen/dimen_8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_8dp"

@@ -93,6 +93,29 @@ public class AllFieldReportData {
     @Expose
     private String maleNoAccounts;
 
+    @SerializedName("district_id")
+    @Expose
+    private String districtId;
+    @SerializedName("city_id")
+    @Expose
+    private String cityId;
+
+    public String getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(String districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
     public String getTransgenderNoAccounts() {
         return transgenderNoAccounts;
     }

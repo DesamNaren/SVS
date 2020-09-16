@@ -16,5 +16,10 @@ public class AppConstants {
     public static final String MEMBER_DATA = "MEMBER_DATA";
     public static final String LOCALE_LANG = "LOCALE_LANG";
 
+    public static final int SMC_ROLL_ID = 15;
+    public static final int CDMA_ROLL_ID = 19;
+    public static final int ULB_ROLL_ID = 5;
+    public static final int MC_ROLL_ID = 14;
+
 
 }

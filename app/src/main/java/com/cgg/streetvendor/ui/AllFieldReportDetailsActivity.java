@@ -1,5 +1,6 @@
 package com.cgg.streetvendor.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.ActivityAllFieldReportDetailsBinding;
 import com.cgg.streetvendor.source.reposnse.reports.AllFieldReportData;
@@ -38,7 +40,7 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
     private AllFieldReportResponse allFieldReportResponse;
     private TextView tv;
     private AllFieldDetailsReportAdapter adapter;
-    private String ulb;
+    private String ulb, ulb_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +70,10 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
 
         try {
             String dist = getIntent().getStringExtra("DAILY_REPORT_DISTRICT");
+            String dist_id = getIntent().getStringExtra("DAILY_REPORT_DISTRICT_ID");
             ulb = getIntent().getStringExtra("DAILY_REPORT_ULB");
-            if (!TextUtils.isEmpty(dist)) {
+            ulb_id = getIntent().getStringExtra("DAILY_REPORT_ULB_ID");
+            if (!TextUtils.isEmpty(dist)&& !TextUtils.isEmpty(dist_id)) {
                 binding.distNameTv.setText(dist);
                 sharedPreferences = SVSApplication.get(this).getPreferences();
                 Gson gson = new Gson();
@@ -78,16 +82,16 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
                 if (allFieldReportResponse != null && allFieldReportResponse.getAllFieldReportData() != null
                         && allFieldReportResponse.getAllFieldReportData().size() > 0) {
                     ArrayList<AllFieldReportData> dailyReportDataList = new ArrayList<>();
-                    if (TextUtils.isEmpty(ulb)) {
+                    if (TextUtils.isEmpty(ulb) && TextUtils.isEmpty(ulb_id)) {
                         for (AllFieldReportData dailyReportData : allFieldReportResponse.getAllFieldReportData()) {
-                            if (dist.equalsIgnoreCase(dailyReportData.getDistrictName())) {
+                            if (dist_id.equalsIgnoreCase(dailyReportData.getDistrictId())) {
                                 dailyReportDataList.add(dailyReportData);
                             }
                         }
                     } else {
                         for (AllFieldReportData dailyReportData : allFieldReportResponse.getAllFieldReportData()) {
-                            if (dist.equalsIgnoreCase(dailyReportData.getDistrictName())
-                                    && ulb.equalsIgnoreCase(dailyReportData.getCityName())) {
+                            if (dist_id.equalsIgnoreCase(dailyReportData.getDistrictId())
+                                    && ulb_id.equalsIgnoreCase(dailyReportData.getCityId())) {
                                 dailyReportDataList.add(dailyReportData);
                             }
                         }
@@ -168,8 +172,19 @@ public class AllFieldReportDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            onBackPressed();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (AppConstants.MC_ROLL_ID != 14 || AppConstants.ULB_ROLL_ID != 5) { // compare with role id replace with ==
+            Intent intent = new Intent(this, DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

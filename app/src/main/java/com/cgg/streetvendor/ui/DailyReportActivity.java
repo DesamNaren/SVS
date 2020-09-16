@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import com.cgg.streetvendor.R;
+import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.DailyReportBaseFragmentBinding;
 import com.cgg.streetvendor.interfaces.ErrorHandlerInterface;
@@ -41,12 +43,18 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
 
     DailyReportBaseFragmentBinding binding;
     private TextView tv;
+    private String loginDistID, loginULBID;
+    private String distName, ulbName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.daily_report_base_fragment);
 
+        SharedPreferences sharedPreferences = SVSApplication.get(DailyReportActivity.this).getPreferences();
+
+        loginDistID = sharedPreferences.getString("DISTRICT_ID", "");
+        loginULBID = sharedPreferences.getString("ULB_ID", "");
 
         try {
             if (getSupportActionBar() != null) {
@@ -87,12 +95,55 @@ public class DailyReportActivity extends AppCompatActivity implements ErrorHandl
                             if (dailyReportResponse != null) {
                                 if (dailyReportResponse.getStatusCode().equals("200") && dailyReportResponse.getDailyReportData()
                                         != null && dailyReportResponse.getDailyReportData().size() > 0) {
-                                    SharedPreferences sharedPreferences = SVSApplication.get(DailyReportActivity.this).getPreferences();
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     Gson gson = new Gson();
                                     editor.putString("REPORT_DATA", gson.toJson(dailyReportResponse));
                                     editor.commit();
-                                    binding.viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+                                    if (dailyReportResponse.getDailyReportData() != null && dailyReportResponse.getDailyReportData().size() > 0) {
+                                        for (int i = 0; i < dailyReportResponse.getDailyReportData().size(); i++) {
+                                            if (dailyReportResponse.getDailyReportData().get(i).getDistrictId().equalsIgnoreCase(loginDistID)) {
+                                                distName = dailyReportResponse.getDailyReportData().get(i).getDistrictName();
+                                            }
+                                            if (dailyReportResponse.getDailyReportData().get(i).getDistrictId().equalsIgnoreCase(loginDistID)
+                                                    && dailyReportResponse.getDailyReportData().get(i).getCityId().equalsIgnoreCase(loginULBID)) {
+                                                ulbName = dailyReportResponse.getDailyReportData().get(i).getCityName();
+                                            }
+                                            if (!TextUtils.isEmpty(distName) && !TextUtils.isEmpty(ulbName)) {
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    if (AppConstants.MC_ROLL_ID != 14 && !TextUtils.isEmpty(distName)) { // compare with role id replace with ==
+                                        Intent intent = new Intent(DailyReportActivity.this, DailyReportDetailsActivity.class);
+                                        intent.putExtra("DAILY_REPORT_DISTRICT",
+                                                distName);// pass dist name
+                                        intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                                                loginDistID); // pass dist id
+                                        intent.putExtra("DAILY_REPORT_ULB",
+                                                ""); // [ass city name
+                                        intent.putExtra("DAILY_REPORT_ULB_ID",
+                                                ""); // pass city id
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else if (AppConstants.ULB_ROLL_ID != 5 && !TextUtils.isEmpty(distName)) { // compare with role id replace with ==
+                                        Intent intent = new Intent(DailyReportActivity.this, DailyReportDetailsActivity.class);
+                                        intent.putExtra("DAILY_REPORT_DISTRICT",
+                                                distName);// pass dist name
+                                        intent.putExtra("DAILY_REPORT_DISTRICT_ID",
+                                                loginDistID); // pass dist id
+                                        intent.putExtra("DAILY_REPORT_ULB",
+                                                ulbName); // [ass city name
+                                        intent.putExtra("DAILY_REPORT_ULB_ID",
+                                                loginULBID); // pass city id
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        binding.viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+                                    }
                                 } else {
                                     binding.emptyTV.setVisibility(View.VISIBLE);
                                 }
