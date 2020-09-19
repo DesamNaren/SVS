@@ -5,9 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class LoginResponse {@SerializedName("status_message")
-@Expose
-private String status_message;
+public class LoginResponse {
+    @SerializedName("status_message")
+    @Expose
+    private String status_message;
     @SerializedName("status_code")
     @Expose
     private String status_code;

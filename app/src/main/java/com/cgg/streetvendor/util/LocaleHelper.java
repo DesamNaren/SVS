@@ -4,15 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 
-import com.cgg.streetvendor.application.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
-import com.cgg.streetvendor.ui.DashboardActivity;
 
 import java.util.Locale;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class LocaleHelper {
 

@@ -15,7 +15,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.View;
@@ -37,11 +36,10 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.cgg.streetvendor.BuildConfig;
 import com.cgg.streetvendor.R;
-import com.cgg.streetvendor.application.AppConstants;
-import com.cgg.streetvendor.ui.DashboardActivity;
-import com.cgg.streetvendor.ui.DownloadActivity;
-import com.cgg.streetvendor.ui.LoginActivity;
-import com.cgg.streetvendor.ui.MainActivity;
+import com.cgg.streetvendor.ui.view.DashboardActivity;
+import com.cgg.streetvendor.ui.view.DownloadActivity;
+import com.cgg.streetvendor.ui.view.LoginActivity;
+import com.cgg.streetvendor.ui.view.MainActivity;
 
 import org.json.JSONObject;
 

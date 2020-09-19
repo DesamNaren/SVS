@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.cgg.streetvendor.R;
-import com.cgg.streetvendor.application.AppConstants;
+import com.cgg.streetvendor.util.AppConstants;
 import com.cgg.streetvendor.application.SVSApplication;
 import com.cgg.streetvendor.databinding.FragmentHomeBinding;
-import com.cgg.streetvendor.ui.DownloadActivity;
-import com.cgg.streetvendor.ui.MainActivity;
+import com.cgg.streetvendor.ui.view.DownloadActivity;
+import com.cgg.streetvendor.ui.view.MainActivity;
 
 import java.util.Objects;
 

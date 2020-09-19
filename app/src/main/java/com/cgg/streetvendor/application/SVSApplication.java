@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.cgg.streetvendor.util.AppConstants;
 import com.google.gson.Gson;
 
 public class SVSApplication extends MultiDexApplication {

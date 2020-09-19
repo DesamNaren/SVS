@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_reports"
-        android:name="com.cgg.streetvendor.ui.DailyReportActivity"
+        android:name="com.cgg.streetvendor.ui.view.DailyReportActivity"
         android:label="@string/dashboard"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_reports_all"
-        android:name="com.cgg.streetvendor.ui.AllFieldReportActivity"
+        android:name="com.cgg.streetvendor.ui.view.AllFieldReportActivity"
         android:label="@string/dashboard"
         tools:layout="@layout/fragment_home" />
 

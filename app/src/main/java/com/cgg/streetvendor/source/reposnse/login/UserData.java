@@ -16,6 +16,17 @@ public class UserData {
     @SerializedName("user_description")
     @Expose
     private String user_description;
+    @SerializedName("role_id")
+    @Expose
+    private String roleId;
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
 
     public String getUlb_id() {
         return ulb_id;

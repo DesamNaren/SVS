@@ -1,6 +1,6 @@
 package com.cgg.streetvendor.source.request;
 
-import com.cgg.streetvendor.ui.FamilyInfo;
+import com.cgg.streetvendor.source.FamilyInfo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

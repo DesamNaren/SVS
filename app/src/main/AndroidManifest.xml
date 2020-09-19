@@ -18,28 +18,28 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.view.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.DashboardActivity"
+            android:name=".ui.view.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.AddMemberActivity"
+            android:name=".ui.view.AddMemberActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.MemberActivity"
+            android:name=".ui.view.MemberActivity"
             android:label="@string/title_activity_member"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.view.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -49,37 +49,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.view.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.DownloadActivity"
+            android:name=".ui.view.DownloadActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.Cgg_USVS_Policy"
+            android:name=".ui.view.PrivacyPolicyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.UserManualActivity"
+            android:name=".ui.view.UserManualActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.DailyReportActivity"
+            android:name=".ui.view.DailyReportActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Light_AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.DailyReportDetailsActivity"
+            android:name=".ui.view.DailyReportDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Light_AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name=".ui.AllFieldReportDetailsActivity"
+        <activity android:name=".ui.view.AllFieldReportDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Light_AppTheme"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.AllFieldReportActivity"
+        <activity android:name=".ui.view.AllFieldReportActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Light_AppTheme"
             android:windowSoftInputMode="adjustPan" />
