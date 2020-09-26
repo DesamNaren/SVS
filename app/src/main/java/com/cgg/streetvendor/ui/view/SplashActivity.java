@@ -119,7 +119,7 @@ public class SplashActivity extends AppCompatActivity implements ErrorHandlerInt
                                     }, 1000);
 
                                 } else if (versionResponse.getStatusMessage() != null) {
-                                    Utils.ShowPlayAlert(SplashActivity.this, getResources().getString(R.string.app_name), versionResponse.getStatusMessage());
+                                    Utils.ShowPlayAlert(SplashActivity.this, getResources().getString(R.string.app_name), getString(R.string.update_msg));
                                 } else {
                                     Utils.ShowPlayAlert(SplashActivity.this, getResources().getString(R.string.app_name), getString(R.string.update_msg));
                                 }
